@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  font-family: monospace;
+}
+
+.wall {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.mob {
+    background-color: rgba(153, 3, 3, 0.5);
+}
+
+.background {
+  background-color: none;
+}
+
+.player {
+  background-color: rgba(6, 196, 146, 0.8);
+}
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cell {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+}
+
+.active {
+  background-color: #fff;
+}
+
+.select {
+  display: none;
+  width: 300px;
+  height: 100px;
+  margin-top: 50px;
+  margin-left: 50px;
+  color: #fff;
+}

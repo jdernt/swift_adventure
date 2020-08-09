@@ -1,18 +1,71 @@
-<!doctype  html>
-<html  lang="en">
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 <head>
-<link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
-<title>Django Authentication Example</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}Default title{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% block headcontent%}{% endblock headcontent %}
 </head>
-<body>
-  <div  class="container">
-    <div  class="row justify-content-center">
-      <div  class="col-4">
-      <h1  class="text-center">Django Authentication Example</h1>
-      {% block main %}
-      {% endblock %}
-      </div>
-    </div>
-  </div>
+
+<body class="body">
+	<header class="header">
+		<div class="container">
+			<div class="header__flex">
+				<h1 class="header__logo title">Some Page</h1>
+				<nav class="header__nav">
+					<ul class="header__list list">
+						<li class="header__item item"><a href="#" class="header__link link">Главная</a></li>
+						<li class="header__item item"><a href="#" class="header__link link">Лента</a></li>
+						<li class="header__item item"><a href="#" class="header__link link">Создать игру</a></li>
+					</ul>
+				</nav>
+				<div class="header__userbar">
+					<button class="header__login btn">Войти</button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="main">
+		<div class="modal">
+			<div class="modal__window">
+				<div class="modal__login">
+					<h2 class="modal__title subtitle">Войти в учетную запись</h2>
+					<p class="modal__text">Нет учетной записи?</p>
+					<a href="#" class="modal__link link auth">Создать учетную запись</a>
+					<form class="modal__form" action="" method="POST">
+						<input type="text" class="modal__input_login modal__input input" placeholder="Логин" maxlength="20">
+						<input type="password" class="modal__input_password modal__input input" placeholder="Пароль">
+						<!-- <div>
+              <input type="checkbox" id="remember" class="modal_checkbox">
+              <label for="remember">Запомнить</label>
+            </div> -->
+						<button type="submit" class="modal__btn btn">Войти</button>
+					</form>
+				</div>
+				<div class="modal__auth hidden">
+					<h2 class="modal__title subtitle">Создать учетную запись</h2>
+					<p class="modal__text">Уже есть учетная запись?</p>
+					<a href="#" class="modal__link link login">Войти</a>
+					<form class="modal__form" action="" method="POST">
+						<input type="text" class="modal__input_login modal__input input" placeholder="Логин" maxlength="20">
+						<input type="email" class="modal__input_email modal__input input" placeholder="E-mail">
+						<input type="password" class="modal__input_password modal__input input" placeholder="Пароль">
+						<!-- <div>
+              <input type="checkbox" id="remember2" class="modal_checkbox">
+              <label for="remember2">Запомнить</label>
+            </div> -->
+						<button type="submit" class="modal__btn btn">Войти</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</main>
+    {% block bodycontent%}{% endblock bodycontent %}
 </body>
+<script type="text/javascript" src={% static "js/login_registration.js" %}></script>
+
 </html>
