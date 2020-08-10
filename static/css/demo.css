@@ -8,20 +8,38 @@ body {
   font-family: monospace;
 }
 
-.wall {
-  background-color: rgba(255, 255, 255, 0.2);
+.main-flex {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-top: 40px;
 }
 
-.mob {
-    background-color: rgba(153, 3, 3, 0.5);
+.main__options {
+  margin: 0 50px;
 }
 
-.background {
-  background-color: none;
+.error {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 0, 30, 0.7);
+  text-align: center;
 }
 
-.player {
-  background-color: rgba(6, 196, 146, 0.8);
+.unselectable {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  /* Konqueror */
+  /* Firefox */
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently not supported by any browser */
 }
 
 .row {
@@ -32,19 +50,246 @@ body {
 
 .cell {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
+  font-family: inherit;
+  font-size: 35px;
+  text-align: center;
+  line-height: 35px;
+  color: rgba(255, 255, 255, 0.2);
 }
 
-.active {
-  background-color: #fff;
+.grid {
+  max-width: 120px;
+  margin-bottom: 40px;
+}
+
+.grid__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.grid__input {
+  max-width: 50px;
+  margin-bottom: 10px;
+}
+
+.grid__btn {
+  max-width: 100px;
 }
 
 .select {
   display: none;
-  width: 300px;
-  height: 100px;
-  margin-top: 50px;
+  max-width: 300px;
+  min-height: 100px;
+  margin-top: 20px;
   margin-left: 50px;
+  padding: 10px;
   color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  align-self: center;
+}
+
+.select__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.select__text {
+  margin-bottom: 10px;
+}
+
+.select__btn {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select__type {
+  display: flex;
+  justify-content: flex-start;
+  width: 120px;
+}
+
+.select__name {
+  margin-left: 10px;
+}
+
+.symbols__text {
+  margin-bottom: 10px;
+}
+
+.symbols__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.symbols__input {
+  max-width: 50px;
+  margin-bottom: 10px;
+}
+
+.symbols__option {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wall {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mob {
+  color: #f5c542;
+}
+
+.background {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.player {
+  color: #00bdb3;
+}
+
+.active {
+  background-color: #14f7a4;
+  color: #14f7a4;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: monospace, sans-serif;
+  color: #fff;
+}
+
+.body {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.no__scroll {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.btn {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:hover {
+  color: #00bdb3;
+}
+
+.header {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header__flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__list {
+  display: flex;
+}
+
+.header__item:hover, .header__login:hover {
+  color: #00bdb3;
+}
+
+.header__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.header__login {
+  margin-left: auto;
+}
+
+.modal {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.modal__window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 36px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.modal__title {
+  margin-bottom: 10px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.modal__input {
+  margin-bottom: 20px;
+}
+
+.modal__btn {
+  max-width: 300px;
+  padding: 5px 20px;
+  margin-top: 40px;
+  border: 1px rgba(255, 255, 255, 0.1) solid;
+  border-radius: 3px;
+  align-self: center;
+}
+
+.modal__btn:hover {
+  background-color: #00bdb3;
+  color: #000;
+}
+
+.modal__link {
+  color: #11cfb0;
 }
