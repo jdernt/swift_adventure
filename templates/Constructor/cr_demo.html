@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<title>Some Game</title>
+</head>
+
+<body class="body">
+
+	<main class="main">
+
+		<div class="error error-grid">Дорогой друг, нельзя создать после с высотой или шириной более 16 блоков.</div>
+		<div class="error error-player">Дорогой друг, нельзя расположить на карте более одного игрока</div>
+
+		<div class="main-flex">
+
+			<div class="main__options">
+				<div class="grid">
+					<p class="grid__text">Ширина/Высота игрового поля</p>
+					<form action="" class="grid__form" id="matrix_create">
+						<input type="number" id="matrix_input_width" class="grid__wdt grid__input" placeholder="x" min="4" max="16"
+							required>
+						<input type="number" id="matrix_input_height" class="grid__hgt grid__input" placeholder="y" min="4" max="16"
+							required>
+						<button class="grid__btn" id="matrix_input_btn">Создать</button>
+					</form>
+				</div>
+				<div class="symbols">
+					<p class="symbols__text">Выберите символ</p>
+					<form action="" class="symbols__form">
+						<span class="symbols__option">
+							<span class="symbols__type">Стена</span>
+							<input type="text" class="symbols__input wall-symbol" maxlength="1" placeholder="#">
+						</span>
+						<span class="symbols__option">
+							<span class="symbols__type">Моб</span>
+							<input type="text" class="symbols__input mob-symbol" maxlength="1" placeholder="m">
+						</span>
+						<span class="symbols__option">
+							<span class="symbols__type">Фон</span>
+							<input type="text" class="symbols__input bg-symbol" maxlength="1" placeholder=".">
+						</span>
+						<span class="symbols__option">
+							<span class="symbols__type">Игрок</span>
+							<input type="text" class="symbols__input player-symbol" maxlength="1" placeholder="@">
+						</span>
+						<button class="symbols__btn">Ok</button>
+					</form>
+				</div>
+			</div>
+
+			<div class="field unselectable">
+			</div>
+
+			<div class="select">
+				<p class="select__text">Выберите свойство</p>
+				<div class="select__form">
+					<span class="select__type">
+						<input type="radio" class="checkbox select__wall" value="wall" name="a1">
+						<span class="select__name">
+							Стена
+						</span>
+					</span>
+					<span class="select__type">
+						<input type="radio" class="checkbox select__mob" value="mob" name="a1">
+						<span class="select__name">
+							Моб
+						</span>
+					</span>
+					<span class="select__type">
+						<input type="radio" class="checkbox select__background" value="background" name="a1">
+						<span class="select__name">
+							Фон
+						</span>
+					</span>
+					<span class="select__type">
+						<input type="radio" class="checkbox select__player" value="background" name="a1">
+						<span class="select__name">
+							Игрок
+						</span>
+					</span>
+					<button class="select__btn">Применить</button>
+				</div>
+			</div>
+
+		</div>
+
+	</main>
+	 <script src={% static "js/demo.js" %}></script>
+</body>
+
+</html>

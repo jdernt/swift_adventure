@@ -14,7 +14,10 @@ def registration(request):
     return HttpResponse("1")
 
 def construct(request):
-    return render(request, "Constructor/demo.html")
+    return render(request, "Constructor/сreation.html")
+
+def cr_demo(request):
+    return render(request, "Constructor/cr_demo.html")
 
 def account(request):
     return HttpResponse("1")

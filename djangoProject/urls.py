@@ -23,6 +23,7 @@ urlpatterns = [
     path('scroll/', views.scroll),
     path('login/', djviews.LoginView.as_view(), name='login'),
     path('construct/', views.construct),
+    path('cr_demo/', views.cr_demo),
     path('account/', views.account),
     path('map/<int:mapID>/', views.map),
 ]
