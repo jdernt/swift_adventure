@@ -2,91 +2,132 @@
 {% load static %}
 {% block title %}Constructor{% endblock title %}
 {% block headcontent %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}">
 {% endblock headcontent %}
 {% block bodycontent %}
-       <main class="main">
+    <main class="main">
 
-		<div class="error error-grid">Дорогой друг, нельзя создать после с высотой или шириной более 16 блоков.</div>
-		<div class="error error-player">Дорогой друг, нельзя расположить на карте более одного игрока</div>
+        <div class="error error-grid hidden">Дорогой друг, высота и ширина блока должны быть более 4 и менее 16 блоков
+        </div>
+        <div class="error error-player hidden">Дорогой друг, нельзя расположить на карте более одного игрока и более
+            одного люка
+        </div>
 
-		<div class="main-flex">
+        <div class="main__flex">
 
-			<div class="main__options">
-				<div class="grid">
-					<p class="grid__text">Ширина/Высота игрового поля</p>
-					<form action="" class="grid__form" id="matrix_create">
-						<input type="number" id="matrix_input_width" class="grid__wdt grid__input" placeholder="x" min="4" max="16"
-							required>
-						<input type="number" id="matrix_input_height" class="grid__hgt grid__input" placeholder="y" min="4" max="16"
-							required>
-						<button class="grid__btn" id="matrix_input_btn">Создать</button>
-					</form>
-				</div>
-				<div class="symbols">
-					<p class="symbols__text">Выберите символ</p>
-					<form action="" class="symbols__form">
+            <div class="main__options">
+                <div class="levels">
+                    <a href="../index.html" class="levels__link constructor">Главная</a>
+                    <a href="level-1.html" class="levels__link level-1 active-link" onclick="question()">Уровень 1</a>
+                    <a href="level-2.html" class="levels__link level-2" onclick="question()">Уровень 2</a>
+                    <a href="level-3.html" class="levels__link level-3" onclick="question()">Уровень 3</a>
+                </div>
+                <div class="grid">
+                    <p class="grid__text">Выберите размеры игрового поля:</p>
+                    <form class="grid__form" id="matrix_create" onsubmit="return false;">
+						<span class="grid__option">
+							<span class="grid__name">Ширина</span>
+							<input type="number" id="matrix_input_width" class="grid__wdt grid__input" placeholder="x"
+                                   min="4" max="16">
+						</span>
+                        <span class="grid__option">
+							<span class="grid__name">Высота</span>
+							<input type="number" id="matrix_input_height" class="grid__hgt grid__input" placeholder="y"
+                                   min="4" max="16">
+						</span>
+                        <button class="grid__btn" id="matrix_input_btn">Создать</button>
+                    </form>
+                </div>
+                <div class="symbols">
+                    <p class="symbols__text">Выберите символ:</p>
+                    <form class="symbols__form" onsubmit="return false;">
 						<span class="symbols__option">
 							<span class="symbols__type">Стена</span>
-							<input type="text" class="symbols__input wall-symbol" maxlength="1" value="W" placeholder="wall">
+							<input type="text" class="symbols__input wall-symbol" maxlength="1" placeholder="#">
 						</span>
-						<span class="symbols__option">
+                        <span class="symbols__option">
 							<span class="symbols__type">Моб</span>
-							<input type="text" class="symbols__input mob-symbol" maxlength="1" value="m" placeholder="mob">
+							<input type="text" class="symbols__input mob-symbol" maxlength="1" placeholder="m">
 						</span>
-						<span class="symbols__option">
+                        <span class="symbols__option">
 							<span class="symbols__type">Фон</span>
-							<input type="text" class="symbols__input bg-symbol" maxlength="1" value="_" placeholder="bg">
+							<input type="text" class="symbols__input bg-symbol" maxlength="1" placeholder=".">
 						</span>
-						<span class="symbols__option">
+                        <span class="symbols__option">
 							<span class="symbols__type">Игрок</span>
-							<input type="text" class="symbols__input player-symbol" maxlength="1" value="@" placeholder="player">
+							<input type="text" class="symbols__input player-symbol" maxlength="1" placeholder="@">
 						</span>
-						<button class="symbols__btn">Ok</button>
-					</form>
-				</div>
-			</div>
+                        <span class="symbols__option">
+							<span class="symbols__type">Оружие</span>
+							<input type="text" class="symbols__input weapon-symbol" maxlength="1" placeholder="&">
+						</span>
+                        <span class="symbols__option">
+							<span class="symbols__type">Люк</span>
+							<input type="text" class="symbols__input luke-symbol" maxlength="1" placeholder="%">
+						</span>
+                        <button class="symbols__btn">Применить</button>
+                    </form>
+                </div>
+            </div>
 
-			<div class="field unselectable">
-			</div>
+            <div class="field-container">
+                <div class="field unselectable">
+                </div>
+                <button class="field-container__btn submit__btn hidden" onclick="sendData()" id="matrix_send_btn">
+                    Создать
+                </button>
+            </div>
 
-			<div class="select">
-				<p class="select__text">Выберите свойство</p>
-				<div class="select__form">
+            <div class="select hidden">
+                <p class="select__text">Выберите свойство</p>
+                <div class="select__form">
 					<span class="select__type">
-						<input type="radio" class="checkbox select__wall" value="wall" name="a1">
+						<input type="radio" class="radio select__wall" value="wall" name="a1">
 						<span class="select__name">
 							Стена
 						</span>
 					</span>
-					<span class="select__type">
-						<input type="radio" class="checkbox select__mob" value="mob" name="a1">
+                    <span class="select__type">
+						<input type="radio" class="radio select__mob" value="mob" name="a1">
 						<span class="select__name">
 							Моб
 						</span>
 					</span>
-					<span class="select__type">
-						<input type="radio" class="checkbox select__background" value="background" name="a1">
+                    <span class="select__type">
+						<input type="radio" class="radio select__background" value="background" name="a1">
 						<span class="select__name">
 							Фон
 						</span>
 					</span>
-					<span class="select__type">
-						<input type="radio" class="checkbox select__player" value="background" name="a1">
+                    <span class="select__type">
+						<input type="radio" class="radio select__player" value="player" name="a1">
 						<span class="select__name">
 							Игрок
 						</span>
 					</span>
-					<button class="select__btn">Применить</button>
-				</div>
-			</div>
+                    <span class="select__type">
+						<input type="radio" class="radio select__weapon" value="weapon" name="a1">
+						<span class="select__name">
+							Оружие
+						</span>
+					</span>
+                    <span class="select__type">
+						<input type="radio" class="radio select__luke" value="luke" name="a1">
+						<span class="select__name">
+							Люк
+						</span>
+					</span>
+                    <button class="select__btn">Применить</button>
+                </div>
+            </div>
 
-		</div>
+        </div>
 
-	</main>
-    <p>Параметры игрока</p>
-        <textarea id="player_stats" maxlength="100" rows="5" cols="30" >Здоровье= 5; Урон= 3; Описание= "";</textarea>
-    <p>Параметры выбранного объекта</p>
-        <textarea id="object_stats" maxlength="100" rows="5" cols="30">Здоровье= 5; Урон= 3; Описание= "";</textarea>
+    </main>
+    {#    <p>Параметры игрока</p>#}
+    {#        <textarea id="player_stats" maxlength="100" rows="5" cols="30" >Здоровье= 5; Урон= 3; Описание= "";</textarea>#}
+    {#    <p>Параметры выбранного объекта</p>#}
+    {#        <textarea id="object_stats" maxlength="100" rows="5" cols="30">Здоровье= 5; Урон= 3; Описание= "";</textarea>#}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src={% static "js/demo.js" %}></script>
+    <script type="text/javascript" src={% static "js/sendData.js" %}></script>
 {% endblock bodycontent %}
