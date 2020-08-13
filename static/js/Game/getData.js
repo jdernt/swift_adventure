@@ -6,6 +6,7 @@ let mapID = window.location.pathname.split('/')[1].split("_")[1];
 let count_level = 1;
 let level = 1;
 let matrix = "";
+let symbols = "";
 
 var url = "map_" + mapID + "/" + level + "/get";
 
@@ -17,7 +18,10 @@ $.ajax({
     dataFilter: function (data, type) {
         obj = JSON.parse(data);
         matrix = obj.matrix.split(";");
-
+        symbols = obj.symbols;
+        m_height = obj.height;
+        m_width = obj.width;
+        return;
     },
     statusCode: {
         200: function () {

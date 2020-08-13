@@ -41,9 +41,9 @@ class m_Level(models.Model):
 
 
 class m_Symbol(models.Model):
-    map = models.OneToOneField(Map, on_delete=models.CASCADE)
-    type = models.IntegerField(auto_created=0)
-    trigger = models.BooleanField(auto_created=False)
+    map = models.ForeignKey(Map, on_delete=models.CASCADE)
+    type = models.IntegerField(default=0)
+    trigger = models.BooleanField(default=False)
     symbol = models.CharField(max_length=3, default=".")
     color = models.CharField(max_length=10, default=".")
     description = models.CharField(max_length=300, default="")

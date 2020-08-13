@@ -2,14 +2,17 @@
 {% load static %}
 {% block title %}Constructor{% endblock title %}
 {% block headcontent %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/constructor.css' %}">
 {% endblock headcontent %}
 {% block bodycontent %}
     <main class="main">
-        <div class="field unselectable">
+        <div class="main__flex">
+            <div class="field-container">
+                <div class="field unselectable">
+                </div>
+            </div>
         </div>
     </main>
-    <textarea id="object_stats" maxlength="100" rows="5" cols="30">Здоровье= 5; Урон= 3; Описание= "";</textarea>#}
+    {#    <textarea id="object_stats" maxlength="100" rows="5" cols="30">Здоровье= 5; Урон= 3; Описание= "";</textarea>#}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src={% static "js/Game/getData.js" %}></script>
     <script type="text/javascript" src={% static "js/Game/Game.js" %}></script>

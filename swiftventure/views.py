@@ -35,6 +35,10 @@ def submitConstructorData(request):
         user, created = User.objects.update_or_create(name=request.POST.get("user"));
         map, created = user.map_set.update_or_create(map_name=request.POST.get("map"),
                                                      count_level=request.POST.get("count_level"));
+        map.m_symbol_set.all().delete()
+        symbols = request.POST.get("symbols")
+        for i in range(len(symbols)):
+            map.m_symbol_set.create(type=i, symbol=symbols[i])
         if map.m_level_set.filter(level=request.POST.get("level")).count() != 0:
             map.m_level_set.update(width=request.POST.get("width"), height=request.POST.get("height"),
                                    level=request.POST.get("level"), matrix=request.POST.get("matrix"))
@@ -58,8 +62,11 @@ def getGameData(request, mapID, level):
         mapID = request.POST.get("mapID")
         map = Map.objects.get(id=mapID)
         m_level = map.m_level_set.get(level=level)
+        symbols = ""
+        for i in range(map.m_symbol_set.all().count()):
+            symbols += map.m_symbol_set.get(type=i).symbol
         data = {"mapName": map.map_name, "matrix": m_level.matrix, "count_level": map.count_level,
-                "width": m_level.width, "height": m_level.height}
+                "width": m_level.width, "height": m_level.height, "symbols": symbols}
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         return HttpResponseRedirect("/")

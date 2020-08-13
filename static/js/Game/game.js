@@ -11,7 +11,7 @@ function createField(rows, columns) {
     for (let i = 0; i < rows; i++) {
         const rowEl = document.createElement('div');
         rowEl.classList.add('row');
-        for (let j = 0; j < cellsCount; j++) {
+        for (let j = 0; j < columns; j++) {
             const cellEl = document.createElement('div');
             cellEl.classList.add('cell');
             cellEl.classList.add('background');
@@ -62,17 +62,16 @@ document.addEventListener('keydown', function move(event) {
 
 function createMatrixOfSymbols(width, height) {
     matrixOfSymbols = new Array();
-    for (var i = 0; i < rows; i++) {
+    for (var i = 0; i < height; i++) {
         matrixOfSymbols[i] = new Array();
-
-        for (var j = 0; j < columns; j++) {
-
-            matrixOfSymbols[i][j] = getRandomInt(0, 10);
+        for (var j = 0; j < width; j++) {
+            matrixOfSymbols[i][j] = symbols[matrix[i * width + j]];
         }
     }
 }
 
 
+createMatrixOfSymbols(m_width, m_height);
 createField(m_width, m_height);
 
 
