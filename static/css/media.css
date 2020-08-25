@@ -1,0 +1,29 @@
+@media (max-width: 715px) {
+    .header__logo {
+        margin-right: auto;
+    }
+
+    .header__nav {
+        display: none;
+    }
+
+    .header__burger {
+        display: flex;
+    }
+
+}
+
+@media (max-width: 540px) {
+    .about__info {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .about__title {
+        margin-left: 0;
+    }
+
+    .about-flex {
+        text-align: left;
+    }
+}

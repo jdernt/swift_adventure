@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Adventure</title>
     <link rel="stylesheet" href={% static "css/normalize.css" %}>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
-    <title>Game</title>
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+    <link rel="stylesheet" href={% static "css/media.css" %}>
 </head>
+
 <body>
-<div class="mainpage-bg bg-container">
+<div class="learningpage-bg bg-container">
     <header class="header">
         <div class="container flex header__flex">
             <div class="header__logo">
@@ -19,22 +20,22 @@
                     SWIFT ADVENTURE
                 </h1>
                 <a href="">
-                    <img src="img/logo.svg" alt="logo" class="header__img">
+                    <img src={% static "img/logo.svg" %} alt="logo" class="header__img">
                 </a>
             </div>
             <nav class="header__nav">
                 <ul class="header__list list flex">
                     <li class="header__item">
-                        <a href="/" class="header__link link">Главная</a>
+                        <a href="index.html" class="header__link link">Главная</a>
                     </li>
                     <li class="header__item">
-                        <a href="/scroll" class="header__link link">Лента</a>
+                        <a href="" class="header__link link">Лента</a>
                     </li>
                     <li class="header__item">
-                        <a href="/construct" class="header__link link">Конструктор</a>
+                        <a href="level-1.html" class="header__link link">Конструктор</a>
                     </li>
                     <li class="header__item">
-                        <a href="/howto" class="header__link link">Обучение</a>
+                        <a href="learning.html" class="header__link link">Обучение</a>
                     </li>
                 </ul>
                 <div class="header__button button">
@@ -47,16 +48,16 @@
                 <nav class="header__nav--burger flex">
                     <ul class="header__list--burger list flex">
                         <li class="header__item">
-                            <a href="/" class="header__link link">Главная</a>
+                            <a href="index.html" class="header__link link">Главная</a>
                         </li>
                         <li class="header__item">
-                            <a href="/scroll" class="header__link link">Лента</a>
+                            <a href="" class="header__link link">Лента</a>
                         </li>
                         <li class="header__item">
-                            <a href="/construct" class="header__link link">Конструктор</a>
+                            <a href="level-1.html" class="header__link link">Конструктор</a>
                         </li>
                         <li class="header__item">
-                            <a href="/howto" class="header__link link">Обучение</a>
+                            <a href="learning.html" class="header__link link">Обучение</a>
                         </li>
                     </ul>
                     <div class="header__button button">
@@ -74,25 +75,29 @@
         </div>
     </header>
     <main class="main">
-        <section class="game">
-            <div class="flex game-content">
-                <div class="game__filed field unselectable">
-                </div>
-                <div>
-                    <div class="game__text">
-                    </div>
-                    <ul class="game__inv">
-                        <li class="game__item game__health">
-                            health: <span class="game__health--playerbar"><span
-                                class="game__health--player"></span></span>
-                        </li>
-                        <li class="game__item">weapon: <span class="game__weapon">none</span></li>
-                        <li class="game__item game__health">target health: <span class="game__health--targetbar hidden"><span
-                                class="game__health--target"></span></span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <div class="container">
+            <section class="learning">
+                <h2 class="learning__title subtitle">Обучение</h2>
+                <p class="learning__text flex">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni labore ducimus mollitia
+                    earum culpa nostrum consequuntur sint iste eaque ipsa nisi ab, delectus alias necessitatibus
+                    recusandae cumque! Accusamus, mollitia? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Dolorum ducimus consequuntur eius sequi blanditiis, inventore alias. Consequatur nulla laborum
+                    architecto, sapiente eum aperiam qui ipsam autem, placeat aliquid ipsa. Ipsum?
+                    <img src="img/logo.svg" alt="" class="learning__img">
+                    <img src={% static "img/screenshot.jpg" %} alt="picture" class="about__img">
+                    <img src={% static "img/screenshot.jpg" %} alt="picture" class="about__img">
+                </p>
+                <p class="learning__text flex">
+                    <img src="img/logo.svg" alt="" class="learning__img">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni labore ducimus mollitia
+                    earum culpa nostrum consequuntur sint iste eaque ipsa nisi ab, delectus alias necessitatibus
+                    recusandae cumque! Accusamus, mollitia? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Voluptatum at ab amet ipsam totam! Labore ipsum accusamus quos nemo dolorem, aut tenetur natus
+                    aliquam dolor impedit tempora velit aspernatur repellat!
+                </p>
+            </section>
+        </div>
         <div class="modal hidden">
             <div class="modal__window">
                 <div class="hidden modal__auth modal-flex">
@@ -125,7 +130,7 @@
             </div>
         </div>
     </main>
-    <footer class="footer gamepage-footer">
+    <footer class="footer">
         <ul class="footer__list list">
             <li class="footer__item">
                 <a href="" class="footer__link link">
@@ -140,48 +145,9 @@
         </ul>
     </footer>
 </div>
+
 <script type="text/javascript" src={% static "js/login_registration.js" %}></script>
-<script type="text/javascript" src={% static "js/Game/getData.js" %}></script>
-<script type="text/javascript" src={% static "js/Game/Game.js" %}></script>
+
 </body>
+
 </html>
-
-{% comment %}{% extends "base.html" %}
-{% load static %}
-{% block title %}Constructor{% endblock title %}
-{% block headcontent %}
-     <link rel="stylesheet" type="text/css" href="{% static 'css/Constructor.css' %}">
-{% endblock headcontent %}
-{% block bodycontent %}
-	<main class="main">
-
-		<section class="notice hidden">
-			<p class="notice__text">
-				Для того, чтобы начать играть, перейдите в наш <a href="index.html" class="notice__link">конструктор</a> и создайте свою первую карту.
-			</p>
-		</section>
-
-		<section class="game">
-			<div class="game__filed field unselectable">
-			</div>
-			<div class="game__text">
-			</div>
-			<ul class="game__inv">
-				<li class="game__item game__health">
-					health: <span class="game__health--playerbar"><span class="game__health--player"></span></span>
-					<!-- health: <progress max="180" value="180" class="game__health--player"></progress> -->
-				</li>
-				<li class="game__item">weapon: <span class="game__weapon">none</span></li>
-				<li class="game__item game__health">target health: <span class="game__health--targetbar hidden"><span class="game__health--target"></span></span></li>
-			</ul>
-		</section>
-
-	</main>
-    {#    <textarea id="object_stats" maxlength="100" rows="5" cols="30">Здоровье= 5; Урон= 3; Описание= "";</textarea>#}
-{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
-    <script type="text/javascript" src={% static "js/Game/getData.js" %}></script>
-    <script type="text/javascript" src={% static "js/Game/Game.js" %}></script>
-{% endblock bodycontent %}{% endcomment %}
-
-
-

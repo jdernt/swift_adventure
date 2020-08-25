@@ -21,7 +21,10 @@ from swiftventure import views
 
 urlpatterns = [
     path('', views.mainpage),
+    path('admin/', admin.site.urls),
     path('scroll/', views.scroll),
+    path('scroll/', views.registration),
+    path('howto/', views.learning),
     path('login/', djviews.LoginView.as_view(), name='login'),
     path('construct/', views.construct),
     path('account/', views.account),

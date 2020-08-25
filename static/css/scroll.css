@@ -1,0 +1,367 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.background {
+    width: 100%;
+    height: 800px;
+    background: url('img/scroll/Group_74.svg') 1100px 200px no-repeat,
+    url('img/scroll/Ellipse_38.svg') 1050px 500px no-repeat,
+    url('img/scroll/Group_75.svg') 800px 750px no-repeat;
+    background-color: #000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    margin-right: 30px;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+nav ul {
+    display: flex;
+}
+
+.nav {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+.headerBtn {
+    margin-left: auto;
+    position: relative;
+}
+
+.headerBtn--bg {
+    display: inline-block;
+    padding: 10px;
+    width: 84px;
+    height: 35px;
+    border: none;
+    border-radius: 40px;
+    background: radial-gradient(101.71% 667.73% at 16.95% 25.25%, #1EEADE 21.73%, rgb(33, 88, 228) 97.84%);
+    box-shadow: 0px 3.78302px 4.72877px #40DBD2;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+}
+
+.headerBtn--block {
+    position: absolute;
+    width: 87px;
+    height: 37px;
+    background-color: transparent;
+    border: 2px solid #FFF9F9;
+    border-radius: 51px;
+    transform: rotate(-8.78deg);
+    transition: 0.6s ease all;
+    -moz-transition: 0.6s ease all;
+    -webkit-transition: 0.6s ease all;
+    cursor: pointer;
+}
+
+.headerBtn--block:hover {
+    transform: none;
+}
+
+.log {
+    background: linear-gradient(90deg, #1FEADE 16.67%, #26A2DF 105.95%);
+    border-radius: 24px;
+}
+
+.rotate:hover {
+    transform: rotateZ(-20deg);
+}
+
+.rotate {
+    display: flex;
+    transition: 0.4s linear;
+    border: 3px solid #fff;
+    border-radius: 24px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+
+.logo {
+    display: flex;
+    width: 175px;
+    justify-content: center;
+}
+
+.swift {
+    background: url('img/mainpage/backLogo.svg');
+    background-repeat: no-repeat;
+    background-size: 500px;
+    border-radius: 50%;
+    height: 208px;
+    width: 208px;
+    position: absolute;
+    left: -9px;
+    top: -66px;
+    z-index: 2;
+}
+
+.logo1 {
+    position: absolute;
+    margin-left: -20px;
+    z-index: 3;
+}
+
+.navLink:hover {
+    background: #fff;
+    color: #000;
+}
+
+.box h3 {
+    color: #fff;
+}
+
+.box h4 {
+    color: #2158E4;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    flex-direction: column;
+}
+
+
+.game {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game1 h3 {
+    color: #2158E4;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.createGame {
+    width: 98%;
+    height: 155px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.box1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.box2 {
+    display: flex;
+    align-items: center;
+}
+
+.box2 span {
+    color: #2158E4;
+}
+
+.estimation {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    width: 20%;
+    height: 40px;
+    background: #FCF7F7;
+}
+
+.navLink {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 16px;
+}
+
+
+.button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonBg {
+    display: inline-block;
+    padding: 20px;
+    width: 247px;
+    height: 104px;
+    border: none;
+    border-radius: 45px;
+    background: radial-gradient(101.71% 667.73% at 16.95% 25.25%, #1EEADE 21.73%, rgb(33, 88, 228) 97.84%);
+    box-shadow: 0px 3.78302px 4.72877px #40DBD2;
+    font-size: 45px;
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+}
+
+.entry {
+    position: absolute;
+    right: 340px;
+    top: 16px;
+    width: 85px;
+    height: 35px;
+    background-color: transparent;
+    border: 4px solid #FFF9F9;
+    border-radius: 51px;
+    transform: rotate(-8.78deg);
+    transition: 0.6s ease all;
+    -moz-transition: 0.6s ease all;
+    -webkit-transition: 0.6s ease all;
+    cursor: pointer;
+}
+
+.entry1 {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 85px;
+    height: 5px;
+    border: none;
+    border-radius: 45px;
+    background: radial-gradient(101.71% 667.73% at 16.95% 25.25%, #1EEADE 21.73%, rgb(33, 88, 228) 97.84%);
+    box-shadow: 0px 3.78302px 4.72877px #40DBD2;
+    font-size: 24px;
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+}
+
+.entry:hover {
+    transform: none;
+}
+
+.buttonBlock {
+    position: absolute;
+    width: 254px;
+    height: 108px;
+    background-color: transparent;
+    border: 4px solid #FFF9F9;
+    border-radius: 51px;
+    transform: rotate(-8.78deg);
+    transition: 0.6s ease all;
+    -moz-transition: 0.6s ease all;
+    -webkit-transition: 0.6s ease all;
+    cursor: pointer;
+}
+
+.buttonBlock:hover {
+    transform: none;
+}
+
+.box {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    width: 70%;
+    margin-right: 60px;
+}
+
+.description h2 {
+    color: #2158E4;
+    font-family: Quantico;
+    line-height: 26px;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.description h3 {
+    color: #fff;
+    letter-spacing: 0.05em;
+    font-weight: normal;
+}
+
+.gif {
+    width: 202px;
+    height: 153px;
+}
+
+.bgGif {
+    z-index: 1111;
+    background-size: 100px;
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+}
+
+
+.tg:hover {
+    transform: rotateZ(-20deg)
+}
+
+.tg {
+    padding: 25px 60px 25px 60px;
+    text-decoration: none;
+    border-radius: 40px;
+    border: 5px solid #fff;
+    transition: .4s linear;
+}
+
+footer {
+    background: #2158E4;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+footer a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #FEFAFA;
+    text-align: center;
+    padding-left: 50px;
+}

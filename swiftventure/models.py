@@ -14,15 +14,17 @@ class Account(models.Model):
 
 
 class Map(models.Model):
+    id = models.IntegerField(default=0, primary_key=True, )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    map_name = models.CharField(max_length=40, unique=True)
-    count_level = models.IntegerField(auto_created=1)
+    map_name = models.CharField(max_length=40)  # unique=True
+    count_level = models.IntegerField(default=1)
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     map = models.OneToOneField(Map, on_delete=models.CASCADE)
     description = models.CharField(max_length=700)
+    rating = models.FloatField(default=0.)
+    number_of_rate = models.IntegerField(default=0)
     post_date = models.DateTimeField(auto_now_add=True)
 
 
@@ -47,3 +49,8 @@ class m_Symbol(models.Model):
     symbol = models.CharField(max_length=3, default=".")
     color = models.CharField(max_length=10, default=".")
     description = models.CharField(max_length=300, default="")
+
+
+class Data(models.Model):
+    id = models.IntegerField(default=0, primary_key=True)
+    maps_count = models.IntegerField(default=0)

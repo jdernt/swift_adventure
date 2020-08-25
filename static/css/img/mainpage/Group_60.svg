@@ -1,0 +1,19 @@
+<svg width="115" height="109" viewBox="0 0 115 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="7" cy="7" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="7" cy="100" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="7" cy="69" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="7" cy="36" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="107" cy="7" r="5" stroke="black" stroke-width="4"/>
+    <path d="M113 100C113 102.634 110.67 105 107.5 105C104.33 105 102 102.634 102 100C102 97.3663 104.33 95 107.5 95C110.67 95 113 97.3663 113 100Z"
+          stroke="black" stroke-width="4"/>
+    <circle cx="107" cy="69" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="107" cy="36" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="71" cy="7" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="71" cy="102" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="71" cy="69" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="71" cy="36" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="39" cy="7" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="39" cy="102" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="39" cy="69" r="5" stroke="black" stroke-width="4"/>
+    <circle cx="39" cy="36" r="5" stroke="black" stroke-width="4"/>
+</svg>

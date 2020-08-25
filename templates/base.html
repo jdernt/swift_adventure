@@ -1,71 +1,103 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{% block title %}Default title{% endblock title %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    {% block headcontent%}{% endblock headcontent %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Default title
+        {% endblock title %}
+    </title>
+    {% block style %}
+        <link rel="stylesheet" href={% static "css/style.css" %}>
+    {% endblock style %}
+    {% block headcontent %}{% endblock headcontent %}
 </head>
 
-<body class="body">
-	<header class="header">
-		<div class="container">
-			<div class="header__flex">
-				<h1 class="header__logo title">Some Page</h1>
-				<nav class="header__nav">
-					<ul class="header__list list">
-						<li class="header__item item"><a href="#" class="header__link link">Главная</a></li>
-						<li class="header__item item"><a href="#" class="header__link link">Лента</a></li>
-						<li class="header__item item"><a href="#" class="header__link link">Создать игру</a></li>
-					</ul>
-				</nav>
-				<div class="header__userbar">
-					<button class="header__login btn">Войти</button>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<main class="main">
-		<div class="modal">
-			<div class="modal__window">
-				<div class="modal__login">
-					<h2 class="modal__title subtitle">Войти в учетную запись</h2>
-					<p class="modal__text">Нет учетной записи?</p>
-					<a href="#" class="modal__link link auth">Создать учетную запись</a>
-					<form class="modal__form" action="" method="POST">
-						<input type="text" class="modal__input_login modal__input input" placeholder="Логин" maxlength="20">
-						<input type="password" class="modal__input_password modal__input input" placeholder="Пароль">
-						<!-- <div>
-              <input type="checkbox" id="remember" class="modal_checkbox">
-              <label for="remember">Запомнить</label>
-            </div> -->
-						<button type="submit" class="modal__btn btn">Войти</button>
-					</form>
-				</div>
-				<div class="modal__auth hidden">
-					<h2 class="modal__title subtitle">Создать учетную запись</h2>
-					<p class="modal__text">Уже есть учетная запись?</p>
-					<a href="#" class="modal__link link login">Войти</a>
-					<form class="modal__form" action="" method="POST">
-						<input type="text" class="modal__input_login modal__input input" placeholder="Логин" maxlength="20">
-						<input type="email" class="modal__input_email modal__input input" placeholder="E-mail">
-						<input type="password" class="modal__input_password modal__input input" placeholder="Пароль">
-						<!-- <div>
-              <input type="checkbox" id="remember2" class="modal_checkbox">
-              <label for="remember2">Запомнить</label>
-            </div> -->
-						<button type="submit" class="modal__btn btn">Войти</button>
-					</form>
-				</div>
-			</div>
-		</div>
-
-	</main>
-    {% block bodycontent%}{% endblock bodycontent %}
-</body>
+<body>
+<div class="mainpage-bg bg-container">
+    <header class="header">
+        <div class="container flex header__flex">
+            <div class="header__logo">
+                <h1 class="header__title subtitle visually-hidden">
+                    SWIFT ADVENTURE
+                </h1>
+                <a href="/">
+                    <img src={% static "img/logo.svg" %} alt="logo" class="header__img">
+                </a>
+            </div>
+            <nav class="header__nav">
+                <ul class="header__list list flex">
+                    <li class="header__item">
+                        <a href="/" class="header__link link">Главная</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="/scroll" class="header__link link">Лента</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="/construct" class="header__link link">Конструктор</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="/howto" class="header__link link">Обучение</a>
+                    </li>
+                </ul>
+                <div class="header__button button">
+                    <button class="header__button--block button--block">
+                    </button>
+                    <span class="header__button--bg button--bg">Вход</span>
+                </div>
+            </nav>
+            <div class="header__burger--menu hidden">
+                <nav class="header__nav--burger flex">
+                    <ul class="header__list--burger list flex">
+                        <li class="header__item">
+                            <a href="/" class="header__link link">Главная</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="/scroll" class="header__link link">Лента</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="/construct" class="header__link link">Конструктор</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="/howto" class="header__link link">Обучение</a>
+                        </li>
+                    </ul>
+                    <div class="header__button button">
+                        <button class="header__button--block button--block">
+                        </button>
+                        <span class="header__button--bg button--bg">Вход</span>
+                    </div>
+                </nav>
+            </div>
+            <div class="header__burger">
+                <span class="header__burger--line top-line"></span>
+                <span class="header__burger--line middle-line"></span>
+                <span class="header__burger--line bottom-line"></span>
+            </div>
+        </div>
+    </header>
+    {% block maincontent %}
+    {% endblock maincontent %}
+    <footer class="footer">
+        <ul class="footer__list list">
+            <li class="footer__item">
+                <a href="document/privacy_policy" class="footer__link link">
+                    Пользовательские соглашения
+                </a>
+            </li>
+            <li class="footer__item">
+                <a href="document/privacy_policy" class="footer__link link">
+                    Политика конфиденциальности
+                </a>
+            </li>
+        </ul>
+    </footer>
+</div>
 <script type="text/javascript" src={% static "js/login_registration.js" %}></script>
+{% block scriptcontent %}
+{% endblock scriptcontent %}
+</body>
 
 </html>

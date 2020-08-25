@@ -26,7 +26,7 @@ SECRET_KEY = '+ox23j_2%km=54%88w%g144^*^e--gp1t8$on)j=ao#f4oyi*j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['f7066960cc1b.ngrok.io', '127.0.0.1']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'swiftventure',
-    'crispy_forms',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

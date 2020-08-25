@@ -1,0 +1,136 @@
+:root {
+    --hover-color: #00bdb3;
+    --basic-color: rgba(255, 255, 255, 0.1);
+    --basic-light: rgba(255, 255, 255, 0.2);
+    --error-color: rgb(228, 4, 30);
+    --health-color: rgb(200, 6, 6);
+
+    --active-color: #14f7a4;
+    --wall-color: #9c9c9c;
+    --bg-color: #3a3a3a;
+    --player-color: #00bdb3;
+    --mob-color: #f5c542;
+    --weapon-color: #a14fe4;
+    --luke-color: #df731b;
+    --potion-color: #df1b2b;
+    --hp-buff-color: #69df1b;
+    --damage-buff-color: #7f56f1;
+}
+
+.game-content {
+    max-width: 880px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 20px;
+    background-color: #000;
+    border: 3px solid #40DBD2;
+    border-radius: 37px;
+    box-shadow: 0px 3.78302px 4.72877px #40DBD2;
+}
+
+.game__text {
+    max-width: 400px;
+    height: 200px;
+    margin-left: 40px;
+    padding: 10px 0 10px 20px;
+    border: 1px solid #40DBD2;
+    border-radius: 37px;
+    background-color: var(--basic-light);
+    overflow: auto;
+}
+
+.game__link {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 10px;
+}
+
+.game__link:hover {
+    color: var(--hover-color);
+}
+
+.game__inv {
+    margin-top: 20px;
+    margin-left: 40px;
+    list-style-type: none;
+}
+
+.game__health--playerbar {
+    display: inline-block;
+    width: 180px;
+    height: 15px;
+    background-color: #fff;
+}
+
+.game__health--player {
+    display: inline-block;
+    width: 180px;
+    height: 100%;
+    background-color: var(--health-color);
+}
+
+.game__health--targetbar {
+    display: inline-block;
+    width: 80px;
+    height: 15px;
+    background-color: #fff;
+}
+
+.game__health--target {
+    display: inline-block;
+    width: 80px;
+    height: 100%;
+    background-color: var(--health-color);
+}
+
+.row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.cell-no-border {
+    width: 35px;
+    height: 35px;
+    font-family: inherit;
+    font-size: 35px;
+    text-align: center;
+    line-height: 35px;
+    background-color: #000;
+}
+
+.wall {
+    color: var(--wall-color);
+}
+
+.mob {
+    color: var(--mob-color);
+}
+
+.weapon {
+    color: var(--weapon-color);
+}
+
+.luke {
+    color: var(--luke-color);
+}
+
+.potion {
+    color: var(--potion-color);
+}
+
+.hp-buff {
+    color: var(--hp-buff-color);
+}
+
+.damage-buff {
+    color: var(--damage-buff-color);
+}
+
+.background {
+    color: var(--bg-color);
+}
+
+.player {
+    color: var(--player-color);
+}
