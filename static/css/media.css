@@ -13,6 +13,27 @@
 
 }
 
+@media (max-width: 620px) {
+    .mainpage-bg {
+        background: url('img/mainpage_bg_1.svg') 46% 4% no-repeat,
+        url('img/mainpage_bg_2.svg') 8% 96% no-repeat,
+        url('img/mainpage_bg_3.svg') 97% 70% no-repeat,
+        url('img/mainpage_bg_6.svg') 90% 30% no-repeat;
+        background-color: #000;
+    }
+
+    .modal__window {
+        background: url('img/auth_bg_2.svg') 100% 14% no-repeat,
+        url('img/auth_bg_3.svg') 8% 74% no-repeat;
+        background-color: #000;
+    }
+
+    .modal__form {
+        min-width: 0;
+    }
+}
+
+
 @media (max-width: 540px) {
     .about__info {
         flex-wrap: wrap;
@@ -27,3 +48,20 @@
         text-align: left;
     }
 }
+
+@media (max-width: 415px) {
+    .modal__button {
+        font-size: 19px;
+        letter-spacing: 0.1em;
+    }
+
+    .modal__button--bg {
+        width: 250px;
+        padding-top: 22px;
+    }
+
+    .modal__button--block {
+        width: 252px;
+    }
+}
+

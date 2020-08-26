@@ -1,8 +1,14 @@
 // чтобы добавить новый элемент и его символ, необходимо добавить placeholder, inputValue, spacesDisabled, symbolBtn click, selectBtn click
 
+let userName = getCookie("user")
+if (userName == undefined)
+    alert("Пожалуйста, войдите на сайт или зарегистрируйтесь/ Please, sign up or register")
+
 const errorPlayer = document.querySelector('.error__player');
 const errorMap = document.querySelector('.error__grid');
 const errorSubmit = document.querySelector('.error__submit');
+
+let is_first_creation = true;
 var m_width, m_height, matrixOfSymbols;
 
 let cl_list_tokens = ['wall', 'mob', 'background', 'player', 'weapon', 'luke', 'potion', 'hp-buff', 'damage-buff'];
@@ -11,8 +17,7 @@ let cl_list_tokens = ['wall', 'mob', 'background', 'player', 'weapon', 'luke', '
 const pathname = window.location.pathname;
 const levelPathname = pathname.split('/')[2];
 // const levelPathname = pathname.split('/')[3]; // для гитхаба
-const level = levelPathname.split('.')[0];
-const levelCount = level.split('-')[1];
+const level = levelPathname.split('_')[1];
 
 function addActiveLink() {
     const levelsLinks = document.querySelectorAll('.levels__link');
@@ -28,7 +33,7 @@ function addActiveLink() {
 addActiveLink();
 
 // функция перехода по ссылке
-const levelsNav = document.querySelector('.levels__link');
+const levelsNav = document.querySelector('.levels__nav');
 const links = document.querySelectorAll('.levels__link');
 let linksArray = [];
 
@@ -50,29 +55,38 @@ function goToPage(element) {
     let index = linksArray.indexOf(element, 0);
     index = index + 1;
     console.log(index);
-    let url = 'level-' + index;
-    console.log(url);
-    document.location.href = url + '.html';
+    let url = 'level_' + index;
+    //console.log(url);
+    document.location.href = url;
 };
 
 // функция добавления нового уровня
-const addLinkBtn = document.querySelector('.levels__btn');
+//const addLinkBtn = document.querySelector('.levels__btn');
+let count_level = parseInt(localStorage.getItem('countLevel'));
+if (localStorage.getItem('countLevel') == null)
+    count_level = 1;
+for (let i = 0; i < count_level - 1; i++)
+    addLevel();
 
-addLinkBtn.addEventListener('click', function () {
+function addLevel() {
     const newLink = document.createElement('a');
 
     linksArray.push(newLink);
 
     let index = linksArray.indexOf(newLink, 0);
+    if (index > 10) return;
     index = index + 1;
     newLink.classList.add('levels__link');
-    newLink.classList.add('level-' + index);
-    newLink.setAttribute('href', '');
+    newLink.classList.add('level_' + index);
+    newLink.setAttribute('href', ("/construct/level_" + index));
+    newLink.setAttribute('onclick', 'return question()');
     newLink.textContent = 'Уровень ' + index;
-
+    localStorage.setItem('countLevel', index);
     levelsNav.appendChild(newLink);
     //console.log(linksArray);
-});
+}
+
+//addLinkBtn.addEventListener('click',  addLevel);
 
 // дефолтные значения ячеек хранятся в placeholder
 const wallPlaceholder = document.querySelector('.wall-symbol').placeholder;
@@ -90,7 +104,8 @@ const fieldEl = document.querySelector('.field');
 
 function createField(rows, columns) {
     fieldEl.innerHTML = '';
-
+    m_width = columns;
+    m_height = rows;
     for (let i = 0; i < rows; i++) {
         fieldEl.appendChild(createRow(columns))
     }
@@ -327,7 +342,7 @@ document.addEventListener('keydown', function escPress(event) {
 // по клику на кнопку в окне выбора символа, ячейкам определенного типа присваивается выбранное значение в виде символа
 const symbolBtn = document.querySelector('.symbols__btn');
 
-symbolBtn.addEventListener('click', function () {
+function setElements() {
 
     const wall = document.querySelectorAll('.wall');
     const mob = document.querySelectorAll('.mob');
@@ -423,7 +438,22 @@ symbolBtn.addEventListener('click', function () {
     setSymbol(potion, 'symbolPotion', potionPlaceholder);
     setSymbol(hpBuff, 'symbolHpBuff', hpBuffPlaceholder);
     setSymbol(damageBuff, 'symbolDamageBuff', damageBuffPlaceholder);
-});
+}
+
+symbolBtn.addEventListener('click', setElements());
+
+//предотвращение изменения названия карты не на 1 уровне
+
+if (localStorage.getItem("mapTitle") == null)
+    $("#input_title").prop("placeholder", "Моя карта");
+else $("#input_title").prop("placeholder", localStorage.getItem("mapTitle"));
+if (localStorage.getItem("mapDescription") == null)
+    $("#input_description").prop("placeholder", "Описание карты");
+else $("#input_description").prop("placeholder", localStorage.getItem("mapDescription"));
+if (level != 1) {
+    $("#input_title").prop("readonly", true);
+    $("#input_description").prop("readonly", true);
+}
 
 // по клику на кнопку в появляющемся окне выделенным ячейкам задается выбранный пользователем тип и символ
 const selectBtn = document.querySelector('.select__btn');
@@ -581,12 +611,13 @@ function localData() {
     }
     ;
 
-    const mapTitle = document.querySelector('.map__title');
-    const mapDescription = document.querySelector('.map__description');
+    if (level == 1) {
+        const mapTitle = document.querySelector('.map__title');
+        const mapDescription = document.querySelector('.map__description');
 
-    localStorage.setItem('mapTitle', mapTitle.value);
-    localStorage.setItem('mapDescription', mapDescription.value);
-
+        localStorage.setItem('mapTitle', mapTitle.value);
+        localStorage.setItem('mapDescription', mapDescription.value);
+    }
 };
 
 // урезанная функция перемещения

@@ -307,6 +307,28 @@ document.addEventListener('keydown', function move(event) {
             ;
         };
 
+// реализация перемещения с помощью сенсора
+        const upBtn = document.querySelector('.up-btn');
+        const leftBtn = document.querySelector('.left-btn');
+        const rightBtn = document.querySelector('.right-btn');
+        const downBtn = document.querySelector('.down-btn');
+
+        rightBtn.addEventListener('click', function () {
+            if (playerNextBlock !== null) {
+                movePlayer(playerNextBlock);
+            }
+            ;
+        });
+        leftBtn.addEventListener('click', function () {
+            if (playerPrevBlock !== null) {
+                movePlayer(playerPrevBlock);
+            }
+            ;
+        });
+        upBtn.addEventListener('click', movePlayer(playerNextBlock));
+        upBtn.addEventListener('click', movePlayer(playerNextBlock));
+
+
 // реализация перемещения с помощью клавиатуры
         if (playerNextBlock !== null && event.key === 'ArrowRight') {
             movePlayer(playerNextBlock);

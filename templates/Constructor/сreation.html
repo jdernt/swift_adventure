@@ -1,569 +1,245 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+    Game Create
+{% endblock title %}
+{% block style %}
     <link rel="stylesheet" href={% static "css/normalize.css" %}>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Constructor.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
-    <title>Your Game</title>
-</head>
+{% endblock style %}
+{% block headcontent %}
+{% endblock headcontent %}
 
-<body class="body">
-<div class="constructor-bg bg-container">
-    <header class="header">
-        <div class="container flex header__flex">
-            <div class="header__logo">
-                <h1 class="header__title subtitle visually-hidden">
-                    SWIFT ADVENTURE
-                </h1>
-                <a href="">
-                    <img src="img/logo.svg" alt="logo" class="header__img">
-                </a>
-            </div>
-            <nav class="header__nav">
-                <ul class="header__list list flex">
-                    <li class="header__item">
-                        <a href="/" class="header__link link">Главная</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="/scroll" class="header__link link">Лента</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="/construct" class="header__link link">Конструктор</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="/howto" class="header__link link">Обучение</a>
-                    </li>
-                </ul>
-                <div class="header__button button">
-                    <button class="header__button--block button--block">
-                    </button>
-                    <span class="header__button--bg button--bg">Вход</span>
-                </div>
-            </nav>
-            <div class="header__burger--menu hidden">
-                <nav class="header__nav--burger flex">
-                    <ul class="header__list--burger list flex">
-                        <li class="header__item">
-                            <a href="/" class="header__link link">Главная</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="/scroll" class="header__link link">Лента</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="/construct" class="header__link link">Конструктор</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="/howto" class="header__link link">Обучение</a>
-                        </li>
-                    </ul>
-                    <div class="header__button button">
-                        <button class="header__button--block button--block">
-                        </button>
-                        <span class="header__button--bg button--bg">Вход</span>
-                    </div>
-                </nav>
-            </div>
-            <div class="header__burger">
-                <span class="header__burger--line top-line"></span>
-                <span class="header__burger--line middle-line"></span>
-                <span class="header__burger--line bottom-line"></span>
-            </div>
-        </div>
-    </header>
+{% block maincontent %}
     <main class="main">
-        <div class="error">
-            <div class="error__item error__grid hidden">
-                Дорогой друг, высота и ширина блока должны быть более 6 и менее 16 блоков
-            </div>
-            <div class="error__item error__player hidden">
-                Дорогой друг, нельзя расположить на карте более одного игрока и более одного люка
-            </div>
-            <div class="error__item error__submit hidden">
-                На игровом поле обязательно должен быть игрок и люк. Если на игровом поле более 3 мобов, обязательно
-                должно
-                быть зелье здоровья. В противном случае сохранить уровень нельзя.
-            </div>
+    <div class="error">
+        <div class="error__item error__grid hidden">
+            Дорогой друг, высота и ширина блока должны быть более 6 и менее 16 блоков
         </div>
-        <div class="instruction">
-            <div class="container">
-                <p class="instruction__title">Привет! Прежде чем приступить к созданию своей уникальной игры, просим
-                    ознакомиться с краткой инструкцией:</p>
-                <ol class="instruction__list">
-                    <li class="instruction__item">Для того, чтобы приступить к созданию уровней, выберите нужный уровень
-                        из
-                        списка слева.
-                    </li>
-                    <li class="instruction__item">Далее необходимо задать размеры игрового поля. Ширина и высота
-                        игрового поля
-                        могут быть минимум 4 блока и максимум 16.
-                    </li>
-                    <li class="instruction__item">Ячейки игрового поля можно редактировать по клику на них. Вы можете
-                        выбрать
-                        сразу несколько ячеек для редактирования. Кликнув по одной ячейке дважды, вы можете отменить ее
-                        выделение.
-                        Сбросить выделение ячеек также можно, нажав клавишу Escape.
-                    </li>
-                    <li class="instruction__item">После того, как вы выберите ячейки, справа от игрового поля появится
-                        окно, в
-                        котором можно выбрать тип для всех выделенных ячеек. Для этого нужно выбрать желаемое свойство и
-                        нажать
-                        кнопку "Применить". Важно! На игровом поле нельзя расположить более одного игрока.
-                    </li>
-                    <li class="instruction__item">Данная игра имеет текстовое представление. Для каждого типа ячейки мы
-                        задали
-                        вид-символ по умолчанию, но вы можете его изменить. Для этого необходимо обратиться к полю
-                        выбора символа
-                        и вписать желаемый символ для отдельных объектов. Вы можете ввести любой символ, который есть на
-                        вашей
-                        клавиатуре (кроме пробела) и применить изменения, нажав кнопку "Применить".
-                    </li>
-                </ol>
-            </div>
+        <div class="error__item error__player hidden">
+            Дорогой друг, нельзя расположить на карте более одного игрока и более одного люка
         </div>
-        <div class="options">
-            <div class="container flex options--flex">
-                <div class="levels">
-                    <p class="levels__text">Выберите уровень:</p>
-                    <div class="levels__nav">
-                        <a href="" class="levels__link level-1" onclick="return question()">Уровень 1</a>
-                    </div>
-                    <button class="levels__btn btn">Добавить уровень</button>
-                </div>
-                <div class="grid">
-                    <p class="grid__text">Выберите размеры игрового поля:</p>
-                    <form class="grid__form" id="matrix_create" onsubmit="return false;">
+        <div class="error__item error__submit hidden">
+            На игровом поле обязательно должен быть игрок и люк. Если на игровом поле более 3 мобов, обязательно должно
+            быть зелье здоровья. В противном случае сохранить уровень нельзя.
+        </div>
+    </div>
+    <div class="constructor-container">
+    <h2 class="subtitle">Конструктор</h2>
+    <div class="options">
+        <div class="levels">
+            <h2 class="levels__text constructor-title">Выберите уровень:</h2>
+            <div class="levels__nav">
+                <a href="" class="levels__link level-1" onclick="return question()">Уровень 1</a>
+            </div>
+            <button class="levels__btn btn">Добавить уровень</button>
+        </div>
+        <div class="grid">
+            <h2 class="grid__text constructor-title">Выберите размеры игрового поля:</h2>
+            <form class="grid__form" id="matrix_create" onsubmit="return false;">
 							<span class="grid__option">
 								<span class="grid__name">Ширина:</span>
-								<input type="number" id="matrix_input_width" class="grid__wdt grid__input"
-                                       placeholder="x" min="6"
-                                       max="16">
+								<input type="number" id="matrix_input_width" class="grid__wdt grid__input input"
+                                       placeholder="x" min="6" max="16">
 							</span>
-                        <span class="grid__option">
+                <span class="grid__option">
 								<span class="grid__name">Высота:</span>
-								<input type="number" id="matrix_input_height" class="grid__hgt grid__input"
-                                       placeholder="y" min="6"
-                                       max="16">
+								<input type="number" id="matrix_input_height" class="grid__hgt grid__input input"
+                                       placeholder="y" min="6" max="16">
 							</span>
-                        <button class="grid__btn btn" id="matrix_input_btn">Создать</button>
-                    </form>
-                </div>
-                <div class="symbols">
-                    <p class="symbols__text">Выберите символ:</p>
-                    <form class="symbols__form" onsubmit="return false;">
-							<span class="symbols__option">
-								<span class="symbols__type">Стена</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input wall-symbol" maxlength="1" placeholder="#">
-									<input type="color" class="color-input wall-color" value="#9c9c9c">
+                <button class="grid__btn btn" id="matrix_input_btn">Создать</button>
+            </form>
+        </div>
+        <div class="symbols">
+            <h2 class="symbols__text constructor-title">Выберите символ:</h2>
+            <ul class="symbols__list list">
+                <li class="symbols__option">
+                    <span class="symbols__type">Стена</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input wall-symbol input" maxlength="1"
+                                           placeholder="#">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input wall-color" value="#9c9c9c">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Моб</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input mob-symbol" maxlength="1" placeholder="m">
-									<input type="color" class="color-input mob-color" value="#f5c542">
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Моб</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input mob-symbol input" maxlength="1"
+                                           placeholder="m">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input mob-color" value="#f5c542">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Фон</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input bg-symbol" maxlength="1" placeholder=".">
-									<input type="color" class="color-input bg-color" value="#3a3a3a">
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Фон</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input bg-symbol input" maxlength="1"
+                                           placeholder=".">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input bg-color" value="#3a3a3a">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Игрок</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input player-symbol" maxlength="1"
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Игрок</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input player-symbol input" maxlength="1"
                                            placeholder="@">
-									<input type="color" class="color-input player-color" value="#00bdb3">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input player-color" value="#00bdb3">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Оружие</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input weapon-symbol" maxlength="1"
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Оружие</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input weapon-symbol input" maxlength="1"
                                            placeholder="&">
-									<input type="color" class="color-input weapon-color" value="#a14fe4">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input weapon-color" value="#a14fe4">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Люк</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input luke-symbol" maxlength="1" placeholder="%">
-									<input type="color" class="color-input luke-color" value="#df731b">
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Люк</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input luke-symbol input" maxlength="1"
+                                           placeholder="%">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input luke-color" value="#df731b">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Зелье здоровья</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input potion-symbol" maxlength="1"
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Зелье здоровья</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input potion-symbol input" maxlength="1"
                                            placeholder="U">
-									<input type="color" class="color-input potion-color" value="#df1b2b">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input potion-color" value="#df1b2b">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Баф на ХП</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input hp-buff-symbol" maxlength="1"
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Баф на ХП</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input hp-buff-symbol input" maxlength="1"
                                            placeholder="h">
-									<input type="color" class="color-input hp-buff-color" value="#69df1b">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input hp-buff-color" value="#69df1b">
+									</span>
 								</span>
-							</span>
-                        <span class="symbols__option">
-								<span class="symbols__type">Баф на урон</span>
-								<span class="symbols__inputs">
-									<input type="text" class="symbols__input damage-buff-symbol" maxlength="1"
+                </li>
+                <li class="symbols__option">
+                    <span class="symbols__type">Баф на урон</span>
+                    <span class="symbols__inputs">
+									<input type="text" class="symbols__input damage-buff-symbol input" maxlength="1"
                                            placeholder="d">
-									<input type="color" class="color-input damage-buff-color" value="#7f56f1">
+									<span class="symbols__inputs--color">
+										<input type="color" class="color-input damage-buff-color" value="#7f56f1">
+									</span>
 								</span>
+                </li>
+            </ul>
+            <span class="symbols__buttons">
+							<button class="symbols__btn btn">Применить</button>
+							<button class="symbols__btn clear-btn btn">Сбросить</button></span>
+        </div>
+    </div>
+
+    <div class="map flex">
+        <div class="map__field field unselectable">
+        </div>
+        <div class="map__options hidden">
+            <div class="map__options--form">
+							<span class="map__span">
+								<label class="map__label">Название</label>
+								<input type="text" class="map__input map__title input">
+
 							</span>
-                    </form>
-                    <button class="symbols__btn btn">Применить</button>
-                    <button class="symbols__btn clear-btn btn">Сбросить</button>
+                <span class="map__span">
+								<label class="map__label">Описание</label>
+								<textarea name="description" class="map__input map__description"></textarea>
+
+							</span>
+                <button class="map__btn submit__btn btn" onclick="sendData()" id="matrix_send_btn">Сохранить</button>
+            </div>
+            <div class="map__select select hidden">
+                <h2 class="select__text constructor-title">Выберите свойство</h2>
+                <div class="select__form">
+								<span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__wall" value="wall" name="a1">
+										Стена
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__mob" value="mob" name="a1">
+										Моб
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__background" value="background"
+                                               name="a1">
+										Фон
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__player" value="player" name="a1">
+										Игрок
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__weapon" value="weapon" name="a1">
+										Оружие
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__luke" value="luke" name="a1">
+										Люк
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__potion" value="potion" name="a1">
+										Зелье здоровья
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__hp-buff" value="hp-buff" name="a1">
+										Баф на ХП
+									</label>
+								</span>
+                    <span class="select__type">
+									<label class="select__name">
+										<input type="radio" class="radio select__damage-buff" value="damage-buff"
+                                               name="a1">
+										Баф на урон
+									</label>
+								</span>
+                    <button class="select__btn btn">Применить</button>
                 </div>
             </div>
+
         </div>
 
-        <div class="map flex">
-            <div class="map__field field unselectable">
-            </div>
-            <div class="map__options hidden">
-                <label for="">Придумайте название<input type="text" class="map__title"></label>
-                <label for="">Придумайте описание<textarea name="" id="" cols="25" rows="10"
-                                                           class="map__description"></textarea></label>
-                <button class="map__btn submit__btn" onclick="sendData()" id="matrix_send_btn">
-                    Сохранить
-                </button>
-                <div class="map__select select hidden">
-                    <p class="select__text">Выберите свойство</p>
-                    <div class="select__form">
-							<span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__wall" value="wall" name="a1">
-									Стена
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__mob" value="mob" name="a1">
-									Моб
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__background" value="background" name="a1">
-									Фон
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__player" value="player" name="a1">
-									Игрок
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__weapon" value="weapon" name="a1">
-									Оружие
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__luke" value="luke" name="a1">
-									Люк
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__potion" value="potion" name="a1">
-									Зелье здоровья
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__hp-buff" value="hp-buff" name="a1">
-									Баф на ХП
-								</label>
-							</span>
-                        <span class="select__type">
-								<label class="select__name">
-									<input type="radio" class="radio select__damage-buff" value="damage-buff" name="a1">
-									Баф на урон
-								</label>
-							</span>
-                        <button class="select__btn btn">Применить</button>
-                    </div>
-                </div>
+    </div>
 
-            </div>
+{% endblock maincontent %}
 
-        </div>
-
-
-        <div class="modal hidden">
-            <div class="modal__window">
-                <div class="hidden modal__auth modal-flex">
-                    <h2 class="modal__title subtitle">Регистрация</h2>
-                    <a href="" class="modal__link login link">Войти</a>
-                    <form class="modal__form" method="POST">
-                        <input type="text" class="auth__input--name modal__input input" placeholder="Логин"
-                               maxlength="20">
-                        <input type="email" class="auth__input--email modal__input input" placeholder="Почта">
-                        <input type="password" class="auth__input--password modal__input input" placeholder="Пароль">
-                    </form>
-                    <div class="modal__button button">
-                        <button class="modal__button--block button--block"></button>
-                        <span class="modal__button--bg button--bg">зарегистрироваться</span>
-                    </div>
-                </div>
-                <div class="modal__login flex modal-flex">
-                    <h2 class="modal__title subtitle">Вход</h2>
-                    <a href="" class="modal__link auth link">зарегистрироваться</a>
-                    <form class="modal__form" method="POST">
-                        <input type="text" class="login__input--name modal__input input" placeholder="Логин"
-                               maxlength="20">
-                        <input type="password" class="login__input--password modal__input input" placeholder="Пароль">
-                    </form>
-                    <div class="about__button button">
-                        <button class="about__button--block button--block"></button>
-                        <span class="about__button--bg button--bg">Играть</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer class="footer">
-        <ul class="footer__list list">
-            <li class="footer__item">
-                <a href="" class="footer__link link">
-                    Пользовательские соглашения
-                </a>
-            </li>
-            <li class="footer__item">
-                <a href="" class="footer__link link">
-                    Политика конфиденциальности
-                </a>
-            </li>
-        </ul>
-    </footer>
-</div>
-</main>
-
+{% block scriptcontent %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src={% static "js/login_registration.js" %}></script>
 <script type="text/javascript" src={% static "js/Constructor/demo.js" %}></script>
 <script type="text/javascript" src={% static "js/Constructor/sendData.js" %}></script>
-</body>
-
-</html>
-
-
-{% comment %}
-{% extends "base.html" %}
-{% load static %}
-{% block title %}Constructor{% endblock title %}
-{% block headcontent %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Constructor.css' %}">
-{% endblock headcontent %}
-{% block bodycontent %}
-<main class="main">
-
-		<div class="error">
-			<div class="error__item error__grid hidden">
-				Дорогой друг, высота и ширина блока должны быть более 4 и менее 16 блоков
-			</div>
-			<div class="error__item error__player hidden">
-				Дорогой друг, нельзя расположить на карте более одного игрока и более одного люка
-			</div>
-			<div class="error__item error__submit hidden">
-				На игровом поле обязательно должен быть игрок и люк. Если на игровом поле более 3 мобов, обязательно должно быть зелье здоровья. В противном случае сохранить уровень нельзя.
-			</div>
-		</div>
-
-		<div class="main__flex">
-
-			<div class="main__options">
-				<div class="nav">
-					<a href="../index.html" class="nav__link constructor">Главная</a>
-					<div class="nav__levels">
-						<a href="" class="nav__link nav__levels--link level-1">Уровень 1</a>
-						<!-- <a href="" class="nav__link nav__levels--link level-2">Уровень 2</a>
-						<a href="" class="nav__link nav__levels--link level-3">Уровень 3</a> -->
-						<!-- <a href="" class="nav__link nav__levels--link level-3" onclick="return question()">Уровень 3</a> -->
-					</div>
-					<a href="../game_page.html" class="nav__link">Игра</a>
-					<button class="nav__btn btn">Добавить уровень</button>
-				</div>
-				<div class="grid">
-					<p class="grid__text">Выберите размеры игрового поля:</p>
-					<form class="grid__form" id="matrix_create" onsubmit="return false;">
-						<span class="grid__option">
-							<span class="grid__name">Ширина</span>
-							<input type="number" id="matrix_input_width" class="grid__wdt grid__input" placeholder="x" min="4" max="16">
-						</span>
-						<span class="grid__option">
-							<span class="grid__name">Высота</span>
-							<input type="number" id="matrix_input_height" class="grid__hgt grid__input" placeholder="y" min="4" max="16">
-						</span>
-						<button class="grid__btn btn" id="matrix_input_btn">Создать</button>
-					</form>
-				</div>
-				<div class="symbols">
-					<p class="symbols__text">Выберите символ:</p>
-					<form class="symbols__form" onsubmit="return false;">
-						<span class="symbols__option">
-							<span class="symbols__type">Стена</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input wall-symbol" maxlength="1" placeholder="#">
-								<input type="color" class="color-input wall-color" value="#9c9c9c">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Моб</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input mob-symbol" maxlength="1" placeholder="m">
-								<input type="color" class="color-input mob-color" value="#f5c542">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Фон</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input bg-symbol" maxlength="1" placeholder=".">
-								<input type="color" class="color-input bg-color" value="#3a3a3a">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Игрок</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input player-symbol" maxlength="1" placeholder="@">
-								<input type="color" class="color-input player-color" value="#00bdb3">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Оружие</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input weapon-symbol" maxlength="1" placeholder="&">
-								<input type="color" class="color-input weapon-color" value="#a14fe4">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Люк</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input luke-symbol" maxlength="1" placeholder="%">
-								<input type="color" class="color-input luke-color" value="#df731b">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Зелье здоровья</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input potion-symbol" maxlength="1" placeholder="U">
-								<input type="color" class="color-input potion-color" value="#df1b2b">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Баф на ХП</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input hp-buff-symbol" maxlength="1" placeholder="h">
-								<input type="color" class="color-input hp-buff-color" value="#69df1b">
-							</span>
-						</span>
-						<span class="symbols__option">
-							<span class="symbols__type">Баф на урон</span>
-							<span class="symbols__inputs">
-								<input type="text" class="symbols__input damage-buff-symbol" maxlength="1" placeholder="d">
-								<input type="color" class="color-input damage-buff-color" value="#7f56f1">
-							</span>
-						</span>
-					</form>
-					<button class="symbols__btn btn">Применить</button>
-					<button class="symbols__btn clear-btn btn">Сбросить</button>
-				</div>
-			</div>
-
-			<div class="field-container">
-				<div class="field unselectable">
-				</div>
-				<button class="field-container__btn submit__btn hidden" onclick="sendData()" id="matrix_send_btn">
-					Сохранить
-				</button>
-			</div>
-
-			<div class="select hidden">
-				<p class="select__text">Выберите свойство</p>
-				<div class="select__form">
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__wall" value="wall" name="a1">
-							Стена
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__mob" value="mob" name="a1">
-							Моб
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__background" value="background" name="a1">
-							Фон
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__player" value="player" name="a1">
-							Игрок
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__weapon" value="weapon" name="a1">
-							Оружие
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__luke" value="luke" name="a1">
-							Люк
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__potion" value="potion" name="a1">
-							Зелье здоровья
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__hp-buff" value="hp-buff" name="a1">
-							Баф на ХП
-						</label>
-					</span>
-					<span class="select__type">
-						<label class="select__name">
-							<input type="radio" class="radio select__damage-buff" value="damage-buff" name="a1">
-							Баф на урон
-						</label>
-					</span>
-					<button class="select__btn btn">Применить</button>
-				</div>
-			</div>
-
-		</div>
-
-	</main>
-
-    {#    <p>Параметры игрока</p>#}
-    {#        <textarea id="player_stats" maxlength="100" rows="5" cols="30" >Здоровье= 5; Урон= 3; Описание= "";</textarea>#}
-    {#    <p>Параметры выбранного объекта</p>#}
-    {#        <textarea id="object_stats" maxlength="100" rows="5" cols="30">Здоровье= 5; Урон= 3; Описание= "";</textarea>#}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src={% static "js/Constructor/demo.js" %}></script>
-    <script type="text/javascript" src={% static "js/Constructor/sendData.js" %}></script>
-{% endblock bodycontent %}{% endcomment %}
+{% endblock scriptcontent %}

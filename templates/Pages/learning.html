@@ -1,153 +1,63 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swift Adventure</title>
+{% block title %}
+    How to
+{% endblock title %}
+{% block style %}
     <link rel="stylesheet" href={% static "css/normalize.css" %}>
     <link rel="stylesheet" href={% static "css/style.css" %}>
     <link rel="stylesheet" href={% static "css/media.css" %}>
-</head>
+{% endblock style %}
+{% block headcontent %}
+{% endblock headcontent %}
 
-<body>
-<div class="learningpage-bg bg-container">
-    <header class="header">
-        <div class="container flex header__flex">
-            <div class="header__logo">
-                <h1 class="header__title subtitle visually-hidden">
-                    SWIFT ADVENTURE
-                </h1>
-                <a href="">
-                    <img src={% static "img/logo.svg" %} alt="logo" class="header__img">
-                </a>
-            </div>
-            <nav class="header__nav">
-                <ul class="header__list list flex">
-                    <li class="header__item">
-                        <a href="index.html" class="header__link link">Главная</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="" class="header__link link">Лента</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="level-1.html" class="header__link link">Конструктор</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="learning.html" class="header__link link">Обучение</a>
-                    </li>
-                </ul>
-                <div class="header__button button">
-                    <button class="header__button--block button--block">
-                    </button>
-                    <span class="header__button--bg button--bg">Вход</span>
-                </div>
-            </nav>
-            <div class="header__burger--menu hidden">
-                <nav class="header__nav--burger flex">
-                    <ul class="header__list--burger list flex">
-                        <li class="header__item">
-                            <a href="index.html" class="header__link link">Главная</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="" class="header__link link">Лента</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="level-1.html" class="header__link link">Конструктор</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="learning.html" class="header__link link">Обучение</a>
-                        </li>
-                    </ul>
-                    <div class="header__button button">
-                        <button class="header__button--block button--block">
-                        </button>
-                        <span class="header__button--bg button--bg">Вход</span>
-                    </div>
-                </nav>
-            </div>
-            <div class="header__burger">
-                <span class="header__burger--line top-line"></span>
-                <span class="header__burger--line middle-line"></span>
-                <span class="header__burger--line bottom-line"></span>
-            </div>
-        </div>
-    </header>
+{% block maincontent %}
     <main class="main">
-        <div class="container">
-            <section class="learning">
-                <h2 class="learning__title subtitle">Обучение</h2>
-                <p class="learning__text flex">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni labore ducimus mollitia
-                    earum culpa nostrum consequuntur sint iste eaque ipsa nisi ab, delectus alias necessitatibus
-                    recusandae cumque! Accusamus, mollitia? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolorum ducimus consequuntur eius sequi blanditiis, inventore alias. Consequatur nulla laborum
-                    architecto, sapiente eum aperiam qui ipsam autem, placeat aliquid ipsa. Ipsum?
-                    <img src="img/logo.svg" alt="" class="learning__img">
-                    <img src={% static "img/screenshot.jpg" %} alt="picture" class="about__img">
-                    <img src={% static "img/screenshot.jpg" %} alt="picture" class="about__img">
+    <div class="container">
+        <section class="learning">
+            <h2 class="learning__title subtitle">Обучение</h2>
+            <div class="learning__block flex">
+                <p class="learning__text">
+                    Прежде чем приступить к созданию своей уникальной игры, просим Вас ознакомиться с небольшой
+                    инструкцией по функционалу конструктора. В нашем конструкторе вы можете создать игровое поле
+                    желаемых размеров (от 6х6 до 16х16), расположить на игровом поле различные элементы окружения так,
+                    как вам этого хочется, а также задать цвет этих элементов и их текстовое изображение.
                 </p>
-                <p class="learning__text flex">
-                    <img src="img/logo.svg" alt="" class="learning__img">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni labore ducimus mollitia
-                    earum culpa nostrum consequuntur sint iste eaque ipsa nisi ab, delectus alias necessitatibus
-                    recusandae cumque! Accusamus, mollitia? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Voluptatum at ab amet ipsam totam! Labore ipsum accusamus quos nemo dolorem, aut tenetur natus
-                    aliquam dolor impedit tempora velit aspernatur repellat!
-                </p>
-            </section>
-        </div>
-        <div class="modal hidden">
-            <div class="modal__window">
-                <div class="hidden modal__auth modal-flex">
-                    <h2 class="modal__title subtitle">Регистрация</h2>
-                    <a href="" class="modal__link login link">Войти</a>
-                    <form class="modal__form" method="POST">
-                        <input type="text" class="auth__input--name modal__input input" placeholder="Логин"
-                               maxlength="20">
-                        <input type="email" class="auth__input--email modal__input input" placeholder="Почта">
-                        <input type="password" class="auth__input--password modal__input input" placeholder="Пароль">
-                    </form>
-                    <div class="modal__button button">
-                        <button class="modal__button--block button--block"></button>
-                        <span class="modal__button--bg button--bg">зарегистрироваться</span>
-                    </div>
-                </div>
-                <div class="modal__login flex modal-flex">
-                    <h2 class="modal__title subtitle">Вход</h2>
-                    <a href="" class="modal__link auth link">зарегистрироваться</a>
-                    <form class="modal__form" method="POST">
-                        <input type="text" class="login__input--name modal__input input" placeholder="Логин"
-                               maxlength="20">
-                        <input type="password" class="login__input--password modal__input input" placeholder="Пароль">
-                    </form>
-                    <div class="about__button button">
-                        <button class="about__button--block button--block"></button>
-                        <span class="about__button--bg button--bg">Играть</span>
-                    </div>
-                </div>
+                <img src="img/logo.svg" alt="" class="learning__img">
             </div>
-        </div>
-    </main>
-    <footer class="footer">
-        <ul class="footer__list list">
-            <li class="footer__item">
-                <a href="" class="footer__link link">
-                    Пользовательские соглашения
-                </a>
-            </li>
-            <li class="footer__item">
-                <a href="" class="footer__link link">
-                    Политика конфиденциальности
-                </a>
-            </li>
-        </ul>
-    </footer>
-</div>
-
-<script type="text/javascript" src={% static "js/login_registration.js" %}></script>
-
-</body>
-
-</html>
+            <div class="learning__block flex">
+                <img src="img/logo.svg" alt="" class="learning__img">
+                <p class="learning__text">
+                    Для начала вам необходимо выбрать размеры игрового поля. Как было указано ранее, ширина и высота
+                    игрового поля не могут быть менее 6 и более 16 ячеек. Создав игровое поле, вы можете приступить к
+                    его редактированию. В окне выбора символов вы можете вручную вписать желаемый символ, в виде
+                    которого будут отображаться выбранные элементы. Рядом с полем ввода символа вы можете выбрать и его
+                    цвет. Для того, чтобы ваши настройки применились, необходимо нажать кнопку "Применить", а нажав
+                    кнопку "Сбросить", вы сбросите все настройки до значений по умолчанию.
+                </p>
+            </div>
+            <div class="learning__block flex">
+                <p class="learning__text">
+                    Для того, чтобы изменить ячейку, достаточно кликнуть на нее и в появившемся окне выбрать свойство
+                    это ячейки. Можно выбрать сразу несколько ячеек, к которым вы хотите применить одно свойство. Чтобы
+                    отменить выделение всех ячеек, достаточно нажать кнопку Escape, а повторный клик сбросит выделение
+                    конкретной ячейки. На игровом поле нельзя расположить более одного игрока, более одного люка и более
+                    одного бафа на хп или урон. При наличии на карте более 3 мобов, обязательно нужно предусмотреть
+                    наличие Зелья здоровья, в противном случае игрок может умереть и пройти уровень будет невозможно.
+                    Закончив редактирование карты, вы можете выбрать название уровня и его описание, после чего
+                    необходимо сохранить все ваши изменения, нажав кнопку "Сохранить".
+                </p>
+                <img src="img/logo.svg" alt="" class="learning__img">
+            </div>
+            <div class="learning__block flex">
+                <img src="img/logo.svg" alt="" class="learning__img">
+                <p class="learning__text">
+                    После успешного создания вашего уникального первого уровня, вы можете продолжить создание своей игры
+                    и также успешного создать следующие уровни. С помощью кнопки "Добавить урвень" вы можете открыть
+                    доступ к следующим уровням. Только будьте внимательны, при переходе с одного уровня на другой, все
+                    несохраненные изменения будут утеряны.
+                </p>
+            </div>
+        </section>
+    </div>
+{% endblock maincontent %}

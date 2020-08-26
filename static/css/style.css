@@ -126,21 +126,9 @@ body {
     background-color: #000;
 }
 
-.constructor-bg {
-    background: url('img/mainpage_bg_1.svg') 42% 5% no-repeat,
-    url('img/mainpage_bg_2.svg') 83% 12% no-repeat,
-    url('img/mainpage_bg_4.svg') 8% 63% no-repeat,
-    url('img/mainpage_bg_6.svg') 76% 100% no-repeat,
-    url('img/mainpage_bg_5.svg') 0% 70% no-repeat;
-    background-color: #000;
-}
-
-.auth-bg {
-    background: url('img/logo__bg.svg') 0% 0% no-repeat,
-    url('img/auth_bg_4.svg') 98% 50% no-repeat,
-    url('img/auth_bg_1.svg') 100% 100% no-repeat,
-    url('img/auth_bg_2.svg') 86% 15% no-repeat,
-    url('img/auth_bg_3.svg') 5% 75% no-repeat;
+.game-bg {
+    background: url('img/game_bg_1.svg') 82% 13% no-repeat,
+    url('img/game_bg_2.svg') 15% 90% no-repeat;
     background-color: #000;
 }
 
@@ -382,7 +370,8 @@ body {
 .modal__form {
     display: flex;
     flex-direction: column;
-    width: 530px;
+    min-width: 530px;
+    max-width: 530px;
     max-height: 257px;
     padding: 39px 11px 42px;
     margin-top: 15px;
@@ -402,7 +391,7 @@ body {
 }
 
 .modal__button--bg {
-    padding: 18px;
+    padding-top: 18px;
     width: 331px;
     height: 70px;
     border-radius: 40px;
