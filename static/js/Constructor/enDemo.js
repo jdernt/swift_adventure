@@ -577,7 +577,11 @@ function errorsDisabled() {
 
 
 document.addEventListener('click', function () {
-    if (errorPlayer.classList.contains('hidden') === false || errorMap.classList.contains('hidden') === false || errorSubmit.classList.contains('hidden') === false) {
+    if (errorPlayer.classList.contains('hidden') === false || errorMap.classList.contains('hidden') === false) {
+        setTimeout(errorsDisabled, 5000);
+    }
+    ;
+    if (errorSubmit.classList.contains('hidden') === false) {
         setTimeout(errorsDisabled, 10000);
     }
     ;

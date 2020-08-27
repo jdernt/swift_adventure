@@ -27,20 +27,20 @@
 
 @media (max-width: 620px) {
     .mainpage-bg {
-        background: url('img/mainpage_bg_1.svg') 46% 4% no-repeat,
-        url('img/mainpage_bg_2.svg') 8% 96% no-repeat,
-        url('img/mainpage_bg_3.svg') 97% 70% no-repeat,
-        url('img/mainpage_bg_6.svg') 90% 30% no-repeat;
+        background: url('../img/mainpage_bg_1.svg') 46% 4% no-repeat,
+        url('../img/mainpage_bg_2.svg') 8% 96% no-repeat,
+        url('../img/mainpage_bg_3.svg') 97% 70% no-repeat,
+        url('../img/mainpage_bg_6.svg') 90% 30% no-repeat;
         background-color: #000;
     }
 
     .modal__window {
-        background: url('img/auth_bg_2.svg') 100% 14% no-repeat,
-        url('img/auth_bg_3.svg') 8% 74% no-repeat;
+        background: url('../img/auth_bg_2.svg') 2% 70% no-repeat,
+        url('../img/auth_bg_4.svg') 98% 21% no-repeat;
         background-color: #000;
     }
 
-    .modal__form {
+    .modal__inputs {
         min-width: 0;
     }
 
@@ -128,5 +128,19 @@
 
     .modal__button--block {
         width: 252px;
+    }
+
+    .map__options {
+        justify-content: center;
+    }
+
+    .map__select {
+        order: 0;
+        margin-top: 0;
+    }
+
+    .map__options--form {
+        order: 1;
+        margin-right: 0;
     }
 }

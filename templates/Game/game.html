@@ -17,32 +17,35 @@
 
 {% block maincontent %}
     <main class="main">
-    <section class="game">
+    <article class="game">
         <h2 class="game__title subtitle">Игра</h2>
         <div class="flex game-content">
-            <div class="game__filed field unselectable">
+            <div class="game__field field unselectable">
             </div>
             <div>
-                <div class="game__buttons hidden">
+                <div class="game__buttons flex">
                     <button class="game__button up-btn">UP</button>
                     <button class="game__button left-btn">Left</button>
                     <button class="game__button right-btn">Right</button>
                     <button class="game__button down-btn">Down</button>
-                </div>
-                <div class="game__text">
                 </div>
                 <ul class="game__inv">
                     <li class="game__item game__health">
                         health: <span class="game__health--playerbar"><span class="game__health--player"></span></span>
                     </li>
                     <li class="game__item">weapon: <span class="game__weapon">none</span></li>
-                    <li class="game__item game__health">target health: <span
-                            class="game__health--targetbar hidden"><span
-                            class="game__health--target"></span></span></li>
+                    <li class="game__item game__health">
+                        target health:
+                        <span class="game__health--targetbar">
+									<span class="game__health--target"></span>
+								</span>
+                    </li>
                 </ul>
+                <div class="game__text">
+                </div>
             </div>
         </div>
-    </section>
+    </article>
 
 {% endblock maincontent %}
 

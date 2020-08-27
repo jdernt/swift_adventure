@@ -156,6 +156,10 @@ body {
     color: #fff;
 }
 
+.header__list {
+    padding-top: 5px;
+}
+
 .header__link {
     width: 107px;
     height: 42px;
@@ -178,10 +182,11 @@ body {
 .header__button {
     margin-top: 7px;
     font-size: 14px;
+    line-height: 35px;
 }
 
 .header__button--bg {
-    padding-top: 6px;
+    /* padding-top: 6px; */
     width: 84px;
     height: 35px;
     border-radius: 18.9151px;
@@ -330,7 +335,7 @@ body {
 }
 
 .about__link {
-    color: var(--title-color);
+    color: #40DBD2;
 }
 
 .about__img {
@@ -400,9 +405,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px 30px 30px;
-    background: url('img/auth_bg_4.svg') 99% 80% no-repeat,
-    url('img/auth_bg_2.svg') 95% 5% no-repeat,
-    url('img/auth_bg_3.svg') 8% 74% no-repeat;
+    background: url('img/auth_bg_4.svg') 95% 78% no-repeat,
+    url('img/auth_bg_2.svg') 5% 80% no-repeat,
+    url('img/auth_bg_3.svg') 95% 13% no-repeat;
     background-color: #000;
     border: 3px solid #40DBD2;
     border-radius: 37px;
@@ -416,30 +421,33 @@ body {
     margin: 0 auto;
 }
 
-.modal__auth, .modal__login {
-    min-height: 480px;
-}
-
 .modal__link {
     margin-top: 10px;
 }
 
+.modal__link:hover {
+    color: var(--title-color);
+}
+
 .modal__form {
-    position: relative;
-    display: flex;
+    flex-direction: column;
+}
+
+.modal__inputs {
     flex-direction: column;
     min-width: 530px;
     max-width: 530px;
     max-height: 257px;
     padding: 39px 11px 42px;
     margin-top: 15px;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
     background: linear-gradient(116.46deg, #40DBD2 1.32%, #2158E4 105.1%);
     border-radius: 37px;
 }
 
 .modal__form--block {
     position: relative;
+    display: inline-block;
 }
 
 .modal__label {
@@ -476,7 +484,6 @@ body {
     transition: 0.4s ease all;
     -moz-transition: 0.4s ease all;
     -webkit-transition: 0.4s ease all;
-    margin-bottom: 26px;
 }
 
 .modal__input:not(:last-child) {
@@ -487,12 +494,6 @@ body {
     background-color: rgba(64, 219, 210, 0.3);;
     border: 1px solid #2158E4;
     outline: none;
-}
-
-.modal__button {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .modal__button--bg {
@@ -515,12 +516,14 @@ body {
     transform: rotate(-4.88deg);
 }
 
-.login-btn {
-    bottom: -220px;
+.modal__agreement {
+    margin-bottom: 32px;
+    text-align: center;
 }
 
-.auth-btn {
-    bottom: -170px;
+.modal__agreement--link {
+    margin: 0;
+    color: #40DBD2;
 }
 
 /* подвал */
@@ -552,4 +555,28 @@ body {
 
 .gamepage-footer {
     margin-top: 10px;
+}
+
+/* политика конфиденциальности */
+.privacy__list {
+    counter-reset: item;
+    margin-top: 10px;
+}
+
+.privacy__item {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.privacy__item:before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+}
+
+.privacy__item--text {
+    margin-top: 5px;
+}
+
+.privacy__link {
+    color: #40DBD2;
 }

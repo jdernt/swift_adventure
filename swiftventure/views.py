@@ -65,15 +65,16 @@ def loginUser(request, url):
 
 
 @csrf_protect
-def scroll(request):
+def scroll(request, page, sort_crit):
     output = None
     url = "Pages/scroll.html"
     if (request.COOKIES.get("lang") == "en"):
         url = "en/" + url
-    if request.method == "POST":
-        output = loginUser(request, url)
+    # if request.method == "POST":
+    #     output = loginUser(request, url)
     if output is None:
-        output  # output = render(request, url,
+        Post.objects.order_by('number')
+        # output = render(request, url,
         #                 {"login_form": LoginForm(), "registration_form": RegistrationForm(), "name": names,
         #                  "date":dates, "count":count}, "mapTitle":mapTitles, "mapDescription": mapDescriptions, "mapID": mapIDs)
     return output

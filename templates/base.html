@@ -89,8 +89,9 @@
         <div class="hidden modal__auth modal-flex">
             <h2 class="modal__title subtitle">Регистрация</h2>
             <a href="" class="modal__link login link">Войти</a>
-            <form class="modal__form form_login" method="POST">
+            <form class="modal__form form_login flex" method="POST">
                 {% csrf_token %}
+                <span class="modal__inputs flex">
                 {% for field in registration_form %}
                     <span class="modal__form--block">
                     {{ field }}
@@ -104,7 +105,7 @@
                         {% endfor %}
                     {% endif %}
                 {% endfor %}
-
+                </span>
                 <div class="modal__button auth-btn button">
                     <input class="modal__button--block button--block" type="submit" value="">
                     <span class="modal__button--bg button--bg">Зарегистрироваться</span>
@@ -114,8 +115,9 @@
         <div class="modal__login flex modal-flex">
             <h2 class="modal__title subtitle">Вход</h2>
             <a href="" class="modal__link auth link">Зарегистрироваться</a>
-            <form class="modal__form form_registration" method="POST">
+            <form class="modal__form form_registration flex" method="POST">
                 {% csrf_token %}
+                <span class="modal__inputs flex">
                 {% for field in login_form %}
                     <span class="modal__form--block">
                     {{ field }}
@@ -129,7 +131,19 @@
                         {% endfor %}
                     {% endif %}
                 {% endfor %}
-
+                    <span class="modal__agreement">
+								<input type="checkbox" class="modal__checkbox checkbox" id="agreement" required>
+								<label for="agreement">
+									Я принимаю условия
+									<a href="/user_agreement/" class="modal__link modal__agreement--link link">
+										пользовательского соглашения
+									</a> и
+									<a href="/privacy_policy/" class="modal__link modal__agreement--link link">
+										политики конфиденциальности
+									</a>
+								</label>
+                    </span>
+                </span>
                 <div class="about__button modal__button login-btn button">
                     <button class="about__button--block button--block"></button>
                     <span class="about__button--bg button--bg">Играть</span>
@@ -148,12 +162,12 @@
         </select>
         <ul class="footer__list list">
             <li class="footer__item">
-                <a href="" class="footer__link link">
+                <a href="/user_agreement/" class="footer__link link">
                     Пользовательские соглашения
                 </a>
             </li>
             <li class="footer__item">
-                <a href="" class="footer__link link">
+                <a href="/privacy_policy/" class="footer__link link">
                     Политика конфиденциальности
                 </a>
             </li>

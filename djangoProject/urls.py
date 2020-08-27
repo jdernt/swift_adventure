@@ -22,7 +22,7 @@ from swiftventure import views
 urlpatterns = [
     path('', views.mainpage),
     path('admin/', admin.site.urls),
-    path('scroll/', views.scroll),
+    path('scroll/<int:page>/?sort=<str:sort_crit>', views.scroll),
     path('howto/', views.learn),
     path('login/', djviews.LoginView.as_view(), name='login'),
     path('construct/level_<int:level>', views.construct),
