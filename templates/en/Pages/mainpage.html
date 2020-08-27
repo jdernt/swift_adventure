@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "en/base.html" %}
 {% load static %}
 {% block title %}
     Swift Adventure
@@ -14,55 +14,53 @@
     <article class="about">
         <div class="container flex about-flex">
             <h2 class="about__title subtitle">
-                Об игре
+                Swift Adventure
             </h2>
             <div class="about__info flex">
                 <p class="about__text">
-                    Swift Adventure - это бесплатный конструктор игр, с помощью которого ты сможешь реализовать свои
-                    большие и маленькие идеи.
+                    Swift Adventure - this is a free game designer that you can use to implement your big and small
+                    ideas.
                 </p>
                 <p class="about__text">
-                    Создай собственную РПГ игру!
+                    Create your own RPG game!
                 </p>
                 <ul class="about__list list">
                     <li class="about__item">
 								<span class="about__item--title">
-									Простые инструменты
-								</span>
+                                Simple tool
+                                </span>
                         <div class="about__item--description">
-                            Мы сделали конструктор на русском и английском языке, подготовили удобный интерфейс.
+                            We have made a constructor in Russian and English, and prepared a user-friendly interface.
                             <span class="about__item--span">
-										Начни изучение с небольшой <a href="/howto/"
-                                                                      class="about__link link">инструкции</a>.
+										Start the study with a small <a href="/howto/" class="about__link link">instruction</a>.
 									</span>
                         </div>
                     </li>
                     <li class="about__item">
 								<span class="about__item--title">
-									Возможности для творчества
+									Large borders for creativity
 								</span>
                         <div class="about__item--description">
-                            Прояви креативность, продумывая персонажей и диалоги, выстраивая захватывающие сюжетные
-                            линии.
+                            Be creative, thinking through characters and dialogues, building exciting storylines.
                         </div>
                     </li>
                     <li class="about__item">
 								<span class="about__item--title">
-									Публикация и голосование за лучшую игру
+									Publish and vote for the best game
 								</span>
                         <div class="about__item--description">
-                            Стань частью сообщества создателей игр и делись своими идеями.
+                            Become a part of the community of game creators and share your ideas.
                         </div>
                     </li>
                 </ul>
                 <p class="about__text">
-                    Скорее регистрируйся, и пусть начнется игра по твоим правилам!
+                    Register soon, and let the game begin according to your rules!
                 </p>
                 <img src={% static "css/img/screenshot.jpg" %} alt="picture" class="about__img">
             </div>
             <div class="about__button button">
                 <a href="/map_1" class="about__button--block button--block"></a>
-                <span class="about__button--bg button--bg">Играть</span>
+                <span class="about__button--bg button--bg">Play</span>
             </div>
         </div>
     </article>

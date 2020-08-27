@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "en/base.html" %}
 {% load static %}
 {% block title %}
     Your Game
@@ -18,7 +18,7 @@
 {% block maincontent %}
     <main class="main">
     <section class="game">
-        <h2 class="game__title subtitle">Игра</h2>
+        <h2 class="game__title subtitle">Game</h2>
         <div class="flex game-content">
             <div class="game__filed field unselectable">
             </div>
@@ -48,5 +48,5 @@
 
 {% block scriptcontent %}
     <script type="text/javascript" src={% static "js/Game/getData.js" %}></script>
-    <script type="text/javascript" src={% static "js/Game/Game.js" %}></script>
+    <script type="text/javascript" src={% static "js/Game/enGame.js" %}></script>
 {% endblock scriptcontent %}

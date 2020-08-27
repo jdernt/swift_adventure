@@ -4,12 +4,14 @@
     How to
 {% endblock title %}
 {% block style %}
-    <link rel="stylesheet" href={% static "css/normalize.css" %}>
     <link rel="stylesheet" href={% static "css/style.css" %}>
     <link rel="stylesheet" href={% static "css/media.css" %}>
 {% endblock style %}
 {% block headcontent %}
 {% endblock headcontent %}
+{% block bgcontainer %}
+    <div class="learningpage-bg bg-container">
+{% endblock bgcontainer %}
 
 {% block maincontent %}
     <main class="main">
@@ -23,10 +25,10 @@
                     желаемых размеров (от 6х6 до 16х16), расположить на игровом поле различные элементы окружения так,
                     как вам этого хочется, а также задать цвет этих элементов и их текстовое изображение.
                 </p>
-                <img src="img/logo.svg" alt="" class="learning__img">
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
             </div>
             <div class="learning__block flex">
-                <img src="img/logo.svg" alt="" class="learning__img">
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
                 <p class="learning__text">
                     Для начала вам необходимо выбрать размеры игрового поля. Как было указано ранее, ширина и высота
                     игрового поля не могут быть менее 6 и более 16 ячеек. Создав игровое поле, вы можете приступить к
@@ -47,10 +49,10 @@
                     Закончив редактирование карты, вы можете выбрать название уровня и его описание, после чего
                     необходимо сохранить все ваши изменения, нажав кнопку "Сохранить".
                 </p>
-                <img src="img/logo.svg" alt="" class="learning__img">
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
             </div>
             <div class="learning__block flex">
-                <img src="img/logo.svg" alt="" class="learning__img">
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
                 <p class="learning__text">
                     После успешного создания вашего уникального первого уровня, вы можете продолжить создание своей игры
                     и также успешного создать следующие уровни. С помощью кнопки "Добавить урвень" вы можете открыть

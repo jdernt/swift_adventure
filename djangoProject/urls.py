@@ -23,7 +23,7 @@ urlpatterns = [
     path('', views.mainpage),
     path('admin/', admin.site.urls),
     path('scroll/', views.scroll),
-    path('howto/', views.learning),
+    path('howto/', views.learn),
     path('login/', djviews.LoginView.as_view(), name='login'),
     path('construct/level_<int:level>', views.construct),
     path('account/', views.account),

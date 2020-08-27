@@ -17,6 +17,10 @@
     --damage-buff-color: #7f56f1;
 }
 
+.game {
+    font-family: monospace;
+}
+
 .game__title {
     margin-bottom: 20px;
     text-align: center;
@@ -26,12 +30,45 @@
     max-width: 880px;
     margin: 0 auto;
     justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
     padding: 20px;
-    background-color: #000;
+    /*background-color: #000;
     border: 3px solid #40DBD2;
     border-radius: 37px;
-    box-shadow: 0px 3.78302px 4.72877px #40DBD2;
+    box-shadow: 0px 2px 15px #40DBD2;*/
+}
+
+.game__buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.up-btn {
+    width: 100%;
+}
+
+.right-btn {
+    margin-left: auto;
+}
+
+.down-btn {
+    width: 100%;
+}
+
+.game__button {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 20px;
+}
+
+.game__button:hover {
+    background-color: #40DBD2;
+    color: #000;
 }
 
 .game__text {

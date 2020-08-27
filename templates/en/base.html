@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,44 +34,44 @@
         <nav class="header__nav">
             <ul class="header__list list flex">
                 <li class="header__item">
-                    <a href="/" class="header__link link">Главная</a>
+                    <a href="/" class="header__link link">Main</a>
                 </li>
                 <li class="header__item">
-                    <a href="/scroll" class="header__link link">Лента</a>
+                    <a href="/scroll" class="header__link link">Scroll</a>
                 </li>
                 <li class="header__item">
-                    <a href="/construct/level_1" class="header__link link">Конструктор</a>
+                    <a href="/construct/level_1" class="header__link link">Create</a>
                 </li>
                 <li class="header__item">
-                    <a href="/howto" class="header__link link">Обучение</a>
+                    <a href="/howto" class="header__link link">How to</a>
                 </li>
             </ul>
             <div class="header__button button">
                 <button class="header__button--block button--block">
                 </button>
-                <span class="header__button--bg button--bg">Вход</span>
+                <span class="header__button--bg button--bg">Log in</span>
             </div>
         </nav>
         <div class="header__burger--menu hidden">
             <nav class="header__nav--burger flex">
                 <ul class="header__list--burger list flex">
                     <li class="header__item">
-                        <a href="/" class="header__link link">Главная</a>
+                        <a href="/" class="header__link link">Main</a>
                     </li>
                     <li class="header__item">
-                        <a href="/scroll" class="header__link link">Лента</a>
+                        <a href="/scroll" class="header__link link">Scroll</a>
                     </li>
                     <li class="header__item">
-                        <a href="/construct" class="header__link link">Конструктор</a>
+                        <a href="/construct" class="header__link link">Create</a>
                     </li>
                     <li class="header__item">
-                        <a href="/howto" class="header__link link">Обучение</a>
+                        <a href="/howto" class="header__link link">How to</a>
                     </li>
                 </ul>
                 <div class="header__button button">
                     <button class="header__button--block button--block">
                     </button>
-                    <span class="header__button--bg button--bg">Вход</span>
+                    <span class="header__button--bg button--bg">Log in</span>
                 </div>
             </nav>
         </div>
@@ -87,8 +87,8 @@
 <div class="modal hidden">
     <div class="modal__window">
         <div class="hidden modal__auth modal-flex">
-            <h2 class="modal__title subtitle">Регистрация</h2>
-            <a href="" class="modal__link login link">Войти</a>
+            <h2 class="modal__title subtitle">Registration</h2>
+            <a href="" class="modal__link login link">Log in</a>
             <form class="modal__form form_login" method="POST">
                 {% csrf_token %}
                 {% for field in registration_form %}
@@ -107,13 +107,13 @@
 
                 <div class="modal__button auth-btn button">
                     <input class="modal__button--block button--block" type="submit" value="">
-                    <span class="modal__button--bg button--bg">Зарегистрироваться</span>
+                    <span class="modal__button--bg button--bg">Sign up</span>
                 </div>
             </form>
         </div>
         <div class="modal__login flex modal-flex">
             <h2 class="modal__title subtitle">Вход</h2>
-            <a href="" class="modal__link auth link">Зарегистрироваться</a>
+            <a href="" class="modal__link auth link">Sign up</a>
             <form class="modal__form form_registration" method="POST">
                 {% csrf_token %}
                 {% for field in login_form %}
@@ -132,9 +132,8 @@
 
                 <div class="about__button modal__button login-btn button">
                     <button class="about__button--block button--block"></button>
-                    <span class="about__button--bg button--bg">Играть</span>
+                    <span class="about__button--bg button--bg">Play</span>
                 </div>
-                `
             </form>
         </div>
     </div>
@@ -149,12 +148,12 @@
         <ul class="footer__list list">
             <li class="footer__item">
                 <a href="" class="footer__link link">
-                    Пользовательские соглашения
+                    Privacy policy
                 </a>
             </li>
             <li class="footer__item">
                 <a href="" class="footer__link link">
-                    Политика конфиденциальности
+                    User agreement
                 </a>
             </li>
         </ul>

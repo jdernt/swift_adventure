@@ -2,7 +2,7 @@
 
 let userName = getCookie("user")
 if (userName == undefined)
-    alert("Пожалуйста, войдите на сайт или зарегистрируйтесь")
+    alert("Please, sign up or register")
 
 const errorPlayer = document.querySelector('.error__player');
 const errorMap = document.querySelector('.error__grid');
@@ -83,7 +83,7 @@ function addLevel() {
     newLink.classList.add('level_' + index);
     newLink.setAttribute('href', ("/construct/level_" + index));
     newLink.setAttribute('onclick', 'return question()');
-    newLink.textContent = 'Уровень ' + index;
+    newLink.textContent = ' Level ' + index + ' ';
     localStorage.setItem('countLevel', index);
     levelsNav.appendChild(newLink);
     //console.log(linksArray);
@@ -451,10 +451,10 @@ map__title = document.querySelector('.map__title');
 map__description = document.querySelector('.map__description');
 
 if (localStorage.getItem("mapTitle") == null)
-    map__title.setAttribute("placeholder", "Моя карта");
+    map__title.setAttribute("placeholder", "My map");
 else map__title.setAttribute("placeholder", localStorage.getItem("mapTitle"));
 if (localStorage.getItem("mapDescription") == null)
-    map__description.setAttribute("placeholder", "Описание карты");
+    map__description.setAttribute("placeholder", "Map description");
 else map__description.setAttribute("placeholder", localStorage.getItem("mapDescription"));
 if (level != 1) {
     map__title.setAttribute("readonly", true);
@@ -585,7 +585,7 @@ document.addEventListener('click', function () {
 
 // подтверждение перехода по ссылке
 function question() {
-    if (confirm('Перейти на следующий уровень? Все несохраненные данные будут удалены')) {
+    if (confirm('Go to the next level? All unsaved data will be deleted')) {
         return true;
     } else {
         return false;

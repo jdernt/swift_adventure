@@ -1,3 +1,15 @@
+@media (max-width: 735px) {
+    .map {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .map__options {
+        flex-direction: row;
+        max-width: 400px;
+    }
+}
+
 @media (max-width: 715px) {
     .header__logo {
         margin-right: auto;
@@ -31,8 +43,15 @@
     .modal__form {
         min-width: 0;
     }
-}
 
+    .cell, .cell-no-border {
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+}
 
 @media (max-width: 540px) {
     .about__info {
@@ -46,6 +65,53 @@
 
     .about-flex {
         text-align: left;
+    }
+
+    .options {
+        flex-wrap: wrap;
+    }
+
+    .levels {
+        margin-bottom: 10px;
+    }
+
+    .symbols {
+        flex-grow: 2;
+        margin-top: 10px;
+    }
+
+    .symbols__text {
+        text-align: center;
+    }
+
+    .symbols__list {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .symbols__option {
+        width: 150px;
+    }
+
+    .symbols__buttons {
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .game__text {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .cell, .cell-no-border {
+        width: 25px;
+        height: 25px;
+        font-size: 25px;
+        line-height: 25px;
     }
 }
 
@@ -64,4 +130,3 @@
         width: 252px;
     }
 }
-

@@ -131,3 +131,17 @@ function deleteCookie(name) {
     })
 }
 
+
+// переключение языка
+const selectLang = document.querySelector('.footer__select');
+
+if (getCookie("lang") != undefined) {
+    selectLang.value = getCookie("lang");
+}
+
+selectLang.addEventListener('change', function () {
+    setCookie("lang", selectLang.value);
+    location.reload();
+})
+
+

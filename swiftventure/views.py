@@ -9,10 +9,12 @@ from .models import User, Map, Data, Post, Account
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 
-# @csrf_protect
+@csrf_protect
 def mainpage(request):
     output = None
     url = "Pages/mainpage.html"
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
     if request.method == "POST":
         output = loginUser(request, url)
     if output is None:
@@ -62,34 +64,45 @@ def loginUser(request, url):
         return None
 
 
+@csrf_protect
 def scroll(request):
     output = None
     url = "Pages/scroll.html"
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
     if request.method == "POST":
         output = loginUser(request, url)
     if output is None:
-        output = render(request, url,
-                        {"login_form": LoginForm(), "registration_form": RegistrationForm()})
+        output  # output = render(request, url,
+        #                 {"login_form": LoginForm(), "registration_form": RegistrationForm(), "name": names,
+        #                  "date":dates, "count":count}, "mapTitle":mapTitles, "mapDescription": mapDescriptions, "mapID": mapIDs)
     return output
 
 
-def learning(request):
+# def posts_by_popularity
+
+@csrf_protect
+def learn(request):
     output = None
-    url = "Pages/leaning.html"
+    url = "Pages/learning.html"
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
     if request.method == "POST":
         output = loginUser(request, url)
     if output is None:
-        output = render(request, url,
-                        {"login_form": LoginForm(), "registration_form": RegistrationForm()})
+        output = render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm()})
     return output
 
 def account(request):
     return HttpResponse("1")
 
 
+@csrf_protect
 def construct(request, level):
     output = None
     url = "Constructor/сreation.html"
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
     if request.method == "POST":
         output = loginUser(request, url)
     if output is None:
@@ -134,19 +147,22 @@ def submitConstructorData(request):
             description = request.POST.get("mapDescription")
             if description == "":
                 description = "Без описания/Without description"
-            Post.objects.update_or_create(map=map, description=description)
-            map.m_symbol_set.all().delete()
-            symbols = request.POST.get("symbols")
-            colors = request.POST.get("colors").split(';')
-            for i in range(len(symbols)):
-                map.m_symbol_set.create(type=i, symbol=symbols[i], color=colors[i])
-
+            if Post.objects.filter(map=map).count() != 0:
+                Post.objects.filter(map=map).update(description=description)
+            else:
+                Post.objects.update_or_create(map=map, description=description)
             if map.m_level_set.filter(level=request.POST.get("level")).count() != 0:
                 map.m_level_set.update(width=request.POST.get("width"), height=request.POST.get("height"),
                                        level=request.POST.get("level"), matrix=request.POST.get("matrix"))
+                m_level = map.m_level_set.get(level=request.POST.get("level"))
             else:
-                map.m_level_set.create(width=request.POST.get("width"), height=request.POST.get("height"),
-                                       level=request.POST.get("level"), matrix=request.POST.get("matrix"))
+                m_level = map.m_level_set.create(width=request.POST.get("width"), height=request.POST.get("height"),
+                                                 level=request.POST.get("level"), matrix=request.POST.get("matrix"))
+            m_level.m_symbol_set.all().delete()
+            symbols = request.POST.get("symbols")
+            colors = request.POST.get("colors").split(';')
+            for i in range(len(symbols)):
+                m_level.m_symbol_set.create(type=i, symbol=symbols[i], color=colors[i])
         except Exception as e:
             return HttpResponseServerError(str(e))
         else:
@@ -155,9 +171,12 @@ def submitConstructorData(request):
         return HttpResponseBadRequest()
 
 
+@csrf_protect
 def map(request, mapID):
     output = None
     url = "Game/game.html"
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
     if request.method == "POST":
         output = loginUser(request, url)
     if output is None:
@@ -170,20 +189,20 @@ def map(request, mapID):
 def getGameData(request, mapID, level):
     if request.method == "POST":
         try:
-            userName = request.POST.get("user")
-            level = level
-            mapID = mapID
             map = Map.objects.get(id=mapID)
             m_level = map.m_level_set.get(level=level)
+            mapDescription = Post.objects.get(map=map).description
             symbols = ""
             colors = []
-            for i in range(map.m_symbol_set.all().count()):
-                symbols += map.m_symbol_set.get(type=i).symbol
-                colors.append(map.m_symbol_set.get(type=i).color)
-            data = {"mapName": map.map_name, "matrix": m_level.matrix, "count_level": map.count_level,
+            for i in range(m_level.m_symbol_set.all().count()):
+                symbols += m_level.m_symbol_set.get(type=i).symbol
+                colors.append(m_level.m_symbol_set.get(type=i).color)
+            data = {"mapTitle": map.map_name, "mapDescription": mapDescription, "matrix": m_level.matrix,
+                    "count_level": map.count_level,
                     "width": m_level.width, "height": m_level.height, "symbols": symbols, "colors": colors}
             return HttpResponse(json.dumps(data), content_type='application/json')
         except Exception as e:
             return HttpResponseServerError(str(e))
         else:
             return HttpResponseBadRequest()
+

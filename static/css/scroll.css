@@ -153,6 +153,13 @@ nav ul {
     color: #2158E4;
 }
 
+.box1 h5 {
+    color: #2158E4;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+
 main {
     display: flex;
     justify-content: center;

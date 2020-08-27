@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "en/base.html" %}
 {% load static %}
 {% block title %}
     Game Create
@@ -18,46 +18,47 @@
     <main class="main">
     <div class="error">
         <div class="error__item error__grid hidden">
-            Дорогой друг, высота и ширина блока должны быть более 6 и менее 16 блоков
+            Dear friend, the height and width of the block must be more than 6 and less than 16 blocks
         </div>
         <div class="error__item error__player hidden">
-            Дорогой друг, нельзя расположить на карте более одного игрока и более одного люка
+            Dear friend, you can't place more than one player and more than one hatch on the map
         </div>
         <div class="error__item error__submit hidden">
-            На игровом поле обязательно должен быть игрок и люк. Если на игровом поле более 3 мобов, обязательно должно
-            быть зелье здоровья. В противном случае сохранить уровень нельзя.
+            There must be a player and a hatch on the playing field. If there are more than 3 mobs on the playing field,
+            you must
+            be a health potion. Otherwise, you can't save the level.
         </div>
     </div>
     <div class="constructor-container">
-    <h2 class="subtitle">Конструктор</h2>
+    <h2 class="subtitle">Create your game</h2>
     <div class="options">
         <div class="levels">
-            <h2 class="levels__text constructor-title">Выберите уровень:</h2>
+            <h2 class="levels__text constructor-title">Select a level:</h2>
             <div class="levels__nav">
-                <a href="" class="levels__link level-1" onclick="return question()">Уровень 1</a>
+                <a href="" class="levels__link level-1" onclick="return question()">Level 1</a>
             </div>
         </div>
         <div class="grid">
-            <h2 class="grid__text constructor-title">Выберите размеры игрового поля:</h2>
+            <h2 class="grid__text constructor-title">Select the size of the playing field:</h2>
             <form class="grid__form" id="matrix_create" onsubmit="return false;">
 							<span class="grid__option">
-								<span class="grid__name">Ширина:</span>
+								<span class="grid__name">Width:</span>
 								<input type="number" id="matrix_input_width" class="grid__wdt grid__input input"
                                        placeholder="x" min="6" max="16">
 							</span>
                 <span class="grid__option">
-								<span class="grid__name">Высота:</span>
+								<span class="grid__name">Height:</span>
 								<input type="number" id="matrix_input_height" class="grid__hgt grid__input input"
                                        placeholder="y" min="6" max="16">
 							</span>
-                <button class="grid__btn btn" id="matrix_input_btn">Создать</button>
+                <button class="grid__btn btn" id="matrix_input_btn">Create</button>
             </form>
         </div>
         <div class="symbols">
-            <h2 class="symbols__text constructor-title">Выберите символ:</h2>
+            <h2 class="symbols__text constructor-title">Choose a symbol:</h2>
             <ul class="symbols__list list">
                 <li class="symbols__option">
-                    <span class="symbols__type">Стена</span>
+                    <span class="symbols__type">Wall</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input wall-symbol input" maxlength="1"
                                            placeholder="#">
@@ -67,7 +68,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Моб</span>
+                    <span class="symbols__type">Mob</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input mob-symbol input" maxlength="1"
                                            placeholder="m">
@@ -77,7 +78,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Фон</span>
+                    <span class="symbols__type">Background</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input bg-symbol input" maxlength="1"
                                            placeholder=".">
@@ -87,7 +88,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Игрок</span>
+                    <span class="symbols__type">Player</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input player-symbol input" maxlength="1"
                                            placeholder="@">
@@ -97,7 +98,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Оружие</span>
+                    <span class="symbols__type">Arm</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input weapon-symbol input" maxlength="1"
                                            placeholder="&">
@@ -107,7 +108,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Люк</span>
+                    <span class="symbols__type">Hatch</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input luke-symbol input" maxlength="1"
                                            placeholder="%">
@@ -117,7 +118,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Зелье здоровья</span>
+                    <span class="symbols__type">Health potion</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input potion-symbol input" maxlength="1"
                                            placeholder="U">
@@ -127,7 +128,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Баф на ХП</span>
+                    <span class="symbols__type">HP buff</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input hp-buff-symbol input" maxlength="1"
                                            placeholder="h">
@@ -137,7 +138,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Баф на урон</span>
+                    <span class="symbols__type">Damage baff</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input damage-buff-symbol input" maxlength="1"
                                            placeholder="d">
@@ -148,8 +149,8 @@
                 </li>
             </ul>
             <span class="symbols__buttons">
-							<button class="symbols__btn apply-btn btn" onclick="setElements()">Применить</button>
-							<button class="symbols__btn clear-btn btn">Сбросить</button></span>
+							<button class="symbols__btn apply-btn btn" onclick="setElements()">Apply</button>
+							<button class="symbols__btn clear-btn btn">Reset</button></span>
         </div>
     </div>
 
@@ -159,77 +160,77 @@
         <div class="map__options hidden">
             <div class="map__options--form">
 							<span class="map__span">
-								<label class="map__label">Название</label>
+								<label class="map__label">Title</label>
 								<input type="text" class="map__input map__title input">
 
 							</span>
                 <span class="map__span">
-								<label class="map__label">Описание</label>
+								<label class="map__label">Description</label>
 								<textarea name="description" class="map__input map__description"></textarea>
 
 							</span>
-                <button class="map__btn submit__btn btn" onclick="sendData()" id="matrix_send_btn">Сохранить</button>
+                <button class="map__btn submit__btn btn" onclick="sendData()" id="matrix_send_btn">Save</button>
             </div>
             <div class="map__select select hidden">
-                <h2 class="select__text constructor-title">Выберите свойство</h2>
+                <h2 class="select__text constructor-title">Select a property</h2>
                 <div class="select__form">
 								<span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__wall" value="wall" name="a1">
-										Стена
+										Wall
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__mob" value="mob" name="a1">
-										Моб
+										Mob
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__background" value="background"
                                                name="a1">
-										Фон
+										Background
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__player" value="player" name="a1">
-										Игрок
+										Player
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__weapon" value="weapon" name="a1">
-										Оружие
+										Arm
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__luke" value="luke" name="a1">
-										Люк
+										Hatch
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__potion" value="potion" name="a1">
-										Зелье здоровья
+										Health potion
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__hp-buff" value="hp-buff" name="a1">
-										Баф на ХП
+										HP buff
 									</label>
 								</span>
                     <span class="select__type">
 									<label class="select__name">
 										<input type="radio" class="radio select__damage-buff" value="damage-buff"
                                                name="a1">
-										Баф на урон
+										Damage buff
 									</label>
 								</span>
-                    <button class="select__btn btn">Применить</button>
+                    <button class="select__btn btn">Apply</button>
                 </div>
             </div>
 
@@ -240,7 +241,7 @@
 {% endblock maincontent %}
 
 {% block scriptcontent %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src={% static "js/Constructor/demo.js" %}></script>
-<script type="text/javascript" src={% static "js/Constructor/sendData.js" %}></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src={% static "js/Constructor/enDemo.js" %}></script>
+    <script type="text/javascript" src={% static "js/Constructor/sendData.js" %}></script>
 {% endblock scriptcontent %}

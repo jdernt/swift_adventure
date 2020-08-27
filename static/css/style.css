@@ -9,7 +9,8 @@
 }
 
 body {
-    font-family: monospace;
+    font-family: 'Play', sans-serif;
+    font-size: 14px;
     color: #fff;
 }
 
@@ -27,6 +28,7 @@ body {
     max-width: 100vw;
     min-height: 100vh;
     margin: 0 auto;
+    padding: 0 10px;
 }
 
 .hidden {
@@ -64,12 +66,13 @@ body {
 }
 
 .input {
-    height: 41px;
+    min-height: 20px;
+    min-width: 37px;
     padding-left: 10px;
     background: #FFFFFF;
     border: none;
     border-radius: 15px;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .list {
@@ -79,6 +82,7 @@ body {
 .subtitle {
     font-size: 32px;
     color: var(--title-color);
+    text-align: center;
 }
 
 .button {
@@ -105,7 +109,6 @@ body {
 .button--block:hover {
     transform: none;
 }
-
 /* фоны страниц */
 .mainpage-bg {
     background: url('img/mainpage_bg_1.svg') 42% 6% no-repeat,
@@ -118,17 +121,16 @@ body {
 }
 
 .learningpage-bg {
-    background: url('img/learning_bg_1.svg') 0% 90% no-repeat,
-    url('img/learning_bg_5.svg') 100% 83% no-repeat,
+    background: url('img/learning_bg_1.svg') 0px 50% no-repeat,
     url('img/learning_bg_2.svg') 100% 100% no-repeat,
-    url('img/learning_bg_3.svg') 70% 15% no-repeat,
-    url('img/learning_bg_4.svg') 10% 33% no-repeat;
+    url('img/learning_bg_3.svg') 80% 30px no-repeat,
+    url('img/learning_bg_4.svg') 3% 42px no-repeat;
     background-color: #000;
 }
 
 .game-bg {
-    background: url('img/game_bg_1.svg') 82% 13% no-repeat,
-    url('img/game_bg_2.svg') 15% 90% no-repeat;
+    background: url('img/game_bg_1.svg') 82% 45px no-repeat,
+    url('img/game_bg_2.svg') 15% 100% no-repeat;
     background-color: #000;
 }
 
@@ -150,6 +152,7 @@ body {
 
 .header__nav {
     display: flex;
+    align-items: flex-start;
     color: #fff;
 }
 
@@ -167,7 +170,7 @@ body {
 
 .header__link:hover {
     background: #FFFFFF;
-    box-shadow: 0px 3.78302px 4.72877px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
     border-color: #40DBD2;
     color: #000;
 }
@@ -275,31 +278,74 @@ body {
     margin-left: 69px;
     margin-bottom: 24px;
     flex-grow: 1;
+    text-align: left;
+}
+
+.about__info {
+    flex-direction: column;
+    margin-bottom: 60px;
 }
 
 .about__text {
     display: inline-block;
-    margin-right: 3px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #fff;
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 0.05em;
     font-style: italic;
+    text-indent: 5%;
+}
+
+.about__list {
+    margin-left: 10%;
+}
+
+.about__item--title {
+    font-size: 18px;
+}
+
+.about__item {
+    margin-bottom: 15px;
+}
+
+.about__item::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #40DBD2;
+    border-radius: 40px;
+    margin-right: 5px;
+}
+
+.about__item--description {
+    margin-top: 8px;
+    margin-left: -4%;
+}
+
+.about__item--span {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.about__link {
+    color: var(--title-color);
 }
 
 .about__img {
     max-width: 246px;
     max-height: 200px;
+    align-self: center;
     border: 3px solid #40DBD2;
     border-radius: 15px;
 }
 
 .about__button {
     flex-grow: 2;
-    margin-top: 27px;
     font-size: 45px;
     font-style: italic;
+    font-family: 'Quantico', sans-serif;
 }
 
 .about__button--bg {
@@ -321,13 +367,20 @@ body {
 
 /* блок обучения */
 .learning {
-    margin-top: 60px;
     color: #fff;
-    text-align: center;
 }
 
 .learning__title {
     margin-bottom: 48px;
+}
+
+.learning__block {
+    margin-bottom: 10px;
+}
+
+.learning__text {
+    text-align: justify;
+    text-indent: 10%;
 }
 
 /* модальное окно с формами регистрации и входа*/
@@ -353,7 +406,7 @@ body {
     background-color: #000;
     border: 3px solid #40DBD2;
     border-radius: 37px;
-    box-shadow: 0px 3.78302px 4.72877px #40DBD2;
+    box-shadow: 0px 4px 15px #40DBD2;
 }
 
 .modal-flex {
@@ -363,11 +416,16 @@ body {
     margin: 0 auto;
 }
 
+.modal__auth, .modal__login {
+    min-height: 480px;
+}
+
 .modal__link {
     margin-top: 10px;
 }
 
 .modal__form {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-width: 530px;
@@ -380,14 +438,61 @@ body {
     border-radius: 37px;
 }
 
+.modal__form--block {
+    position: relative;
+}
+
+.modal__label {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #000;
+    font-size: 18px;
+    transition: 0.4s ease all;
+    -moz-transition: 0.4s ease all;
+    -webkit-transition: 0.4s ease all;
+}
+
+.modal__input:focus ~ .modal__label,
+.modal__input:valid ~ .modal__label {
+    top: -20px;
+    font-size: 14px;
+}
+
+.modal__input--border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 41px;
+}
+
+.modal__input {
+    width: 100%;
+    height: 41px;
+    padding-left: 20px;
+    font-size: 18px;
+    border: 1px solid transparent;
+    transition: 0.4s ease all;
+    -moz-transition: 0.4s ease all;
+    -webkit-transition: 0.4s ease all;
+    margin-bottom: 26px;
+}
+
 .modal__input:not(:last-child) {
     margin-bottom: 26px;
 }
 
+.modal__input:focus {
+    background-color: rgba(64, 219, 210, 0.3);;
+    border: 1px solid #2158E4;
+    outline: none;
+}
+
 .modal__button {
-    font-size: 24px;
-    font-style: italic;
-    letter-spacing: 0.1em;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal__button--bg {
@@ -397,6 +502,10 @@ body {
     border-radius: 40px;
     background: radial-gradient(101.71% 667.73% at 16.95% 25.25%, #1EEADE 21.73%, rgb(33, 88, 228) 97.84%);
     box-shadow: 0px 3.85758px 4.82198px #40DBD2;
+    font-size: 24px;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    font-family: 'Quantico', sans-serif;
 }
 
 .modal__button--block {
@@ -404,6 +513,14 @@ body {
     height: 72px;
     border: 4px solid #FFF9F9;
     transform: rotate(-4.88deg);
+}
+
+.login-btn {
+    bottom: -220px;
+}
+
+.auth-btn {
+    bottom: -170px;
 }
 
 /* подвал */
@@ -415,6 +532,24 @@ body {
     color: #fff;
 }
 
+.footer-container {
+    position: relative;
+}
+
+.footer__select {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+.footer__option {
+    color: #fff;
+    background-color: #000;
+}
+
 .gamepage-footer {
-    margin-top: 20px;
+    margin-top: 10px;
 }

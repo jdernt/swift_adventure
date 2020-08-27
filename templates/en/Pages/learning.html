@@ -1,0 +1,71 @@
+{% extends "en/base.html" %}
+{% load static %}
+{% block title %}
+    How to
+{% endblock title %}
+{% block style %}
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+    <link rel="stylesheet" href={% static "css/media.css" %}>
+{% endblock style %}
+{% block headcontent %}
+{% endblock headcontent %}
+{% block bgcontainer %}
+    <div class="learningpage-bg bg-container">
+{% endblock bgcontainer %}
+
+{% block maincontent %}
+    <main class="main">
+    <div class="container">
+        <section class="learning">
+            <h2 class="learning__title subtitle">Learning</h2>
+            <div class="learning__block flex">
+                <p class="learning__text">
+                    Before you start creating your own unique game, please read the following
+                    instructions for the constructor functionality. You can create a playing field in our constructor
+                    the desired size (from 6x6 to 16x16), place various elements of the environment on the playing field
+                    so that
+                    how you want it, and also set the color of these elements and their text image.
+                </p>
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
+            </div>
+            <div class="learning__block flex">
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
+                <p class="learning__text">
+                    First, you need to select the size of the playing field. As stated earlier, width and height
+                    the playing field can not be less than 6 or more than 16 cells. After creating the playing field,
+                    you can start
+                    editing it. In the character selection window, you can manually enter the desired character as
+                    which will display the selected items. Next to the character input field, you can also select it
+                    color. In order for your settings to be applied, you need to click the "Apply" button, and then
+                    click
+                    click "Reset", you will reset all settings to their default values.
+                </p>
+            </div>
+            <div class="learning__block flex">
+                <p class="learning__text">
+                    To change a cell, just click on it and select the property in the window that appears
+                    these are cells. You can select multiple cells at once that you want to apply the same property to.
+                    To
+                    to cancel the selection of all cells, just click the Escape button, and a second click will reset
+                    the selection
+                    a specific cell. You can't place more than one player, more than one hatch, or more on the playing
+                    field
+                    one buff on HP or damage. If there are more than 3 mobs on the map, you must provide
+                    the presence of a health Potion, otherwise the player may die and pass the level will be impossible.
+                    When you finish editing the map, you can choose the level name and description, and then
+                    you must save all your changes by clicking the "Save" button.
+                </p>
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
+            </div>
+            <div class="learning__block flex">
+                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
+                <p class="learning__text">
+                    After successfully creating your unique first level, you can continue creating your game
+                    and you can also create the following levels. Using the "Add level" button, you can open
+                    access to the following levels. Just be careful when moving from one level to another, everything
+                    unsaved changes will be lost.
+                </p>
+            </div>
+        </section>
+    </div>
+{% endblock maincontent %}
