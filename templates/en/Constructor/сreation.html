@@ -19,20 +19,19 @@
         <div class="error__item error__grid hidden">
             Dear friend, the height and width of the block must be more than 6 and less than 16 blocks
         </div>
-        <div class="error__item error__player hidden">
-            Dear friend, you can't place more than one player and more than one hatch on the map
-        </div>
-        <div class="error__item error__submit hidden">
-            There must be a player and a hatch on the playing field. If there are more than 3 mobs on the playing field,
-            you must
-            be a health potion. Otherwise, you can't save the level.
-        </div>
+    <div class="error__item error__player hidden">
+        Dear friend, you can't place more than one player and more than one hatch on the map
     </div>
-    <div class="constructor-container">
-    <h2 class="subtitle">Create your game</h2>
+    <div class="error__item error__submit hidden">
+        There must be a player and a hatch on the playing field. If there are more than 3 mobs on the playing field,
+        you must
+        be a health potion. Otherwise, you can't save the level.
+    </div>
+    <section class="constructor">
+    <h2 class="subtitle">Creation</h2>
     <div class="options">
         <div class="levels">
-            <h2 class="levels__text constructor-title">Select a level:</h2>
+            <h2 class="levels__text constructor-title">Choose level:</h2>
             <div class="levels__nav">
                 <a href="" class="levels__link level-1" onclick="return question()">Level 1</a>
             </div>
@@ -54,7 +53,7 @@
             </form>
         </div>
         <div class="symbols">
-            <h2 class="symbols__text constructor-title">Choose a symbol:</h2>
+            <h2 class="symbols__text constructor-title">Select symbol:</h2>
             <ul class="symbols__list list">
                 <li class="symbols__option">
                     <span class="symbols__type">Wall</span>
@@ -137,7 +136,7 @@
 								</span>
                 </li>
                 <li class="symbols__option">
-                    <span class="symbols__type">Damage baff</span>
+                    <span class="symbols__type">Damage buff</span>
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input damage-buff-symbol input" maxlength="1"
                                            placeholder="d">
@@ -148,7 +147,7 @@
                 </li>
             </ul>
             <span class="symbols__buttons">
-							<button class="symbols__btn apply-btn btn" onclick="setElements()">Apply</button>
+							<button class="symbols__btn btn">Submit</button>
 							<button class="symbols__btn clear-btn btn">Reset</button></span>
         </div>
     </div>
@@ -171,7 +170,7 @@
                 <button class="map__btn submit__btn btn" onclick="sendData()" id="matrix_send_btn">Save</button>
             </div>
             <div class="map__select select hidden">
-                <h2 class="select__text constructor-title">Select a property</h2>
+                <h2 class="select__text constructor-title">Select property</h2>
                 <div class="select__form">
 								<span class="select__type">
 									<label class="select__name">
@@ -229,14 +228,13 @@
 										Damage buff
 									</label>
 								</span>
-                    <button class="select__btn btn">Apply</button>
+                    <button class="select__btn btn">Submit</button>
                 </div>
             </div>
 
         </div>
 
     </div>
-
 {% endblock maincontent %}
 
 {% block scriptcontent %}

@@ -9,10 +9,28 @@
 {% endblock bgcontainer %}
 {% block maincontent %}
     <main class="main">
+    <h2>На странице с лентой пока не работает вход, голосование и поиск</h2>
     <section class="feed">
+        <form class="feed__search">
+            <input type="search" class="feed__input input" required>
+            <button class="feed__search--btn" type="submit"></button>
+        </form>
+        <div class="feed__sort">
+            <p class="feed__text">Сортировать по
+                <select class="feed__select">
+                    <
+                    <option value="popular" class="feed__option">
+                        популярности
+                    </option>
+                    <option value="date" class="feed__option">
+                        дате
+                    </option>
+                </select>
+            </p>
+        </div>
         {% for post in content %}
             <article class="feed__post">
-                <h2 class="feed__title subtitle">
+                <h2 class="feed__title link subtitle">
                     <a href="/map_{{ post.mapID }}" class="">{{ post.mapTitle }}</a>
                 </h2>
                 <div class="feed__game">
@@ -42,3 +60,4 @@
 {% block scriptcontent %}
     <script type="text/javascript" src={% static "js/scroll.js" %}></script>
 {% endblock scriptcontent %}
+

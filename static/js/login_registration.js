@@ -48,9 +48,23 @@ const burgerBtn = document.querySelector('.header__burger');
 const burgerMenu = document.querySelector('.header__burger--menu');
 
 burgerBtn.addEventListener('click', function () {
-    burgerMenu.classList.toggle('hidden');
+    if (burgerMenu.classList.contains('hidden')) {
+        burgerMenu.classList.remove('hidden');
+    } else {
+        burgerMenu.classList.add('hidden');
+    }
+    ;
 });
 
+document.addEventListener('mouseup', function (e) {
+    if (burgerMenu.classList.contains('hidden') === false) {
+        if (e.target !== burgerMenu) {
+            burgerMenu.classList.add('hidden');
+        }
+        ;
+    }
+    ;
+});
 
 /*
 // инпуты регистрации

@@ -505,13 +505,21 @@ gameBtns.addEventListener('click', function (event) {
 		if (event.target === downBtn) {
 			for (i = 0; i < rowEl.childNodes.length; i++) {
 				if (rowNext !== null && rowEl.childNodes[i].classList.contains('player')) {
-					movePlayer(rowNext.childNodes[i]);
-				}
-				;
-			}
-			;
-		}
-		;
-	}
-	;
+                    movePlayer(rowNext.childNodes[i]);
+                }
+                ;
+            }
+            ;
+        }
+        ;
+    }
+    ;
 })
+
+
+window.addEventListener("keydown", function (e) {
+    // space and arrow keys
+    if ([38, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);

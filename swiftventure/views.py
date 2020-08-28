@@ -2,28 +2,51 @@ import json
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError, HttpResponseBadRequest
-from json import loads
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, LoginFormEng, RegistrationFormEng
 
 from .models import User, Map, Data, Post, Account
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 
-@csrf_protect
-def mainpage(request):
-    output = None
-    url = "Pages/mainpage.html"
-    if (request.COOKIES.get("lang") == "en"):
-        url = "en/" + url
-    if request.method == "POST":
-        output = loginUser(request, url)
-    if output is None:
+def set_render(request, url, isEng, message="", script=["", "", ""], content=""):
+    """
+    Обрабатывает страницу в зависимости от языка возвращает зарендеренную страницу
+
+    :param request: запрос серверу
+    :param url: ссылка
+    :param isEng: страница на английском, в противном случае на русском
+    :param message: сообщение, выводимое на экран
+    :param script: выводит небольшой скрипт, нужный для регистрации пользователя
+    :param content: необходим для построения уникальных данных html страниц, прежде всего лента пользователя
+    """
+    if isEng:
         output = render(request, url,
-                        {"login_form": LoginForm(), "registration_form": RegistrationForm()})
+                        {"login_form": LoginFormEng(),
+                         "registration_form": RegistrationFormEng(), "message": message, "script": script})
+    else:
+        output = render(request, url,
+                        {"login_form": LoginForm(), "registration_form": RegistrationForm(),
+                         "message": message, "script": script})
     return output
 
 
-def loginUser(request, url):
+@csrf_protect
+def mainpage(request):
+    url = "Pages/mainpage.html"
+    isEng = False;
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
+        isEng = True;
+    if request.method == "POST":
+        return loginUser(request, url, isEng)
+    return set_render(request, url, isEng)
+
+
+def loginUser(request, url, isEng):
+    """
+    Обрабатывает введённые пользователем формы регистрации и входа и возвращает сообщения при ошибке или регистрирует пользователя
+
+    """
     loginform = LoginForm(request.POST)
     registrationform = LoginForm(request.POST)
     email = request.POST.get("email")
@@ -33,39 +56,35 @@ def loginUser(request, url):
         if User.objects.filter(name=login).count() == 1:
             user = User.objects.get(name=login)
             if Account.objects.get(user=user).password != password:
-                return HttpResponse(
-                    render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm(),
-                                          "message": "Неправильный пароль/Wrong password"}))
+                return set_render(request, url, isEng, "Неправильный пароль/Wrong password")
             script = ["setUser(", login, ")"]
-            return HttpResponse(render(request, url,
-                                       {"login_form": LoginForm(), "registration_form": RegistrationForm(),
-                                        "script": script,
-                                        "message": "Вход выполнен успешно/Sign up is successful"}))
-        return HttpResponse(render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm(),
-                                                  "message": "Пользователь не найден/User is not found"}))
+            return set_render(request, url, isEng, "Вход выполнен успешно/Sign up is successful", script)
+        return set_render(request, url, isEng, "Пользователь не найден/User is not found")
     elif registrationform.is_valid():
         login = request.POST.get("login")
         password = request.POST.get("password")
         if (User.objects.filter(name=login).count() >= 1):
-            return HttpResponse(
-                render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm(),
-                                      "message": "Данный пользователь уже зарегистрирован/User is already registered"}))
+            return set_render(request, url, isEng, "Данный пользователь уже зарегистрирован/User is already registered")
         if (Account.objects.filter(email=email).count() >= 1):
-            return HttpResponse(
-                render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm(),
-                                      "message": "Данный емайл уже зарегистрирован/Email is already registered"}))
+            return set_render(request, url, isEng, "Данный емайл уже зарегистрирован/Email is already registered")
         user = User.objects.create(name=login)
         Account.objects.create(user=user, password=password, email=email, rating=0.)
         script = ["setUser(", login, ")"]
-        return HttpResponse(
-            render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm(), "script": script,
-                                  "message": "Регистрация успешно завершена/Registration is successful"}))
+        return set_render(request, url, isEng, "Регистрация успешно завершена/Registration is successful")
     else:
-        return None
+        return set_render(request, url, isEng)
 
 
 @csrf_protect
 def scroll(request, page, sort_crit):
+    """
+    Возвращает посты пользователей, взятые из БД
+
+    :param request: запрос серверу
+    :param page: номер страницы ленты
+    :param sort_crit: критерий сортировки: date- по дате, popularity- по популярности
+    :return:
+    """
     output = None
     url = "Pages/scroll.html"
     if (request.COOKIES.get("lang") == "en"):
@@ -77,7 +96,10 @@ def scroll(request, page, sort_crit):
         #                 {"login_form": LoginForm(), "registration_form": RegistrationForm()})
         if sort_crit == "popularity":
             posts = Post.objects.all().order_by('number_of_rate');
-        posts = Post.objects.all().order_by('-post_date');
+        elif sort_crit == "date":
+            posts = Post.objects.all().order_by('-post_date');
+        else:
+            posts = Post.objects.filter(map__map_name__contains=sort_crit);
         content = [];
         count = 0;
         for post in posts:
@@ -96,15 +118,14 @@ def scroll(request, page, sort_crit):
 
 @csrf_protect
 def learn(request):
-    output = None
     url = "Pages/learning.html"
+    isEng = False;
     if (request.COOKIES.get("lang") == "en"):
         url = "en/" + url
+        isEng = True;
     if request.method == "POST":
-        output = loginUser(request, url)
-    if output is None:
-        output = render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm()})
-    return output
+        return loginUser(request, url, isEng)
+    return set_render(request, url, isEng)
 
 
 def account(request):
@@ -113,46 +134,46 @@ def account(request):
 
 @csrf_protect
 def privacy(request):
-    output = None
     url = "Pages/policy.html"
+    isEng = False;
     if (request.COOKIES.get("lang") == "en"):
         url = "en/" + url
+        isEng = True;
     if request.method == "POST":
-        output = loginUser(request, url)
-    if output is None:
-        output = render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm()})
-    return output
+        return loginUser(request, url, isEng)
+    return set_render(request, url, isEng)
 
 
 @csrf_protect
 def agreement(request):
-    output = None
     url = "Pages/agreement.html"
+    isEng = False;
     if (request.COOKIES.get("lang") == "en"):
         url = "en/" + url
+        isEng = True;
     if request.method == "POST":
-        output = loginUser(request, url)
-    if output is None:
-        output = render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm()})
-    return output
+        return loginUser(request, url, isEng)
+    return set_render(request, url, isEng)
 
 
 @csrf_protect
 def construct(request, level):
-    output = None
     url = "Constructor/сreation.html"
+    isEng = False;
     if (request.COOKIES.get("lang") == "en"):
         url = "en/" + url
+        isEng = True;
     if request.method == "POST":
-        output = loginUser(request, url)
-    if output is None:
-        output = render(request, url,
-                        {"login_form": LoginForm(), "registration_form": RegistrationForm()})
-    return output
+        return loginUser(request, url, isEng)
+    return set_render(request, url, isEng)
 
 
 @csrf_exempt
 def submitConstructorData(request):
+    """
+    Заносит данные игры, сделанной пользователем в БД
+
+    """
     if request.method == "POST":
         try:
             name = request.POST.get("user")
@@ -214,20 +235,24 @@ def submitConstructorData(request):
 
 @csrf_protect
 def map(request, mapID):
-    output = None
     url = "Game/game.html"
+    isEng = False;
     if (request.COOKIES.get("lang") == "en"):
         url = "en/" + url
+        isEng = True;
     if request.method == "POST":
-        output = loginUser(request, url)
-    if output is None:
-        output = render(request, url,
-                        {"login_form": LoginForm(), "registration_form": RegistrationForm()})
-    return output
+        return loginUser(request, url, isEng)
+    return set_render(request, url, isEng)
 
 
 @csrf_exempt
 def getGameData(request, mapID, level):
+    """
+    Возврашает данные игры. Соответственно: Имя карты, описание, матрицу символов, общее кол-во уровней, ширину матрицы, длину, символы уровня, их цвета.
+    :param request: запрос на сервер
+    :param mapID: Айди карты с сайта, соответствующий айди в бд
+    :param level: уровень с сайта
+    """
     if request.method == "POST":
         try:
             map = Map.objects.get(id=mapID)

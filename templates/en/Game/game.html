@@ -16,7 +16,7 @@
 
 {% block maincontent %}
     <main class="main">
-    <article class="game">
+    <section class="game">
         <h2 class="game__title subtitle">Game</h2>
         <div class="flex game-content">
             <div class="game__field field unselectable">
@@ -32,21 +32,21 @@
                 </div>
                 <ul class="game__inv">
                     <li class="game__item game__health">
+                        health: <span class="game__health--playerbar"><span class="game__health--player"></span></span>
+                    </li>
+                    <li class="game__item">weapon: <span class="game__weapon">none</span></li>
+                    <li class="game__item game__health">
                         target health:
                         <span class="game__health--targetbar">
 									<span class="game__health--target"></span>
 								</span>
                     </li>
-                    <li class="game__item">weapon: <span class="game__weapon">none</span></li>
-                    <li class="game__item game__health">target health: <span
-                            class="game__health--targetbar hidden"><span
-                            class="game__health--target"></span></span></li>
                 </ul>
                 <div class="game__text">
                 </div>
             </div>
         </div>
-    </article>
+    </section>
 
 {% endblock maincontent %}
 

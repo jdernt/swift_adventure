@@ -513,3 +513,11 @@ gameBtns.addEventListener('click', function (event) {
     }
     ;
 })
+
+
+window.addEventListener("keydown", function (e) {
+    // space and arrow keys
+    if ([38, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);

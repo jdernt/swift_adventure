@@ -27,16 +27,16 @@
 
 @media (max-width: 620px) {
     .mainpage-bg {
-        background: url('img/mainpage_bg_1.svg') 46% 4% no-repeat,
-        url('img/mainpage_bg_2.svg') 8% 96% no-repeat,
-        url('img/mainpage_bg_3.svg') 97% 70% no-repeat,
-        url('img/mainpage_bg_6.svg') 90% 30% no-repeat;
+        background: url('../img/mainpage_bg_1.svg') 46% 4% no-repeat,
+        url('../img/mainpage_bg_2.svg') 8% 96% no-repeat,
+        url('../img/mainpage_bg_3.svg') 97% 80% no-repeat,
+        url('../img/mainpage_bg_6.svg') 90% 30% no-repeat;
         background-color: #000;
     }
 
     .modal__window {
-        background: url('img/auth_bg_2.svg') 2% 70% no-repeat,
-        url('img/auth_bg_4.svg') 98% 21% no-repeat;
+        background: url('../img/auth_bg_2.svg') 2% 70% no-repeat,
+        url('../img/auth_bg_4.svg') 98% 21% no-repeat;
         background-color: #000;
     }
 
@@ -51,13 +51,9 @@
         line-height: 30px;
     }
 
-    .feed {
-        width: 100%;
-    }
-
     .feed-bg {
-        background: url('img/feed_bg_1.svg') 100% 100% no-repeat,
-        url('img/feed_bg_2.svg') 80% 8% no-repeat;
+        background: url('../img/feed_bg_1.svg') 100% 100% no-repeat,
+        url('../img/feed_bg_2.svg') 80% 5% no-repeat;
         background-color: #000;
     }
 }
@@ -121,6 +117,11 @@
         height: 25px;
         font-size: 25px;
         line-height: 25px;
+    }
+
+    .feed__filter {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
