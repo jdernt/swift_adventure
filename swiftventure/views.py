@@ -73,10 +73,22 @@ def scroll(request, page, sort_crit):
     # if request.method == "POST":
     #     output = loginUser(request, url)
     if output is None:
-        Post.objects.order_by('number')
         # output = render(request, url,
-        #                 {"login_form": LoginForm(), "registration_form": RegistrationForm(), "name": names,
-        #                  "date":dates, "count":count}, "mapTitle":mapTitles, "mapDescription": mapDescriptions, "mapID": mapIDs)
+        #                 {"login_form": LoginForm(), "registration_form": RegistrationForm()})
+        if sort_crit == "popularity":
+            posts = Post.objects.all().order_by('number_of_rate');
+        posts = Post.objects.all().order_by('-post_date');
+        content = [];
+        count = 0;
+        for post in posts:
+            post_date = post.post_date
+            count += 1
+            if (count > ((page - 1) * 10) and count <= ((page - 1) * 10 + 10)):
+                content.append({"name": post.map.user.name, "rating": post.number_of_rate, "datetime": post.post_date,
+                                "count": count, "mapTitle": post.map.map_name, "mapDescription": post.description,
+                                "mapID": post.map.id})
+        output = render(request, url,
+                        {"login_form": LoginForm(), "registration_form": RegistrationForm(), "content": content})
     return output
 
 
@@ -94,8 +106,35 @@ def learn(request):
         output = render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm()})
     return output
 
+
 def account(request):
     return HttpResponse("1")
+
+
+@csrf_protect
+def privacy(request):
+    output = None
+    url = "Pages/policy.html"
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
+    if request.method == "POST":
+        output = loginUser(request, url)
+    if output is None:
+        output = render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm()})
+    return output
+
+
+@csrf_protect
+def agreement(request):
+    output = None
+    url = "Pages/agreement.html"
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
+    if request.method == "POST":
+        output = loginUser(request, url)
+    if output is None:
+        output = render(request, url, {"login_form": LoginForm(), "registration_form": RegistrationForm()})
+    return output
 
 
 @csrf_protect
@@ -110,6 +149,7 @@ def construct(request, level):
         output = render(request, url,
                         {"login_form": LoginForm(), "registration_form": RegistrationForm()})
     return output
+
 
 @csrf_exempt
 def submitConstructorData(request):
@@ -206,4 +246,3 @@ def getGameData(request, mapID, level):
             return HttpResponseServerError(str(e))
         else:
             return HttpResponseBadRequest()
-

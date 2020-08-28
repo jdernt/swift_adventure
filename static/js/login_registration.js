@@ -139,6 +139,11 @@ if (getCookie("lang") != undefined) {
     selectLang.value = getCookie("lang");
 }
 
+if (getCookie("user") != undefined) {
+    document.querySelector('.button-sign_up').innerHTML = getCookie("user");
+    document.querySelector('.button-sign_up-in-block').innerHTML = getCookie("user");
+}
+
 selectLang.addEventListener('change', function () {
     setCookie("lang", selectLang.value);
     location.reload();

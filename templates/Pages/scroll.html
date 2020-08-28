@@ -3,52 +3,40 @@
 {% block title %}Scroll{% endblock title %}
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Constructor.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/scroll.css' %}">
 {% endblock style %}
+{% block bgcontainer %}
+    <div class="feed-bg bg-container">
+{% endblock bgcontainer %}
 {% block maincontent %}
-    <br><br><br>
-    <div class="box">
-        <h3>Сортировка по: <br><a href="/scroll/1/sort_popularity" class="header__link link">-Популярности</a> <br>
-            <a href="/scroll/1/sort_date" class="header__link link">-Дате</a></h3>
-    </div>
-    <div class="game">
-        <div class="game1">
-            <h3>никнейм</h3>
+    <main class="main">
+    <section class="feed">
+        {% for post in content %}
+            <article class="feed__post">
+                <h2 class="feed__title subtitle">
+                    <a href="/map_{{ post.mapID }}" class="">{{ post.mapTitle }}</a>
+                </h2>
+                <div class="feed__game">
+                    Автор: {{ post.name }}.
+                    Дата: {{ post.datetime.hour }}:{{ post.datetime.minute }} {{ post.datetime.year }}.
+                    {{ post.datetime.month }}.{{ post.datetime.day }}
+                </div>
+                <p class="feed__text">
+                    {{ post.mapDescription }}
+                </p>
+                <div class="feed__rate">
+                    <button class="feed__btn feed__up"></button>
+                    <div class="feed__count">
+                        {{ post.rating }}
+                    </div>
+                    <button class="feed__btn feed__down"></button>
+                </div>
+            </article>
+        {% endfor %}
+        <div class="feed__buttons">
+            <button class="feed__left feed__btn"></button>
+            <button class="feed__right feed__btn"></button>
         </div>
-        <div class="game1">
-            <h3>дата</h3>
-        </div>
-    </div>
-    <div class="box1">
-        <div class="createGame">
-            <h5>Созданная игра</h5>
-        </div>
-        <div class="box2">
-            <div class="estimation">
-            </div>
-            <span>оцените</span>
-        </div>
-    </div>
-    <div class="game">
-        <div class="game1">
-            <h3>никнейм</h3>
-        </div>
-        <div class="game1">
-            <h3>дата</h3>
-        </div>
-    </div>
-    <div class="box1">
-        <div class="createGame">
-            <h5>Созданная игра</h5>
-        </div>
-        <div class="box2">
-            <div class="estimation">
-            </div>
-            <span>оцените</span>
-        </div>
-    </div>
+    </section>
 {% endblock maincontent %}
 
 {% block scriptcontent %}

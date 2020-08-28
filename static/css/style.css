@@ -134,6 +134,13 @@ body {
     background-color: #000;
 }
 
+.feed-bg {
+    background: url('img/feed_bg_1.svg') 100% 100% no-repeat,
+    url('img/feed_bg_2.svg') 80% 10% no-repeat,
+    url('img/feed_bg_3.svg') 10% 80% no-repeat;
+    background-color: #000;
+}
+
 /* шапка */
 .header__logo {
     padding: 0 33px 40px 57px;
@@ -186,7 +193,6 @@ body {
 }
 
 .header__button--bg {
-    /* padding-top: 6px; */
     width: 84px;
     height: 35px;
     border-radius: 18.9151px;
@@ -256,6 +262,7 @@ body {
     border: 3px solid #40DBD2;
     border-radius: 37px;
     box-shadow: 0px 2px 10px #40DBD2;
+    z-index: 10;
 }
 
 .header__nav--burger {
@@ -388,6 +395,71 @@ body {
     text-indent: 10%;
 }
 
+/* лента */
+.feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 600px;
+    min-height: 100vh;
+}
+
+.feed__post {
+    position: relative;
+}
+
+.feed__rate {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    left: -50px;
+}
+
+.feed__title {
+    margin-left: 10%;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.feed__game {
+    max-width: 570px;
+    max-height: 570px;
+}
+
+.feed__post {
+    margin-bottom: 30px;
+}
+
+.feed__buttons {
+    margin-top: auto;
+}
+
+.feed__btn {
+    width: 20px;
+    height: 20px;
+    background: url('img/arrow.png');
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.feed__left {
+    transform: rotate(90deg);
+}
+
+.feed__right {
+    transform: rotate(-90deg);
+}
+
+.feed__up {
+    transform: rotate(180deg);
+}
+
 /* модальное окно с формами регистрации и входа*/
 .modal {
     position: fixed;
@@ -425,7 +497,8 @@ body {
     margin-top: 10px;
 }
 
-.modal__link:hover {
+.modal__link:hover,
+.footer__link:hover {
     color: var(--title-color);
 }
 

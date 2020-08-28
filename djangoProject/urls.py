@@ -22,13 +22,14 @@ from swiftventure import views
 urlpatterns = [
     path('', views.mainpage),
     path('admin/', admin.site.urls),
-    path('scroll/<int:page>/?sort=<str:sort_crit>', views.scroll),
+    path('scroll/<int:page>/sort=<str:sort_crit>/', views.scroll),
     path('howto/', views.learn),
-    path('login/', djviews.LoginView.as_view(), name='login'),
+    # path('login/', djviews.LoginView.as_view(), name='login'),
     path('construct/level_<int:level>', views.construct),
     path('account/', views.account),
     path('construct/submit', views.submitConstructorData),
     path('map_<int:mapID>', views.map),
     path('map_<int:mapID>/<int:level>/get', views.getGameData),
-
+    path('privacy_policy/', views.privacy),
+    path('user_agreement/', views.agreement),
 ]

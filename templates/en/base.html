@@ -11,9 +11,11 @@
     </title>
     <link rel="stylesheet" href={% static "css/fonts.css" %}>
     <link rel="stylesheet" href={% static "css/normalize.css" %}>
+
     {% block style %}
         <link rel="stylesheet" href={% static "css/style.css" %}>
     {% endblock style %}
+    <link rel="stylesheet" href={% static "css/media.css" %}>
     {% block headcontent %}{% endblock headcontent %}
 </head>
 
@@ -37,7 +39,7 @@
                     <a href="/" class="header__link link">Main</a>
                 </li>
                 <li class="header__item">
-                    <a href="/scroll" class="header__link link">Scroll</a>
+                    <a href="/scroll/1/sort=date/" class="header__link link">Scroll</a>
                 </li>
                 <li class="header__item">
                     <a href="/construct/level_1" class="header__link link">Create</a>
@@ -49,7 +51,7 @@
             <div class="header__button button">
                 <button class="header__button--block button--block">
                 </button>
-                <span class="header__button--bg button--bg">Log in</span>
+                <span class="header__button--bg button--bg button-sign_up">Log in</span>
             </div>
         </nav>
         <div class="header__burger--menu hidden">
@@ -59,10 +61,10 @@
                         <a href="/" class="header__link link">Main</a>
                     </li>
                     <li class="header__item">
-                        <a href="/scroll" class="header__link link">Scroll</a>
+                        <a href="/scroll/1/sort=date/" class="header__link link">Scroll</a>
                     </li>
                     <li class="header__item">
-                        <a href="/construct" class="header__link link">Create</a>
+                        <a href="/construct/level_1" class="header__link link">Create</a>
                     </li>
                     <li class="header__item">
                         <a href="/howto" class="header__link link">How to</a>
@@ -71,7 +73,7 @@
                 <div class="header__button button">
                     <button class="header__button--block button--block">
                     </button>
-                    <span class="header__button--bg button--bg">Log in</span>
+                    <span class="header__button--bg button--bg button-sign_up-in-block">Log in</span>
                 </div>
             </nav>
         </div>
@@ -89,7 +91,7 @@
         <div class="hidden modal__auth modal-flex">
             <h2 class="modal__title subtitle">Registration</h2>
             <a href="" class="modal__link login link">Log in</a>
-            <form class="modal__form form_login flex" method="POST">
+            <form class="modal__form form_registration flex" method="POST">
                 {% csrf_token %}
                 <span class="modal__inputs flex">
                 {% for field in registration_form %}
@@ -106,6 +108,18 @@
                     {% endif %}
                 {% endfor %}
                 </span>
+                <span class="modal__agreement">
+								<input type="checkbox" class="modal__checkbox checkbox" id="agreement" required>
+								<label for="agreement">
+									I agree with terms of
+									<a href="/user_agreement/" class="modal__link modal__agreement--link link">
+										user agreement
+									</a> and
+									<a href="/privacy_policy/" class="modal__link modal__agreement--link link">
+										privacy policy
+									</a>
+								</label>
+                </span>
                 <div class="modal__button auth-btn button">
                     <input class="modal__button--block button--block" type="submit" value="">
                     <span class="modal__button--bg button--bg">Sign up</span>
@@ -113,9 +127,9 @@
             </form>
         </div>
         <div class="modal__login flex modal-flex">
-            <h2 class="modal__title subtitle">Вход</h2>
+            <h2 class="modal__title subtitle">Log in</h2>
             <a href="" class="modal__link auth link">Sign up</a>
-            <form class="modal__form form_registration flex" method="POST">
+            <form class="modal__form form_login flex" method="POST">
                 {% csrf_token %}
                 <span class="modal__inputs flex">
                 {% for field in login_form %}
@@ -131,18 +145,6 @@
                         {% endfor %}
                     {% endif %}
                 {% endfor %}
-                    <span class="modal__agreement">
-								<input type="checkbox" class="modal__checkbox checkbox" id="agreement" required>
-								<label for="agreement">
-									Я принимаю условия
-									<a href="/user_agreement/" class="modal__link modal__agreement--link link">
-										пользовательского соглашения
-									</a> и
-									<a href="/privacy_policy/" class="modal__link modal__agreement--link link">
-										политики конфиденциальности
-									</a>
-								</label>
-                    </span>
                 </span>
                 <div class="about__button modal__button login-btn button">
                     <button class="about__button--block button--block"></button>
