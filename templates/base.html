@@ -9,10 +9,10 @@
             Default title
         {% endblock title %}
     </title>
-    <link rel="stylesheet" href={% static "css/fonts.css" %}>
-    <link rel="stylesheet" href={% static "css/normalize.css" %}>
+    {#    <link rel="stylesheet" href={% static "css/fonts.css" %}>#}
+    {#    <link rel="stylesheet" href={% static "css/normalize.css" %}>#}
     {% block style %}
-        <link rel="stylesheet" href={% static "css/style.css" %}>
+        <link rel="stylesheet" href={% static "css/style.css" %}>#}
     {% endblock style %}
     <link rel="stylesheet" href={% static "css/media.css" %}>
     {% block headcontent %}{% endblock headcontent %}
@@ -38,7 +38,7 @@
                     <a href="/" class="header__link link">Главная</a>
                 </li>
                 <li class="header__item">
-                    <a href="/scroll/1/sort=date/" class="header__link link">Лента</a>
+                    <a href="/scroll/1/sort-date/" class="header__link link">Лента</a>
                 </li>
                 <li class="header__item">
                     <a href="/construct/level_1" class="header__link link">Конструктор</a>
@@ -60,7 +60,7 @@
                         <a href="/" class="header__link link">Главная</a>
                     </li>
                     <li class="header__item">
-                        <a href="/scroll/1/sort=date/" class="header__link link">Лента</a>
+                        <a href="/scroll/1/sort-date/" class="header__link link">Лента</a>
                     </li>
                     <li class="header__item">
                         <a href="/construct/level_1" class="header__link link">Конструктор</a>

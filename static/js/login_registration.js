@@ -145,7 +145,6 @@ function deleteCookie(name) {
     })
 }
 
-
 // переключение языка
 const selectLang = document.querySelector('.footer__select');
 

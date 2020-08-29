@@ -9,9 +9,6 @@
             Default title
         {% endblock title %}
     </title>
-    <link rel="stylesheet" href={% static "css/fonts.css" %}>
-    <link rel="stylesheet" href={% static "css/normalize.css" %}>
-
     {% block style %}
         <link rel="stylesheet" href={% static "css/style.css" %}>
     {% endblock style %}
@@ -39,7 +36,7 @@
                     <a href="/" class="header__link link">Main</a>
                 </li>
                 <li class="header__item">
-                    <a href="/scroll/1/sort=date/" class="header__link link">Scroll</a>
+                    <a href="/scroll/1/sort-date/" class="header__link link">Scroll</a>
                 </li>
                 <li class="header__item">
                     <a href="/construct/level_1" class="header__link link">Create</a>
@@ -61,7 +58,7 @@
                         <a href="/" class="header__link link">Main</a>
                     </li>
                     <li class="header__item">
-                        <a href="/scroll/1/sort=date/" class="header__link link">Scroll</a>
+                        <a href="/scroll/1/sort-date/" class="header__link link">Scroll</a>
                     </li>
                     <li class="header__item">
                         <a href="/construct/level_1" class="header__link link">Create</a>

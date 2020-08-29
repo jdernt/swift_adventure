@@ -1,11 +1,14 @@
+@import 'normalize.css';
+@import 'fonts.css';
+
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 :root {
-	--title-color: #2158E4;
+    --title-color: #2158E4;
 }
 
 body {

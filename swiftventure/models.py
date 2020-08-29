@@ -3,6 +3,8 @@ from django.db import models
 class User(models.Model):
     name = models.CharField(max_length=20, unique=True)
 
+    def __str__(self):
+        return self.name
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
@@ -11,6 +13,8 @@ class Account(models.Model):
     regis_date = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(auto_created=0)
 
+    def __str__(self):
+        return self.user.name
 
 class Map(models.Model):
     id = models.IntegerField(default=0, primary_key=True, )
@@ -18,6 +22,8 @@ class Map(models.Model):
     map_name = models.CharField(max_length=40)  # unique=True
     count_level = models.IntegerField(default=1)
 
+    def __str__(self):
+        return self.map_name
 
 class Post(models.Model):
     map = models.OneToOneField(Map, on_delete=models.CASCADE)
@@ -26,6 +32,8 @@ class Post(models.Model):
     number_of_rate = models.IntegerField(default=0)
     post_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.map.map_name
 
 class m_Player(models.Model):
     map = models.ForeignKey(User, on_delete=models.CASCADE)

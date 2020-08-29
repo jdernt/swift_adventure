@@ -19,8 +19,11 @@ const levelPathname = pathname.split('/')[2];
 // const levelPathname = pathname.split('/')[3]; // для гитхаба
 const level = levelPathname.split('_')[1];
 
-if (level == 1)
+if (level == 1) {
+    localStorage.clear();
     localStorage.setItem("countLevel", 1);
+}
+
 
 function addActiveLink() {
     const levelsLinks = document.querySelectorAll('.levels__link');
