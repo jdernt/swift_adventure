@@ -16,9 +16,12 @@ Swift Adventure - это бесплатный конструктор игр, с 
 
 # Tech
 
-Backend django 3.1 
-Базы данных на SQLite
-Frontend на чистых HTML, CSS/SCSS, JS
+Backend django 3.1.
+
+Базы данных на SQLite.
+
+Frontend на чистых HTML, CSS/SCSS, JS.
+
 Ссылка на фронтентера https://github.com/jdernt/letstry
 
 На сайт можно зайти, связавшись с автором.
