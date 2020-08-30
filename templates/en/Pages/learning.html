@@ -16,54 +16,72 @@
     <main class="main">
     <div class="container">
         <article class="learning">
-            <h2 class="learning__title subtitle">Learning</h2>
+            <h1 class="learning__title subtitle">Learning</h1>
             <div class="learning__block flex">
-                <p class="learning__text">
-                    Before you start creating your own unique game, please read the following
-                    instructions for the constructor functionality. You can create a playing field in our constructor
-                    the desired size (from 6x6 to 16x16), place various elements of the environment on the playing field
-                    so that
-                    how you want it, and also set the color of these elements and their text image.
-                </p>
-                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
+                <ul class="learning__list list">
+                    <li class="learning__text">
+                        Before you start creating your own unique game, we ask you to read a small instruction on the
+                        functionality of the constructor.
+                    </li>
+                    <li class="learning__text">
+                        In our constructor, you can create a game field of the desired size (from 6x6 to 16x16), place
+                        various elements of the environment on the game field as you want, as well as set the color of
+                        these elements and their text image.
+                    </li>
+                </ul>
+                <img src={% static "css/img/create_field.gif" %} alt="Creating a playing field" class="learning__img">
             </div>
             <div class="learning__block flex">
-                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
-                <p class="learning__text">
-                    First, you need to select the size of the playing field. As stated earlier, width and height
-                    the playing field can not be less than 6 or more than 16 cells. After creating the playing field,
-                    you can start
-                    editing it. In the character selection window, you can manually enter the desired character as
-                    which will display the selected items. Next to the character input field, you can also select it
-                    color. In order for your settings to be applied, you need to click the "Apply" button, and then
-                    click
-                    click "Reset", you will reset all settings to their default values.
-                </p>
+                <img src={% static "css/img/edit_field.gif" %} alt="Editing a map" class="learning__img">
+                <ul class="learning__list list">
+                    <li class="learning__text">
+                        First, you need to choose the size of the playing field. As mentioned earlier, the width and
+                        height of the playing field can not be less than 6 or more than 16 cells.
+                    </li>
+                    <li class="learning__text">
+                        To change a cell, just click on it and select the property of this cell in the window that
+                        appears.
+                    </li>
+                    <li class="learning__text">
+                        You can select multiple cells at once that you want to apply the same property to. To deselect
+                        all cells, just click the Escape button, and a second click will reset the selection of a
+                        specific cell.
+                    </li>
+                    <li class="learning__text">
+                        You can't place more than one player, more than one hatch, and more than one buff on the playing
+                        field for HP or damage.
+                    </li>
+                    <li class="learning__text">
+                        If there are more than 3 mobs on the map, you must provide for the presence of a health Potion,
+                        otherwise the player may die and pass the level will be impossible.
+                    </li>
+                </ul>
             </div>
             <div class="learning__block flex">
-                <p class="learning__text">
-                    To change a cell, just click on it and select the property in the window that appears
-                    these are cells. You can select multiple cells at once that you want to apply the same property to.
-                    To
-                    to cancel the selection of all cells, just click the Escape button, and a second click will reset
-                    the selection
-                    a specific cell. You can't place more than one player, more than one hatch, or more on the playing
-                    field
-                    one buff on HP or damage. If there are more than 3 mobs on the map, you must provide
-                    the presence of a health Potion, otherwise the player may die and pass the level will be impossible.
-                    When you finish editing the map, you can choose the level name and description, and then
-                    you must save all your changes by clicking the "Save" button.
-                </p>
-                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
+                <ul class="learning__list list">
+                    <li class="learning__text">
+                        In the character selection window, you can manually enter the desired character to display the
+                        selected elements. Next to the character input field, you can also select its color.
+                    </li>
+                    <li class="learning__text">
+                        In order for your settings to apply, you need to click the "Apply" button, and by clicking the
+                        "Reset" button, you will reset all settings to their default values.
+                    </li>
+                </ul>
+                <img src={% static "css/img/change_symbols.gif" %} alt="Changing symbols" class="learning__img">
             </div>
             <div class="learning__block flex">
-                <img src={% static "css/img/logo.svg" %} alt="" class="learning__img">
-                <p class="learning__text">
-                    After successfully creating your unique first level, you can continue creating your game
-                    and you can also create the following levels. Using the "Add level" button, you can open
-                    access to the following levels. Just be careful when moving from one level to another, everything
-                    unsaved changes will be lost.
-                </p>
+                <img src={% static "css/img/save_field.gif" %} alt="Saving level" class="learning__img">
+                <ul class="learning__list list">
+                    <li class="learning__text">
+                        When you finish editing the map, you can select the level name and description, and then save
+                        all your changes by clicking the "Save" button.
+                    </li>
+                    <li class="learning__text">
+                        You can use the "Add level" button to access the next levels. Just be careful, when you go from
+                        one level to another, all unsaved changes will be lost.
+                    </li>
+                </ul>
             </div>
         </article>
     </div>

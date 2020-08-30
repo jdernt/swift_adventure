@@ -25,7 +25,7 @@ if (level == 1)
 function addActiveLink() {
     const levelsLinks = document.querySelectorAll('.levels__link');
     for (i = 0; i < levelsLinks.length; i++) {
-        if (levelsLinks[i].classList.contains(level.toString())) {
+        if (levelsLinks[i].classList.contains(levelPathname.toString())) {
             levelsLinks[i].classList.add('active-link');
         }
         ;
@@ -174,7 +174,7 @@ const fieldRules = {
 };
 
 const createBtn = document.querySelector('.grid__btn');
-const saveBtn = document.querySelector('.submit__btn');
+const saveBtn = document.querySelector('.submit-btn');
 const mapOptions = document.querySelector('.map__options');
 const symbolsBlock = document.querySelector('.symbols');
 
@@ -343,7 +343,7 @@ document.addEventListener('keydown', function escPress(event) {
 });
 
 // по клику на кнопку в окне выбора символа, ячейкам определенного типа присваивается выбранное значение в виде символа
-const symbolBtn = document.querySelector('.symbols__btn');
+const symbolBtn = document.querySelector('.apply-btn');
 
 function setElements() {
 
@@ -443,7 +443,7 @@ function setElements() {
     setSymbol(damageBuff, 'symbolDamageBuff', damageBuffPlaceholder);
 }
 
-symbolBtn.addEventListener('click', setElements());
+symbolBtn.addEventListener('click', setElements);
 
 //предотвращение изменения названия карты не на 1 уровне
 
@@ -607,13 +607,9 @@ function localData() {
 
     if (playerBlock !== null && lukeBlock !== null) {
         if (mob.length > 3 && potion.length >= 1) {
-            let map = fieldEl.innerHTML;
-            localStorage.setItem(level.toString(), map);
         } else if (mob.length > 3 && potion.length < 1) {
             errorSubmit.classList.remove('hidden');
         } else {
-            let map = fieldEl.innerHTML;
-            localStorage.setItem(level.toString(), map);
         }
         ;
     } else {
@@ -647,11 +643,15 @@ document.addEventListener('keydown', function move(event) {
         function movePlayer(nextElement) {
             if (nextElement.classList.contains('background')) {
                 playerBlock.textContent = bgSym;
+                playerBlock.removeAttribute('style');
                 playerBlock.classList.remove('player');
                 playerBlock.classList.add('background');
+                playerBlock.style.setProperty('--bg-color', localStorage.getItem('bgColor'));
                 nextElement.classList.add('player');
                 nextElement.classList.remove('background');
                 nextElement.textContent = playerSym;
+                nextElement.removeAttribute('style');
+                nextElement.style.setProperty('--player-color', localStorage.getItem('playerColor'));
             }
             ;
         };

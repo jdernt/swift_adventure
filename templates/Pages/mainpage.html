@@ -13,9 +13,9 @@
     <main class="main">
     <article class="about">
         <div class="container flex about-flex">
-            <h2 class="about__title subtitle">
+            <h1 class="about__title subtitle">
                 Об игре
-            </h2>
+            </h1>
             <div class="about__info flex">
                 <p class="about__text">
                     Swift Adventure - это бесплатный конструктор игр, с помощью которого ты сможешь реализовать свои
@@ -26,31 +26,31 @@
                 </p>
                 <ul class="about__list list">
                     <li class="about__item">
-								<span class="about__item--title">
+								<span class="about__item-title">
 									Простые инструменты
 								</span>
-                        <div class="about__item--description">
+                        <div class="about__item-description">
                             Мы сделали конструктор на русском и английском языке, подготовили удобный интерфейс.
-                            <span class="about__item--span">
+                            <span class="about__item-span">
 										Начни изучение с небольшой <a href="/howto/"
                                                                       class="about__link link">инструкции</a>.
 									</span>
                         </div>
                     </li>
                     <li class="about__item">
-								<span class="about__item--title">
+								<span class="about__item-title">
 									Возможности для творчества
 								</span>
-                        <div class="about__item--description">
+                        <div class="about__item-description">
                             Прояви креативность, продумывая персонажей и диалоги, выстраивая захватывающие сюжетные
                             линии.
                         </div>
                     </li>
                     <li class="about__item">
-								<span class="about__item--title">
+								<span class="about__item-title">
 									Публикация и голосование за лучшую игру
 								</span>
-                        <div class="about__item--description">
+                        <div class="about__item-description">
                             Стань частью сообщества создателей игр и делись своими идеями.
                         </div>
                     </li>
@@ -58,12 +58,12 @@
                 <p class="about__text">
                     Скорее регистрируйся, и пусть начнется игра по твоим правилам!
                 </p>
-                <img src={% static "css/img/screenshot.jpg" %} alt="picture" class="about__img">
+                <img src={% static "css/img/mainpage.gif" %} alt="Функционал конструктора" class="about__img">
             </div>
-            <div class="about__button button">
-                <a href="/map_1" class="about__button--block button--block"></a>
-                <span class="about__button--bg button--bg">Играть</span>
-            </div>
+            <a href="/map_1" class="about__button button">
+                <span class="about__button-block button-block"></span>
+                <span class="about__button-bg button-bg">Играть</span>
+            </a>
         </div>
     </article>
 {% endblock maincontent %}

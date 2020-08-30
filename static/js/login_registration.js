@@ -35,7 +35,7 @@ function showModalWindow() {
 headerBtn.forEach(button => button.addEventListener('click', showModalWindow));
 
 modalWindow.addEventListener('click', function (event) {
-    if (event.target === modalWindow || event.target === modalWindowBg) {
+    if (event.target === modalWindow) {
         modalWindow.classList.add('hidden');
         document.body.classList.remove('no-scroll');
     }
@@ -45,26 +45,54 @@ modalWindow.addEventListener('click', function (event) {
 // мобильное меню
 
 const burgerBtn = document.querySelector('.header__burger');
-const burgerMenu = document.querySelector('.header__burger--menu');
+const burgerMenu = document.querySelector('.header__nav');
+
+if (window.innerWidth < 725) {
+    burgerMenu.classList.remove('flex');
+    burgerMenu.classList.add('hidden');
+    document.addEventListener('mouseup', function (e) {
+        // if (e.target === burgerBtn) {
+        // 	return;
+        // } else {
+        if (burgerMenu.classList.contains('flex')) {
+            if (e.target !== burgerBtn && e.target !== burgerMenu) {
+                burgerMenu.classList.add('hidden');
+                burgerMenu.classList.remove('flex');
+            }
+            ;
+        }
+        ;
+        // };
+    });
+}
+;
+
+window.addEventListener('resize', function () {
+    if (window.innerWidth < 725) {
+        burgerMenu.classList.remove('flex');
+        burgerMenu.classList.add('hidden');
+    }
+    ;
+    if (window.innerWidth > 725) {
+        burgerMenu.classList.add('flex');
+        burgerMenu.classList.remove('hidden');
+    }
+    ;
+});
+
+// вызов мобильного меню
 
 burgerBtn.addEventListener('click', function () {
     if (burgerMenu.classList.contains('hidden')) {
         burgerMenu.classList.remove('hidden');
+        burgerMenu.classList.add('flex');
     } else {
         burgerMenu.classList.add('hidden');
+        burgerMenu.classList.remove('flex');
     }
     ;
 });
 
-document.addEventListener('mouseup', function (e) {
-    if (burgerMenu.classList.contains('hidden') === false) {
-        if (e.target !== burgerMenu) {
-            burgerMenu.classList.add('hidden');
-        }
-        ;
-    }
-    ;
-});
 
 /*
 // инпуты регистрации
@@ -152,10 +180,30 @@ if (getCookie("lang") != undefined) {
     selectLang.value = getCookie("lang");
 }
 
-if (getCookie("user") != undefined) {
-    document.querySelector('.button-sign_up').innerHTML = getCookie("user");
-    document.querySelector('.button-sign_up-in-block').innerHTML = getCookie("user");
+function toggleLogin() {
+    if (getCookie("user") != undefined) {
+        const loginBtn = document.querySelector('.header__button');
+        const headerUserName = document.querySelector('.header__username');
+        const logoutBtn = document.querySelector('.header__logout');
+        const userBar = document.querySelector('.header__userbar');
+        const userName = getCookie("user");
+
+        loginBtn.classList.add('hidden');
+        userBar.classList.remove('hidden');
+        userBar.classList.add('flex');
+        headerUserName.textContent = userName;
+
+        logoutBtn.addEventListener('click', function () {
+            userBar.classList.remove('flex');
+            userBar.classList.add('hidden');
+            loginBtn.classList.remove('hidden');
+            deleteCookie("user");
+        });
+    }
+    ;
 }
+
+setTimeout(toggleLogin, 20);
 
 selectLang.addEventListener('change', function () {
     setCookie("lang", selectLang.value);

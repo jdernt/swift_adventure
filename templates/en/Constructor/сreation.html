@@ -28,12 +28,12 @@
         be a health potion. Otherwise, you can't save the level.
     </div>
     <section class="constructor">
-    <h2 class="subtitle">Creation</h2>
+    <h1 class="subtitle">Creation</h1>
     <div class="options">
         <div class="levels">
             <h2 class="levels__text constructor-title">Choose level:</h2>
             <div class="levels__nav">
-                <a href="" class="levels__link level-1" onclick="return question()">Level 1</a>
+                <a href="" class="levels__link level_1" onclick="return question()">Level 1</a>
             </div>
         </div>
         <div class="grid">
@@ -60,7 +60,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input wall-symbol input" maxlength="1"
                                            placeholder="#">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input wall-color" value="#9c9c9c">
 									</span>
 								</span>
@@ -70,7 +70,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input mob-symbol input" maxlength="1"
                                            placeholder="m">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input mob-color" value="#f5c542">
 									</span>
 								</span>
@@ -80,7 +80,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input bg-symbol input" maxlength="1"
                                            placeholder=".">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input bg-color" value="#3a3a3a">
 									</span>
 								</span>
@@ -90,7 +90,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input player-symbol input" maxlength="1"
                                            placeholder="@">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input player-color" value="#00bdb3">
 									</span>
 								</span>
@@ -100,7 +100,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input weapon-symbol input" maxlength="1"
                                            placeholder="&">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input weapon-color" value="#a14fe4">
 									</span>
 								</span>
@@ -110,7 +110,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input luke-symbol input" maxlength="1"
                                            placeholder="%">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input luke-color" value="#df731b">
 									</span>
 								</span>
@@ -120,7 +120,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input potion-symbol input" maxlength="1"
                                            placeholder="U">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input potion-color" value="#df1b2b">
 									</span>
 								</span>
@@ -130,7 +130,7 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input hp-buff-symbol input" maxlength="1"
                                            placeholder="h">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input hp-buff-color" value="#69df1b">
 									</span>
 								</span>
@@ -140,14 +140,14 @@
                     <span class="symbols__inputs">
 									<input type="text" class="symbols__input damage-buff-symbol input" maxlength="1"
                                            placeholder="d">
-									<span class="symbols__inputs--color">
+									<span class="symbols__inputs-color">
 										<input type="color" class="color-input damage-buff-color" value="#7f56f1">
 									</span>
 								</span>
                 </li>
             </ul>
             <span class="symbols__buttons">
-							<button class="symbols__btn btn">Submit</button>
+							<button class="symbols__btn apply-btn btn">Submit</button>
 							<button class="symbols__btn clear-btn btn">Reset</button></span>
         </div>
     </div>
@@ -156,7 +156,7 @@
         <div class="map__field field unselectable">
         </div>
         <div class="map__options hidden">
-            <div class="map__options--form">
+            <div class="map__options-form">
 							<span class="map__span">
 								<label class="map__label">Title</label>
 								<input type="text" class="map__input map__title input">
@@ -167,7 +167,7 @@
 								<textarea name="description" class="map__input map__description"></textarea>
 
 							</span>
-                <button class="map__btn submit__btn btn" onclick="sendData()" id="matrix_send_btn">Save</button>
+                <button class="map__btn submit-btn btn" onclick="sendData()" id="matrix_send_btn">Save</button>
             </div>
             <div class="map__select select hidden">
                 <h2 class="select__text constructor-title">Select property</h2>

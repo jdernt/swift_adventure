@@ -13,9 +13,9 @@
     <main class="main">
     <article class="about">
         <div class="container flex about-flex">
-            <h2 class="about__title subtitle">`
+            <h1 class="about__title subtitle">`
                 Swift Adventure
-            </h2>
+            </h1>
             <div class="about__info flex">
                 <p class="about__text">
                     Swift Adventure - this is a free game designer that you can use to implement your big and small
@@ -26,29 +26,29 @@
                 </p>
                 <ul class="about__list list">
                     <li class="about__item">
-								<span class="about__item--title">
+								<span class="about__item-title">
                                 Simple tool
                                 </span>
-                        <div class="about__item--description">
+                        <div class="about__item-description">
                             We have made a constructor in Russian and English, and prepared a user-friendly interface.
-                            <span class="about__item--span">
+                            <span class="about__item-span">
 										Start the study with a small <a href="/howto/" class="about__link link">instruction</a>.
 									</span>
                         </div>
                     </li>
                     <li class="about__item">
-								<span class="about__item--title">
+								<span class="about__item-title">
 									Large borders for creativity
 								</span>
-                        <div class="about__item--description">
+                        <div class="about__item-description">
                             Be creative, thinking through characters and dialogues, building exciting storylines.
                         </div>
                     </li>
                     <li class="about__item">
-								<span class="about__item--title">
+								<span class="about__item-title">
 									Publish and vote for the best game
 								</span>
-                        <div class="about__item--description">
+                        <div class="about__item-description">
                             Become a part of the community of game creators and share your ideas.
                         </div>
                     </li>
@@ -56,12 +56,12 @@
                 <p class="about__text">
                     Register soon, and let the game begin according to your rules!
                 </p>
-                <img src={% static "css/img/screenshot.jpg" %} alt="picture" class="about__img">
+                <img src={% static "css/img/mainpage.gif" %} alt="picture" class="about__img">
             </div>
-            <div class="about__button button">
-                <a href="/map_1" class="about__button--block button--block"></a>
-                <span class="about__button--bg button--bg">Play</span>
-            </div>
+            <a href="/map_1" class="about__button button">
+                <span class="about__button-block button-block"></span>
+                <span class="about__button-bg button-bg">Play</span>
+            </a>
         </div>
     </article>
 {% endblock maincontent %}

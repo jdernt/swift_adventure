@@ -1,4 +1,4 @@
-{% extends "en/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block title %}Scroll{% endblock title %}
 {% block style %}
@@ -10,25 +10,7 @@
 {% block maincontent %}
     <main class="main">
     <section class="feed">
-        <h1 class="feed__title subtitle visually-hidden">Feed</h1>
-        <div class="feed__filter">
-            <form class="feed__search" onsubmit="return false;">
-                <input type="search" class="feed__input input" required>
-                <button class="feed__search-btn" type="submit"></button>
-            </form>
-            <div class="feed__sort">
-                <p class="feed__text">Sort by
-                    <select class="feed__select">
-                        <option value="popular" class="feed__option">
-                            popularity
-                        </option>
-                        <option value="date" class="feed__option">
-                            date
-                        </option>
-                    </select>
-                </p>
-            </div>
-        </div>
+        <h1 class="terms__title subtitle">{{ user }} Rating={{ rating }}</h1>
         {% for post in content %}
             <article class="feed__post">
                 <h2 class="feed__title link subtitle">
@@ -51,14 +33,9 @@
                 </div>
             </article>
         {% endfor %}
-        <div class="feed__buttons">
-            <button class="feed__left feed__btn"></button>
-            <button class="feed__right feed__btn"></button>
-        </div>
     </section>
 {% endblock maincontent %}
 
 {% block scriptcontent %}
-    <script type="text/javascript" src={% static "js/scroll.js" %}></script>
 {% endblock scriptcontent %}
 

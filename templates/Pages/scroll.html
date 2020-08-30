@@ -10,11 +10,11 @@
 {% block maincontent %}
     <main class="main">
     <section class="feed">
-        <h2 class="feed__title subtitle visually-hidden">Лента созданных игр</h2>
+        <h1 class="feed__title subtitle visually-hidden">Лента созданных игр</h1>
         <div class="feed__filter">
-            <form class="feed__search" onsubmit="return false">
+            <form class="feed__search" onsubmit="return false;">
                 <input type="search" class="feed__input input" required>
-                <button class="feed__search--btn" type="submit"></button>
+                <button class="feed__search-btn" type="submit"></button>
             </form>
             <div class="feed__sort">
                 <p class="feed__text">Сортировать по
@@ -32,7 +32,7 @@
         {% for post in content %}
             <article class="feed__post">
                 <h2 class="feed__title link subtitle">
-                    <a href="/map_{{ post.mapID }}" class="link">{{ post.mapTitle }}</a>
+                    <a href="/map_{{ post.mapID }}" class="feed__link link">{{ post.mapTitle }}</a>
                 </h2>
                 <div class="feed__game">
                     Автор: {{ post.name }}.

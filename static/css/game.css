@@ -31,12 +31,12 @@
 }
 
 .game-content {
-    max-width: 880px;
+    width: 100%;
+    max-width: 900px;
     margin: 0 auto;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20px;
 }
 
 .game__buttons {
@@ -47,7 +47,7 @@
     margin-right: auto;
 }
 
-.game__buttons--x {
+.game__buttons-x {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -98,28 +98,28 @@
 
 }
 
-.game__health--playerbar {
+.game__health-playerbar {
     display: inline-block;
     width: 180px;
     height: 15px;
     background-color: #fff;
 }
 
-.game__health--player {
+.game__health-player {
     display: inline-block;
     width: 180px;
     height: 100%;
     background-color: var(--health-color);
 }
 
-.game__health--targetbar {
+.game__health-targetbar {
     display: inline-block;
     width: 80px;
     height: 15px;
     background-color: #fff;
 }
 
-.game__health--target {
+.game__health-target {
     display: inline-block;
     width: 80px;
     height: 100%;

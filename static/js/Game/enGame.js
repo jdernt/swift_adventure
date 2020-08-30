@@ -2,8 +2,8 @@ const fieldEl = document.querySelector('.field');
 
 const textBlock = document.querySelector('.game__text');
 const sword = document.querySelector('.game__weapon');
-const healthPlayer = document.querySelector('.game__health--player');
-const healthTarget = document.querySelector('.game__health--target');
+const healthPlayer = document.querySelector('.game__health-player');
+const healthTarget = document.querySelector('.game__health-target');
 const notice = document.querySelector('.notice');
 // характеристики
 let maxHpPlayer = 180;
@@ -139,6 +139,17 @@ function createField(columns, rows) {
         fieldEl.appendChild(rowEl);
     }
 
+    let wall = document.querySelectorAll('.wall');
+    let mob = document.querySelectorAll('.mob');
+    let background = document.querySelectorAll('.background');
+    let player = document.querySelectorAll('.player');
+    let weapon = document.querySelectorAll('.weapon');
+    let luke = document.querySelectorAll('.luke');
+    let potion = document.querySelectorAll('.potion');
+    let hpBuff = document.querySelectorAll('.hp-buff');
+    let damageBuff = document.querySelectorAll('.damage-buff');
+
+
     setColor(wall, '--wall-color', 'wallColor');
     setColor(mob, '--mob-color', 'mobColor');
     setColor(background, '--bg-color', 'bgColor');
@@ -204,8 +215,12 @@ document.addEventListener('keydown', function move(event) {
         function changeClass(element, nextElement) {
             playerBlock.textContent = bgSym;
             playerBlock.classList.remove('player');
+            playerBlock.removeAttribute('style');
             playerBlock.classList.add('background');
+            setColor([playerBlock], '--bg-color', 'bgColor');
             nextElement.classList.add('player');
+            nextElement.removeAttribute('style');
+            setColor([nextElement], '--player-color', 'playerColor');
             nextElement.classList.remove(element);
             nextElement.textContent = playerSym;
         };
@@ -228,7 +243,6 @@ document.addEventListener('keydown', function move(event) {
             }
             ;
             if (nextElement.classList.contains('mob')) {
-                const targetBar = document.querySelector('.game__health--targetbar');
                 if (sword.textContent === 'sword') {
                     console.log(PlayerHP);
                     if (PlayerHP < 5) {
@@ -396,7 +410,6 @@ gameBtns.addEventListener('click', function (event) {
             }
             ;
             if (nextElement.classList.contains('mob')) {
-                const targetBar = document.querySelector('.game__health--targetbar');
                 if (sword.textContent === 'sword') {
                     console.log(PlayerHP);
                     if (PlayerHP < 5) {

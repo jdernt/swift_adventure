@@ -89,18 +89,18 @@ def scroll(request, page, sort_crit):
     :return:
     """
     url = "Pages/scroll.html"
-    isEng = False;
+    isEng = False
     if (request.COOKIES.get("lang") == "en"):
         url = "en/" + url
-        isEng = True;
+        isEng = True
     if sort_crit == "popularity":
-        posts = Post.objects.all().order_by('-number_of_rate');
+        posts = Post.objects.all().order_by('-number_of_rate')
     elif sort_crit == "date":
-        posts = Post.objects.all().order_by('-post_date');
+        posts = Post.objects.all().order_by('-post_date')
     else:
-        posts = Post.objects.filter(map__map_name__contains=sort_crit);
-    content = [];
-    count = 0;
+        posts = Post.objects.filter(map__map_name__contains=sort_crit)
+    content = []
+    count = 0
     for post in posts:
         post_date = post.post_date
         count += 1
@@ -148,7 +148,42 @@ def learn(request):
 
 
 def account(request):
-    return HttpResponse("1")
+    url = "Pages/account.html"
+    isEng = False
+    if (request.COOKIES.get("lang") == "en"):
+        url = "en/" + url
+        isEng = True;
+    if (User.objects.filter(name=request.COOKIES.get("user")).count() != 1):
+        url = "Pages/mainpage.html"
+        if (request.COOKIES.get("lang") == "en"):
+            url = "en/" + url
+            isEng = True;
+        return set_render(request, url, isEng)
+    user = User.objects.get(name=request.COOKIES.get("user"))
+    acc = Account.objects.get(user=user)
+    maps = Map.objects.filter(user=user)
+    posts = []
+    for map in maps:
+        posts.append(map.post);
+    # posts.order_by('-post_date')
+    content = [];
+    count = 0;
+    for post in posts:
+        post_date = post.post_date
+        count += 1
+        if (count > 0) and (count <= 10):
+            content.append({"name": post.map.user.name, "rating": post.number_of_rate, "datetime": post.post_date,
+                            "count": count, "mapTitle": post.map.map_name, "mapDescription": post.description,
+                            "mapID": post.map.id})
+    if isEng:
+        output = render(request, url,
+                        {"login_form": LoginFormEng(), "registration_form": RegistrationFormEng(),
+                         "user": user.name, "rating": acc.rating, "content": content})
+    else:
+        output = render(request, url,
+                        {"login_form": LoginForm(), "registration_form": RegistrationForm(),
+                         "user": user.name, "rating": acc.rating, "content": content})
+    return output
 
 
 @csrf_protect

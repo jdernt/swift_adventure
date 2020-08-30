@@ -25,14 +25,11 @@
 <header class="header">
     <div class="container flex header__flex">
         <div class="header__logo">
-            <h1 class="header__title subtitle visually-hidden">
-                SWIFT ADVENTURE
-            </h1>
             <a href="/">
-                <img src={% static "css/img/logo.svg" %} alt="logo" class="header__img">
+                <img src={% static "css/img/logo.svg" %} alt="Swift Adventure" class="header__img">
             </a>
         </div>
-        <nav class="header__nav">
+        <nav class="header__nav flex">
             <ul class="header__list list flex">
                 <li class="header__item">
                     <a href="/" class="header__link link">Главная</a>
@@ -47,39 +44,21 @@
                     <a href="/howto" class="header__link link">Обучение</a>
                 </li>
             </ul>
-            <div class="header__button button">
-                <button class="header__button--block button--block">
-                </button>
-                <span class="header__button--bg button--bg button-sign_up">Вход</span>
+            <button class="header__button button">
+                <span class="header__button-block button-block">
+                </span>
+                <span class="header__button-bg button-bg button-sign_up">Вход</span>
+            </button>
+            <div class="header__userbar hidden">
+                <a href="/account" class="header__username link"></a>
+                <button class="header__logout"></button>
             </div>
         </nav>
-        <div class="header__burger--menu hidden">
-            <nav class="header__nav--burger flex">
-                <ul class="header__list--burger list flex">
-                    <li class="header__item">
-                        <a href="/" class="header__link link">Главная</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="/scroll/1/sort-date/" class="header__link link">Лента</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="/construct/level_1" class="header__link link">Конструктор</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="/howto" class="header__link link">Обучение</a>
-                    </li>
-                </ul>
-                <div class="header__button button">
-                    <button class="header__button--block button--block">
-                    </button>
-                    <span class="header__button--bg button--bg button-sign_up-in-block">Вход</span>
-                </div>
-            </nav>
-        </div>
+
         <div class="header__burger">
-            <span class="header__burger--line top-line"></span>
-            <span class="header__burger--line middle-line"></span>
-            <span class="header__burger--line bottom-line"></span>
+            <span class="header__burger-line top-line"></span>
+            <span class="header__burger-line middle-line"></span>
+            <span class="header__burger-line bottom-line"></span>
         </div>
     </div>
 </header>
@@ -90,11 +69,11 @@
         <div class="hidden modal__auth modal-flex">
             <h2 class="modal__title subtitle">Регистрация</h2>
             <a href="" class="modal__link login link">Войти</a>
-            <form class="modal__form form_registration flex" method="POST">
+            <form class="modal__form form__registration flex" method="POST">
                 {% csrf_token %}
                 <span class="modal__inputs flex">
                 {% for field in registration_form %}
-                    <span class="modal__form--block">
+                    <span class="modal__form-block">
                     {{ field }}
                     <label class="modal__label">{{ field.label }}</label>
                     </span>
@@ -111,28 +90,28 @@
 								<input type="checkbox" class="modal__checkbox checkbox" id="agreement" required>
 								<label for="agreement">
 									Я принимаю условия
-									<a href="/user_agreement/" class="modal__link modal__agreement--link link">
+									<a href="/user_agreement/" class="modal__link modal__agreement-link link">
 										пользовательского соглашения
 									</a> и
-									<a href="/privacy_policy/" class="modal__link modal__agreement--link link">
+									<a href="/privacy_policy/" class="modal__link modal__agreement-link link">
 										политики конфиденциальности
 									</a>
 								</label>
                 </span>
-                <div class="modal__button auth-btn button">
-                    <input class="modal__button--block button--block" type="submit" value="">
-                    <span class="modal__button--bg button--bg">Зарегистрироваться</span>
-                </div>
+                <button class="modal__button auth-btn button" type="submit">
+                    <span class="modal__button-block button-block"></span>
+                    <span class="modal__button-bg button-bg">Зарегистрироваться</span>
+                </button>
             </form>
         </div>
         <div class="modal__login flex modal-flex">
             <h2 class="modal__title subtitle">Вход</h2>
             <a href="" class="modal__link auth link">Зарегистрироваться</a>
-            <form class="modal__form form_login flex" method="POST">
+            <form class="modal__form form__login flex" method="POST">
                 {% csrf_token %}
                 <span class="modal__inputs flex">
                 {% for field in login_form %}
-                    <span class="modal__form--block">
+                    <span class="modal__form-block">
                     {{ field }}
                     <label class="modal__label">{{ field.label }}</label>
                     </span>
@@ -145,10 +124,10 @@
                     {% endif %}
                 {% endfor %}
                 </span>
-                <div class="about__button modal__button login-btn button">
-                    <button class="about__button--block button--block"></button>
-                    <span class="about__button--bg button--bg">Играть</span>
-                </div>
+                <button class="modal__button login-btn button" type="submit">
+                    <span class="modal__button-block button-block"></span>
+                    <span class="modal__button-bg button-bg">Играть</span>
+                </button>
             </form>
         </div>
     </div>
@@ -176,9 +155,9 @@
 </footer>
 </div>
 <script type="text/javascript" src={% static "js/login_registration.js" %}></script>
+<script type="text/javascript">{{ script.0 }}"{{ script.1 }}"{{ script.2 }}</script>
 {% block scriptcontent %}
 {% endblock scriptcontent %}
-<script type="text/javascript">{{ script.0 }}"{{ script.1 }}"{{ script.2 }}</script>
 <script type="text/javascript">message = "{{ message }}";
 if (message != "") alert(message)</script>
 </body>

@@ -2,8 +2,8 @@ const fieldEl = document.querySelector('.field');
 
 const textBlock = document.querySelector('.game__text');
 const sword = document.querySelector('.game__weapon');
-const healthPlayer = document.querySelector('.game__health--player');
-const healthTarget = document.querySelector('.game__health--target');
+const healthPlayer = document.querySelector('.game__health-player');
+const healthTarget = document.querySelector('.game__health-target');
 const notice = document.querySelector('.notice');
 // характеристики
 let maxHpPlayer = 180;
@@ -20,15 +20,6 @@ let swordDamageMin = 25;
 let mobDamageMax = 12;
 let mobDamageMin = 8;
 
-const wall = document.querySelectorAll('.wall');
-const mob = document.querySelectorAll('.mob');
-const background = document.querySelectorAll('.background');
-const player = document.querySelectorAll('.player');
-const weapon = document.querySelectorAll('.weapon');
-const luke = document.querySelectorAll('.luke');
-const potion = document.querySelectorAll('.potion');
-const hpBuff = document.querySelectorAll('.hp-buff');
-const damageBuff = document.querySelectorAll('.damage-buff');
 
 function setColor(element, variable, elementColor) {
     for (i = 0; i < element.length; i++) {
@@ -130,24 +121,34 @@ function createField(columns, rows) {
         for (let j = 0; j < columns; j++) {
             const cellEl = document.createElement('div');
 			cellEl.classList.add('cell-no-border');
-            var index = matrix[i * m_width + j];
-            cellEl.classList.add(cl_list_tokens[Number.parseInt(index)]);
-            var symbol = matrixOfSymbols[i][j];
-            cellEl.textContent = symbol;
-            rowEl.appendChild(cellEl);
-        }
-        fieldEl.appendChild(rowEl);
-    }
+			var index = matrix[i * m_width + j];
+			cellEl.classList.add(cl_list_tokens[Number.parseInt(index)]);
+			var symbol = matrixOfSymbols[i][j];
+			cellEl.textContent = symbol;
+			rowEl.appendChild(cellEl);
+		}
+		fieldEl.appendChild(rowEl);
+	}
 
-    setColor(wall, '--wall-color', 'wallColor');
-    setColor(mob, '--mob-color', 'mobColor');
-    setColor(background, '--bg-color', 'bgColor');
-    setColor(player, '--player-color', 'playerColor');
-    setColor(weapon, '--weapon-color', 'weaponColor');
-    setColor(luke, '--luke-color', 'lukeColor');
-    setColor(potion, '--potion-color', 'potionColor');
-    setColor(hpBuff, '--hp-buff-color', 'hpBuffColor');
-    setColor(damageBuff, '--damage-buff-color', 'damageBuffColor');
+	let wall = document.querySelectorAll('.wall');
+	let mob = document.querySelectorAll('.mob');
+	let background = document.querySelectorAll('.background');
+	let player = document.querySelectorAll('.player');
+	let weapon = document.querySelectorAll('.weapon');
+	let luke = document.querySelectorAll('.luke');
+	let potion = document.querySelectorAll('.potion');
+	let hpBuff = document.querySelectorAll('.hp-buff');
+	let damageBuff = document.querySelectorAll('.damage-buff');
+
+	setColor(wall, '--wall-color', 'wallColor');
+	setColor(mob, '--mob-color', 'mobColor');
+	setColor(background, '--bg-color', 'bgColor');
+	setColor(player, '--player-color', 'playerColor');
+	setColor(weapon, '--weapon-color', 'weaponColor');
+	setColor(luke, '--luke-color', 'lukeColor');
+	setColor(potion, '--potion-color', 'potionColor');
+	setColor(hpBuff, '--hp-buff-color', 'hpBuffColor');
+	setColor(damageBuff, '--damage-buff-color', 'damageBuffColor');
 };
 
 
@@ -203,9 +204,13 @@ document.addEventListener('keydown', function move(event) {
 // условия взаимодействия с разными объектами
 		function changeClass(element, nextElement) {
 			playerBlock.textContent = bgSym;
+			playerBlock.removeAttribute('style');
 			playerBlock.classList.remove('player');
 			playerBlock.classList.add('background');
+			setColor([playerBlock], '--bg-color', 'bgColor');
 			nextElement.classList.add('player');
+			nextElement.removeAttribute('style');
+			setColor([nextElement], '--player-color', 'playerColor');
 			nextElement.classList.remove(element);
 			nextElement.textContent = playerSym;
 		};
@@ -228,7 +233,7 @@ document.addEventListener('keydown', function move(event) {
 			}
 			;
 			if (nextElement.classList.contains('mob')) {
-				const targetBar = document.querySelector('.game__health--targetbar');
+				const targetBar = document.querySelector('.game__health-targetbar');
 				if (sword.textContent === 'sword') {
 					console.log(PlayerHP);
 					if (PlayerHP < 5) {
@@ -398,7 +403,7 @@ gameBtns.addEventListener('click', function (event) {
 			}
 			;
 			if (nextElement.classList.contains('mob')) {
-				const targetBar = document.querySelector('.game__health--targetbar');
+				const targetBar = document.querySelector('.game__health-targetbar');
 				if (sword.textContent === 'sword') {
 					console.log(PlayerHP);
 					if (PlayerHP < 5) {

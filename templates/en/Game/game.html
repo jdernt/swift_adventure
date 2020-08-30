@@ -17,14 +17,14 @@
 {% block maincontent %}
     <main class="main">
     <section class="game">
-        <h2 class="game__title subtitle">Game</h2>
+        <h1 class="game__title subtitle">Game</h1>
         <div class="flex game-content">
             <div class="game__field field unselectable">
             </div>
             <div>
-                <div class="game__buttons flex">
+                <div class="game__buttons flex unselectable">
                     <button class="game__button up-btn">UP</button>
-                    <span class="game__buttons--x">
+                    <span class="game__buttons-x">
 								<button class="game__button left-btn">Left</button>
 								<button class="game__button right-btn">Right</button>
 							</span>
@@ -32,13 +32,13 @@
                 </div>
                 <ul class="game__inv">
                     <li class="game__item game__health">
-                        health: <span class="game__health--playerbar"><span class="game__health--player"></span></span>
+                        health: <span class="game__health-playerbar"><span class="game__health-player"></span></span>
                     </li>
                     <li class="game__item">weapon: <span class="game__weapon">none</span></li>
                     <li class="game__item game__health">
                         target health:
-                        <span class="game__health--targetbar">
-									<span class="game__health--target"></span>
+                        <span class="game__health-targetbar">
+									<span class="game__health-target"></span>
 								</span>
                     </li>
                 </ul>
