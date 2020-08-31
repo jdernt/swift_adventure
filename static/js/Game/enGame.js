@@ -383,14 +383,18 @@ gameBtns.addEventListener('click', function (event) {
         textBlock.scrollTop = textBlock.scrollHeight;
 
 // условия взаимодействия с разными объектами
-        function changeClass(element, nextElement) {
-            playerBlock.textContent = bgSym;
-            playerBlock.classList.remove('player');
-            playerBlock.classList.add('background');
-            nextElement.classList.add('player');
-            nextElement.classList.remove(element);
-            nextElement.textContent = playerSym;
-        };
+       function changeClass(element, nextElement) {
+           playerBlock.textContent = bgSym;
+           playerBlock.classList.remove('player');
+           playerBlock.removeAttribute('style');
+           playerBlock.classList.add('background');
+           setColor([playerBlock], '--bg-color', 'bgColor');
+           nextElement.classList.add('player');
+           nextElement.removeAttribute('style');
+           setColor([nextElement], '--player-color', 'playerColor');
+           nextElement.classList.remove(element);
+           nextElement.textContent = playerSym;
+       };
 
         function movePlayer(nextElement) {
             if (nextElement.classList.contains('background')) {
@@ -400,11 +404,11 @@ gameBtns.addEventListener('click', function (event) {
             if (nextElement.classList.contains('potion')) {
                 changeClass('potion', nextElement);
                 setNewPlayerHP(maxHpPlayer);
-                textBlock.insertAdjacentHTML('beforeend', `<p>Ваше здоровье восстановлено</p><br>`);
+                textBlock.insertAdjacentHTML('beforeend', `<p>Your health is restored</p><br>`);
             }
             ;
             if (nextElement.classList.contains('weapon')) {
-                textBlock.insertAdjacentHTML('beforeend', `<p>Поздравляю, вы нашли оружие! Теперь оно отображается в вашем инвентаре и вы можете постоять за себя!</p><br>`);
+                textBlock.insertAdjacentHTML('beforeend', `<p>Congratulations, you found the weapon! Now it is displayed in your inventory and you can stand up for yourself!</p><br>`);
                 changeClass('weapon', nextElement);
                 sword.textContent = 'sword';
             }
@@ -413,7 +417,7 @@ gameBtns.addEventListener('click', function (event) {
                 if (sword.textContent === 'sword') {
                     console.log(PlayerHP);
                     if (PlayerHP < 5) {
-                        textBlock.insertAdjacentHTML('beforeend', `<br><p>Вы убиты<a href="" class="game__link reload" onclick="reload()">[Начать заново]</a></p>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<br><p>Death has come for you<a href="" class="game__link reload" onclick="reload()">[Начать заново]</a></p>`);
                         playerBlock.textContent = bgSym;
                         playerBlock.classList.remove('player');
                         playerBlock.classList.add('background');
@@ -426,17 +430,17 @@ gameBtns.addEventListener('click', function (event) {
                         const outerDamage = getRandom(swordDamageMin, swordDamageMax);
                         setNewTargetHP(TargetHP - outerDamage < 0 ? 0 : TargetHP - outerDamage);
 
-                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Нанесено ${outerDamage} урона</p>`);
-                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Получено ${innerDamage} урона</p>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Done ${outerDamage} damage</p>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Received ${innerDamage} damage</p>`);
                     } else {
                         changeClass('mob', nextElement);
-                        textBlock.insertAdjacentHTML('beforeend', `<br><p>Вы убили моба</p><br>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<br><p>The monster is slayed</p><br>`);
                         setNewTargetHP(maxHpTarget);
                     }
                     ;
                 } else {
                     if (PlayerHP < 5) {
-                        textBlock.insertAdjacentHTML('beforeend', `<br><p>Вы убиты<a href="" class="game__link reload" onclick="reload()">[Начать заново]</a></p>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<br><p>Death has come for you<a href="" class="game__link reload" onclick="reload()">[Начать заново]</a></p>`);
                         playerBlock.textContent = bgSym;
                         playerBlock.classList.remove('player');
                         playerBlock.classList.add('background');
@@ -449,11 +453,11 @@ gameBtns.addEventListener('click', function (event) {
                         const outerDamage = getRandom(playerDamageMin, playerDamageMax);
                         setNewTargetHP(TargetHP - outerDamage < 0 ? 0 : TargetHP - outerDamage);
 
-                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Нанесено ${outerDamage} урона</p>`);
-                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Получено ${innerDamage} урона</p>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Done ${outerDamage} damage</p>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<p class="damage">Received ${innerDamage} damage</p>`);
                     } else {
                         changeClass('mob', nextElement);
-                        textBlock.insertAdjacentHTML('beforeend', `<br><p>Вы убили моба</p><br>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<br><p>The monster is slayed</p><br>`);
                         setNewTargetHP(maxHpTarget);
                     }
                     ;
@@ -464,14 +468,14 @@ gameBtns.addEventListener('click', function (event) {
             if (nextElement.classList.contains('luke')) {
                 const mobs = document.querySelectorAll('.mob')
                 if (mobs.length > 0) {
-                    textBlock.insertAdjacentHTML('beforeend', `<br><p>Вы не можете перейти на следующий уровень, пока не убьете всех мобов</p><br>`);
+                    textBlock.insertAdjacentHTML('beforeend', `<br><p>You can't go to the next level until you kill all the mobs</p><br>`);
                 } else {
-                    count = count + 1;
-                    level = 'level' + '-' + count;
-                    if (localStorage.getItem(level.toString()) !== null) {
-                        createField(level);
+                    current_level = current_level + 1;
+                    level = 'level' + '-' + current_level;
+                    if (current_level <= count_level) {
+                        getData();
                     } else {
-                        textBlock.insertAdjacentHTML('beforeend', `<br><p>Это был последний уровень.</p>`);
+                        textBlock.insertAdjacentHTML('beforeend', `<br><p>This was the last level. Congratulations on your victory!</p>`);
                     }
                     ;
                 }
