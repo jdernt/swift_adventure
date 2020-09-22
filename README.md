@@ -22,8 +22,6 @@ Backend django 3.1.
 
 Frontend на чистых HTML, CSS/SCSS, JS.
 
-Ссылка на фронтентера https://github.com/jdernt/letstry
-
 На сайт можно зайти, связавшись с автором.
 
 ![Screenshot_3.png](https://www.dropbox.com/s/kavmblk9avrzsre/Screenshot_3.png?dl=0&raw=1)
